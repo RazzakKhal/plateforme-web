@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { addUser } from './store/users/actions/users.actions';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { getUsers } from './store/users/selector/users.selector';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,9 @@ export class AppComponent implements OnInit{
   constructor(private store: Store){}
 
   ngOnInit(): void {
-   this.store.select((state) => state).subscribe((state) => {console.log('state', state)})
+   this.store.select(getUsers).subscribe((rep) => {
+    console.log('rep', rep)
+   })
   }
 
   testDispatch(){
