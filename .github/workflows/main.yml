@@ -30,13 +30,13 @@ jobs:
 
       # Installer les dépendances
       - name: Install dependencies
-        working-directory: web
+        working-directory: ${{ github.workspace }}/web
         run: |
           npm install
 
       # Lancer les tests
       - name: Run tests
-        working-directory: web
+        working-directory: ${{ github.workspace }}/web
         run: |
           npm run test
 
@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: frontend-coverage
-          path: web/coverage
+          path: ${{ github.workspace }}/web/coverage
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -53,7 +53,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          projectBaseDir: web
+          projectBaseDir: ${{ github.workspace }}/web
           args: >
             -Dsonar.projectKey=RazzakKhal_plateforme-web
             -Dsonar.organization=razzakkhal
