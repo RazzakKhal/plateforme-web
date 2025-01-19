@@ -30,13 +30,13 @@ jobs:
 
       # Installer les dépendances
       - name: Install dependencies
-        working-directory: front
+        working-directory: web
         run: |
           npm install
 
       # Lancer les tests
       - name: Run tests
-        working-directory: front
+        working-directory: web
         run: |
           npm run test
 
@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: frontend-coverage
-          path: front/coverage
+          path: web/coverage
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -53,12 +53,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          projectBaseDir: front
+          projectBaseDir: web
           args: >
             -Dsonar.projectKey=RazzakKhal_plateforme-web
             -Dsonar.organization=razzakkhal
             -Dsonar.exclusions=**/node_modules/**,**/test/**,**/*.spec.ts
-            -Dsonar.javascript.lcov.reportPaths=coverage/bobapp/lcov.info
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
       # Se connecter à Docker Hub
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -70,6 +70,6 @@ jobs:
       - name: Build and Push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./front
+          context: ./web
           push: true
-          tags: razzak2007/bobapp-frontend:latest
+          tags: razzak2007/plateforme-autoecole-frontend:latest
