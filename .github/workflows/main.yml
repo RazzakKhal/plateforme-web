@@ -67,6 +67,6 @@ jobs:
       - name: Build and Push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./web
+          context: .
           push: true
           tags: razzak2007/plateforme-autoecole-frontend:latest
