@@ -30,13 +30,11 @@ jobs:
 
       # Installer les dépendances
       - name: Install dependencies
-        working-directory: ${{ github.workspace }}/web
         run: |
           npm install
 
       # Lancer les tests
       - name: Run tests
-        working-directory: ${{ github.workspace }}/web
         run: |
           npm run test
 
