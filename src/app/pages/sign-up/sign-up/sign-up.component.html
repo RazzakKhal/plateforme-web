@@ -1,1 +1,43 @@
-<p>sign-up works!</p>
+<div class="container">
+    <img class="logo" src="default-logo.webp" alt="logo plateforme auto ecole" width="80">
+    <div class="connexion-inscription-buttons">
+        <button class="transparent-button">CONNEXION</button>
+        <button class="transparent-button">INSCRIPTION</button>
+    </div>
+    <form>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Entre ton prénom</mat-label>
+                <input matInput>
+                <mat-icon matPrefix>person</mat-icon>
+                <mat-hint>Prénom</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Entre ton nom</mat-label>
+                <input matInput>
+                <mat-icon matPrefix>person</mat-icon>
+                <mat-hint>Nom</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Entre ton Email</mat-label>
+                <input matInput>
+                <mat-icon matPrefix>mail</mat-icon>
+                <mat-hint>Email</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Choisis un mot de passe</mat-label>
+                <input matInput>
+                <mat-icon matPrefix>password</mat-icon>
+                <mat-hint>Mot de passe</mat-hint>
+            </mat-form-field>
+        </p>
+        <button class="filled-button">S'inscrire</button>
+    </form>
+    <p>J'ai déja un compte: <a [routerLink]="['/sign-in']">Me Connecter</a></p>
+</div>
