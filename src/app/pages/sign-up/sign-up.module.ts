@@ -5,10 +5,11 @@ import { ROUTES } from "./sign-up.routes";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     declarations:[SignUpComponent],
-    imports:[RouterModule.forChild(ROUTES), MatFormFieldModule, MatInputModule, MatIconModule],
+    imports:[RouterModule.forChild(ROUTES), MatFormFieldModule, MatInputModule, MatIconModule, ReactiveFormsModule],
     providers:[],
     exports:[],
 })
