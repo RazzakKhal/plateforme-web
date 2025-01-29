@@ -1,5 +1,4 @@
 import { inject, Injectable } from '@angular/core';
-import { UsersService } from '../../../shared/services/users.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { addUser, notif } from '../actions/users.actions';
 import { map } from 'rxjs';

@@ -9,15 +9,20 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideRouterStore } from '@ngrx/router-store';
 import { usersReducer } from './store/users/reducer/users.reducer';
 import { UserEffect } from './store/users/effects/user-effect';
+import { provideHttpClient } from '@angular/common/http';
+import { meReducer } from './store/users/reducer/me.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), provideAnimationsAsync(), 
     provideStore({
-    usersState : usersReducer
+    usersState : usersReducer,
+    meState : meReducer
     }), 
     provideEffects([UserEffect]), 
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), 
-    provideRouterStore()]
+    provideRouterStore(),
+    provideHttpClient()
+  ]
 };
