@@ -1,17 +1,30 @@
 import { createReducer, on } from "@ngrx/store"
-import { addUser, notif } from "../actions/users.actions";
+import { addMe, signUpError } from "../actions/sign-up.actions";
+import { User } from "../../../models/user.models";
 
-const usersInitialState = {
-    users : [] as any[]
+export interface MeState{
+    me? : User,
+    error?: any
+    
+}
+
+const usersInitialState : MeState = {
 }
 
 export const usersReducer = createReducer(usersInitialState,
-    on(addUser, (state, {user}) => {
-        console.log('on est dans le on de addUser')
+    on(addMe, (state, {me}) => {
+        console.log("on estr dans le reducer", me)
        return {
         ...state,
-        users : [...state.users, user]
+        me,
+        error: undefined
     }
     }),
-    on(notif, (state) => {console.log("l'action est ok"); return state})
+    on(signUpError, (state, {error}) => {
+        return {
+            ...state,
+            me: undefined,
+            error
+        }
+    })
 );
