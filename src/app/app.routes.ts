@@ -11,6 +11,9 @@ export const routes: Routes = [
         path:'sign-in', loadChildren: () => import('./pages/sign-in/sign-in.module').then(m => m.SignInModule)
     },
     {
+        path:'me', loadChildren: () => import('./pages/me/me.module').then(m => m.MeModule)
+    },
+    {
         path:'sign-up', loadChildren: () => import('./pages/sign-up/sign-up.module').then(m => m.SignUpModule)
     },
     {

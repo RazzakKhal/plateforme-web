@@ -8,19 +8,17 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideRouterStore } from '@ngrx/router-store';
 import { usersReducer } from './store/users/reducer/users.reducer';
-import { UserEffect } from './store/users/effects/user-effect';
 import { provideHttpClient } from '@angular/common/http';
-import { meReducer } from './store/users/reducer/me.reducer';
+import { SignUpEffect } from './store/users/effects/sign-up-effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), provideAnimationsAsync(), 
     provideStore({
-    usersState : usersReducer,
-    meState : meReducer
+    meState : usersReducer,
     }), 
-    provideEffects([UserEffect]), 
+    provideEffects([SignUpEffect]), 
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), 
     provideRouterStore(),
     provideHttpClient()
