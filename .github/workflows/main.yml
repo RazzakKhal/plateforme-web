@@ -70,3 +70,4 @@ jobs:
           context: .
           push: true
           tags: razzak2007/plateforme-autoecole-frontend:latest
+          no-cache: true
