@@ -10,6 +10,7 @@ import { provideRouterStore } from '@ngrx/router-store';
 import { usersReducer } from './store/users/reducer/users.reducer';
 import { provideHttpClient } from '@angular/common/http';
 import { SignUpEffect } from './store/users/effects/sign-up-effect';
+import { SignInEffect } from './store/users/effects/sign-in.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideStore({
     meState : usersReducer,
     }), 
-    provideEffects([SignUpEffect]), 
+    provideEffects([SignUpEffect, SignInEffect]), 
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), 
     provideRouterStore(),
     provideHttpClient()

@@ -31,7 +31,6 @@ export class SignUpComponent {
       const user = new User(this.myForm.get('firstname')?.value, this.myForm.get('lastname')?.value, this.myForm.get('mail')?.value, this.myForm.get('password')?.value)
 
     this.store.dispatch(signUpAction({user : user}))
-  //  this.authService.signUp(user).subscribe((user) => console.log('mon user', user))
     }
   }
 }

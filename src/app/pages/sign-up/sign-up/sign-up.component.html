@@ -1,8 +1,8 @@
 <div class="container">
     <img class="logo" src="default-logo.webp" alt="logo plateforme auto ecole" width="80">
     <div class="connexion-inscription-buttons">
-        <button class="transparent-button">CONNEXION</button>
-        <button class="transparent-button">INSCRIPTION</button>
+        <button class="transparent-button bg2"><a [routerLink]="['/sign-in']">CONNEXION</a></button>
+        <button class="transparent-button bg1">INSCRIPTION</button>
     </div>
     <form [formGroup]="myForm">
         <p>
@@ -10,7 +10,7 @@
                 <mat-label>Entre ton prénom</mat-label>
                 <input matInput formControlName="firstname">
                 <mat-icon matPrefix>person</mat-icon>
-                <mat-hint>Prénom</mat-hint>
+                <mat-hint class="bg2">Prénom</mat-hint>
             </mat-form-field>
         </p>
         <p>
@@ -18,7 +18,7 @@
                 <mat-label>Entre ton nom</mat-label>
                 <input matInput formControlName="lastname">
                 <mat-icon matPrefix>person</mat-icon>
-                <mat-hint>Nom</mat-hint>
+                <mat-hint class="bg2">Nom</mat-hint>
             </mat-form-field>
         </p>
         <p>
@@ -26,7 +26,7 @@
                 <mat-label>Entre ton Email</mat-label>
                 <input matInput formControlName="mail">
                 <mat-icon matPrefix>mail</mat-icon>
-                <mat-hint>Email</mat-hint>
+                <mat-hint class="bg2">Email</mat-hint>
             </mat-form-field>
         </p>
         <p>
@@ -34,10 +34,11 @@
                 <mat-label>Choisis un mot de passe</mat-label>
                 <input matInput formControlName="password">
                 <mat-icon matPrefix>password</mat-icon>
-                <mat-hint>Mot de passe</mat-hint>
+                <mat-hint class="bg2">Mot de passe</mat-hint>
             </mat-form-field>
         </p>
-        <button class="filled-button" (click)="signUp()">S'inscrire</button>
+        <button class="filled-button" (click)="signUp()"><span class="bg2">S'inscrire</span></button>
     </form>
-    <p>J'ai déja un compte: <a [routerLink]="['/sign-in']">Me Connecter</a></p>
 </div>
+<div class="background-1 left"></div>
+<div class="background-2 right"></div>

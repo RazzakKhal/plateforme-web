@@ -59,6 +59,7 @@ Global Variables
 
 :root{
     --main-bg-color: #1a237e;
+    --second-bg-color: white;
 }
 
 .transparent-button{
@@ -74,14 +75,48 @@ Global Variables
 
 .filled-button{
     background-color: var(--main-bg-color);
-    color: white;
-    border: 0px;
+    color: var(--second-bg-color);
+    border: 1px solid var(--second-bg-color);
     border-radius: 5px;
     font-size: 1.3rem;
     width: 70vw;
     height: 5vh;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+
+.background-1, .background-2{
+    position: fixed;
+    width: 50vw;
+    height: 100vh;
+    top: 0;
+    z-index: 1;
+}
+
+.left{
+    left: 0;
+}
+
+.right{
+    right: 0;
+}
+
+.background-1{
+    background-color: var(--main-bg-color);
+}
+
+.background-2{
+    background-color: var(--second-bg-color);
+}
+
+.bg1{
+    color: var(--main-bg-color);
+}
+
+.bg2{
+    color: var(--second-bg-color);
+}
+
 
 a{
     text-decoration: none;

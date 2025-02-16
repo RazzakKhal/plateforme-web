@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Subject, tap } from 'rxjs';
 import { User } from '../../models/user.models';
 import { environment } from '../../../environment/environment';
+import { LoginForm } from '../../models/login-form.models';
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +20,13 @@ export class AuthService {
 
   signUp(user : User){
     console.log('on est ici')
-    return this.http.post<User>(`${environment.userBaseUri}/users/signup`, user).pipe(
-      tap((user : User) => this.user$.next(user))
-    );
+    return this.http.post<User>(`${environment.userBaseUri}/users/signup`, user);
   }
 
-  signIn(user: User){
-    return this.http.post<User>(`${environment.userBaseUri}/connexion`, user).pipe(
-      tap((user : User) => this.user$.next(user))
+  signIn(user: LoginForm){
+    return this.http.post<User>(`${environment.userBaseUri}/users/signin`, user).pipe
+    (
+      tap(() => console.log('le loginform', user))
     );
   }
 
