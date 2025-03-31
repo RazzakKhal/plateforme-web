@@ -1,0 +1,15 @@
+.container{
+    width: 100vw;
+    height: 10vh;
+    background-color: var(--main-bg-color);
+    color: white;
+    text-transform: uppercase;
+}
+
+.container ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+    height: 100%;
+}

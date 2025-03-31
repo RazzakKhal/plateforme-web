@@ -1,8 +1,11 @@
 import { NgModule } from "@angular/core";
+import { StudentComponent } from "./student/student.component";
+import { RouterModule } from "@angular/router";
+import { ROUTES } from "./student.routes";
 
 @NgModule({
-    declarations:[],
-    imports:[],
+    declarations:[StudentComponent],
+    imports:[RouterModule.forChild(ROUTES)],
     providers:[],
     exports:[]
 })

@@ -2,6 +2,11 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
+        path: '',
+        redirectTo: 'student',
+        pathMatch: 'full'
+      },
+    {
         path:'admin', loadChildren : () => import('./pages/admin/admin.module').then(m => m.AdminModule)
     },
     {   
