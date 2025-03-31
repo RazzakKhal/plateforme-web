@@ -9,15 +9,15 @@ export const ROUTES = [
         component : StudentComponent
     },
     {
-      path: 'formules',
+      path: 'formula',
       component: FormulaComponent
     },
     {
-      path: 'lecons',
+      path: 'lessons',
       component: LessonsComponent
     },
     {
-      path: 'competences',
+      path: 'skills',
       component: SkillsComponent
     }
 ]
