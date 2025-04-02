@@ -73,6 +73,23 @@ Global Variables
 
 }
 
+.modify-button{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 5px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.modify-button:hover {
+    background-color: #2D44B2;
+    color: white;
+    cursor: pointer;
+  }
+  
+
 .filled-button{
     background-color: var(--main-bg-color);
     color: var(--second-bg-color);
