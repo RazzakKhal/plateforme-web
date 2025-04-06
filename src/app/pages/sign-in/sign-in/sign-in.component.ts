@@ -15,7 +15,7 @@ export class SignInComponent {
   myForm : FormGroup;
 
 
-  constructor(private authService : AuthService, private store: Store){
+  constructor(private store: Store){
     this.myForm = new FormGroup({
       mail : new FormControl('', [Validators.required]),
       password : new FormControl('', [Validators.required])
@@ -26,9 +26,7 @@ export class SignInComponent {
   signIn(){
     if(this.myForm.valid){
       const form = new LoginForm(this.myForm.get('mail')?.value, this.myForm.get('password')?.value)
-    this.store.dispatch(signInAction({loginForm : form}))
-
- console.log('on est la')
+      this.store.dispatch(signInAction({loginForm : form}))
     }
   }
 }

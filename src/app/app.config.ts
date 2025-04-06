@@ -8,9 +8,10 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideRouterStore } from '@ngrx/router-store';
 import { usersReducer } from './store/users/reducer/users.reducer';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { SignUpEffect } from './store/users/effects/sign-up-effect';
 import { SignInEffect } from './store/users/effects/sign-in.effect';
+import { tokenInterceptor } from './shared/interceptors/token.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +23,8 @@ export const appConfig: ApplicationConfig = {
     provideEffects([SignUpEffect, SignInEffect]), 
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), 
     provideRouterStore(),
-    provideHttpClient()
+    provideHttpClient(
+      withInterceptors([tokenInterceptor])
+    )
   ]
 };

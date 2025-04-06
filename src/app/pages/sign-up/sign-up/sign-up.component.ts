@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../shared/services/auth.service';
 import { User } from '../../../models/user.models';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -16,7 +15,7 @@ export class SignUpComponent {
   myForm : FormGroup;
 
 
-  constructor(private authService : AuthService, private store: Store){
+  constructor(private store: Store){
     this.myForm = new FormGroup({
       firstname : new FormControl('', [Validators.required]),
       lastname : new FormControl('', [Validators.required]),
