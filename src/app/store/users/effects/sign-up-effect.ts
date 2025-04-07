@@ -4,8 +4,9 @@ import { signUpAction, signUpError, signUpSuccess } from "../actions/sign-up.act
 import { catchError, map, mergeMap, of, tap } from "rxjs";
 import { AuthService } from "../../../shared/services/auth.service";
 import { LocalStorageService } from "../../../shared/services/local-storage.service";
-import { SignInResponse } from "../../../models/signInResponse.interface";
+import { SignInResponse } from "../../../shared/interfaces/signInResponse.interface";
 import { Router } from "@angular/router";
+import { getMe } from "../actions/get-me.action";
 
 @Injectable({
     providedIn: 'root'
@@ -36,7 +37,7 @@ export class SignUpEffect{
             this.actions$.pipe(
                 ofType(signUpSuccess),
                 tap(({ signUpResponse }) => this.localStorageService.saveToken(signUpResponse.token)),
-                tap(() => this.router.navigate(['/student'])),
+                map(() => getMe),
                 catchError(
                     (err) => of(signUpError({error : err}))
                 )

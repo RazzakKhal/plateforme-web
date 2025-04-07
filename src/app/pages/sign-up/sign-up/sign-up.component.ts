@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../models/user.models';
+import { User } from '../../../shared/models/user.models';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { signUpAction } from '../../../store/users/actions/sign-up.actions';

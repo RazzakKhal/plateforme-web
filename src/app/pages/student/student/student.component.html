@@ -3,15 +3,15 @@
     <div class="avatar">
         <img src="avatar.webp" alt="photo de profil">
     </div>
-    <div class="profil-container">
-        <p>Nom : xxxxxxx</p>
-        <p>Prénom : xxxxxxxx</p>
+    <div class="profil-container" *ngIf="user$ | async as user">
+        <p>Nom : {{user.lastname}}</p>
+        <p>Prénom : {{user.firstname}}</p>
         <div>
-            <p>Mail : xxxxxxxxx</p>
+            <p>Mail : {{user.mail}}</p>
             <button class="modify-button">Modifier</button>
         </div>
         <div>
-            <p>Téléphone : xxxxxxxxx</p>
+            <p>Téléphone : {{user?.phone}}</p>
             <button class="modify-button">Modifier</button>
         </div>
     </div>

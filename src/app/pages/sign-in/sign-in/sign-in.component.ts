@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Store } from '@ngrx/store';
-import { LoginForm } from '../../../models/login-form.models';
+import { LoginForm } from '../../../shared/models/login-form.models';
 import { signInAction } from '../../../store/users/actions/sign-in.actions';
 
 @Component({

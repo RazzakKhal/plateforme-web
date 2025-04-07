@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
-import { User } from "../../../models/user.models";
-import { SignInResponse } from "../../../models/signInResponse.interface";
+import { User } from "../../../shared/models/user.models";
+import { SignInResponse } from "../../../shared/interfaces/signInResponse.interface";
 
 export const signUpAction = createAction('signUp', props<{user: User}>())
 export const signUpSuccess = createAction('signUpSuccess', props<{signUpResponse : SignInResponse}>())

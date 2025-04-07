@@ -12,6 +12,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { SignUpEffect } from './store/users/effects/sign-up-effect';
 import { SignInEffect } from './store/users/effects/sign-in.effect';
 import { tokenInterceptor } from './shared/interceptors/token.interceptor';
+import { MeEffect } from './store/users/effects/me.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,7 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideStore({
     meState : usersReducer,
     }), 
-    provideEffects([SignUpEffect, SignInEffect]), 
+    provideEffects([SignUpEffect, SignInEffect, MeEffect]), 
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), 
     provideRouterStore(),
     provideHttpClient(

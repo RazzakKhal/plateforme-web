@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject, take, tap } from 'rxjs';
-import { User } from '../../models/user.models';
 import { environment } from '../../../environment/environment';
-import { LoginForm } from '../../models/login-form.models';
-import { SignInResponse } from '../../models/signInResponse.interface';
+import { LoginForm } from '../models/login-form.models';
+import { SignInResponse } from '../interfaces/signInResponse.interface';
+import { UserInterface } from '../interfaces/user.interface';
+import { User } from '../models/user.models';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  private user$ = new Subject<User>()
-
   getMe() {
-    return this.http.get<User>(`${environment.userBaseUri}/${environment.userService}/users/me`).pipe(
+    return this.http.get<UserInterface>(`${environment.userBaseUri}/${environment.userService}/users/me`).pipe(
       take(1)
     );
   }
