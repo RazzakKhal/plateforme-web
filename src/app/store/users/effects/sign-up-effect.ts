@@ -37,7 +37,7 @@ export class SignUpEffect{
             this.actions$.pipe(
                 ofType(signUpSuccess),
                 tap(({ signUpResponse }) => this.localStorageService.saveToken(signUpResponse.token)),
-                map(() => getMe),
+                map(() => getMe()),
                 catchError(
                     (err) => of(signUpError({error : err}))
                 )
