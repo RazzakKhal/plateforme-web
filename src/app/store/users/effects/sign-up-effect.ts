@@ -14,7 +14,7 @@ import { getMe } from "../actions/get-me.action";
 export class SignUpEffect{
 
     constructor(private authService : AuthService, private localStorageService: LocalStorageService, private router: Router){}
-    
+
     private actions$ = inject(Actions);
 
     createUser = createEffect(() => this.actions$.pipe(
@@ -28,12 +28,12 @@ export class SignUpEffect{
                     (err) => of(signUpError({error : err}))
                 )
             )
-    
+
         )
     ))
 
     signUpSuccess = createEffect(
-        () => 
+        () =>
             this.actions$.pipe(
                 ofType(signUpSuccess),
                 tap(({ signUpResponse }) => this.localStorageService.saveToken(signUpResponse.token)),
@@ -42,8 +42,6 @@ export class SignUpEffect{
                     (err) => of(signUpError({error : err}))
                 )
             )
-            ,
-            { dispatch: false }
     )
 
 }
