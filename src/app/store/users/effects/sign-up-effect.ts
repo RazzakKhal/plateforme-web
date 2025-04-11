@@ -36,6 +36,7 @@ export class SignUpEffect{
         () =>
             this.actions$.pipe(
                 ofType(signUpSuccess),
+                tap(() => console.log('sign in succes déclenché')),
                 tap(({ signUpResponse }) => this.localStorageService.saveToken(signUpResponse.token)),
                 map(() => getMe()),
                 catchError(
