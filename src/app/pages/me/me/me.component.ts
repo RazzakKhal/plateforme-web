@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getMe } from '../../../store/users/selector/me.selector';
+import { getMe } from '../../../store/users/selectors/me.selector';
 import { MeState } from '../../../store/users/reducer/users.reducer';
+import { GlobalState } from '../../../store/global-state.interface';
 
 @Component({
   selector: 'app-me',
@@ -11,7 +12,7 @@ import { MeState } from '../../../store/users/reducer/users.reducer';
 })
 export class MeComponent implements OnInit{
 
-  constructor(private store: Store<{ meState: MeState }>){}
+  constructor(private store: Store<GlobalState>){}
 
   ngOnInit(): void {
     this.store.select(getMe).subscribe((me) => console.log('moi', me))

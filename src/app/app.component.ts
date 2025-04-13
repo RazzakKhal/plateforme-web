@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { LocalStorageService } from './shared/services/local-storage.service';
-import { getMe } from './store/users/actions/get-me.action';
+import { getMeAction } from './store/users/actions/get-me.action';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     const token = this.localStorageService.getToken();
   if (token) {
-    this.store.dispatch(getMe());
+    this.store.dispatch(getMeAction());
   }
   }
 

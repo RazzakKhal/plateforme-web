@@ -13,6 +13,7 @@ import { SignUpEffect } from './store/users/effects/sign-up-effect';
 import { SignInEffect } from './store/users/effects/sign-in.effect';
 import { tokenInterceptor } from './shared/interceptors/token.interceptor';
 import { MeEffect } from './store/users/effects/me.effect';
+import { formulaReducer } from './store/formulas/reducer/formulas.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,6 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), provideAnimationsAsync(), 
     provideStore({
     meState : usersReducer,
+    formulaState : formulaReducer
     }), 
     provideEffects([SignUpEffect, SignInEffect, MeEffect]), 
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), 

@@ -3,6 +3,7 @@ export interface UserInterface{
     lastname: string;
     mail: string;
     phone?: string;
-    roles? : string[]
+    roles? : string[];
+    formula?: number;
 
 }

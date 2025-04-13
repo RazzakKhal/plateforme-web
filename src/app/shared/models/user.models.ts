@@ -1,5 +1,5 @@
 export class User{
-   constructor(private firstname : string,private lastname : string,private mail : string,private password : string){
+   constructor(private firstname : string,private lastname : string,private mail : string,private password : string, private phone?: string){
 
    } 
 
@@ -18,4 +18,8 @@ export class User{
    getPassword(){
     return this.password;
    }   
+
+   getPhone(){
+      return this.phone;
+   }
 }

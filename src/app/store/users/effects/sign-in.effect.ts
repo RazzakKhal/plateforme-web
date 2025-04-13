@@ -6,7 +6,7 @@ import { catchError, map, mergeMap, of, tap } from "rxjs";
 import { LocalStorageService } from "../../../shared/services/local-storage.service";
 import { SignInResponse } from "../../../shared/interfaces/signInResponse.interface";
 import { Router } from "@angular/router";
-import { getMe } from "../actions/get-me.action";
+import { getMeAction } from "../actions/get-me.action";
 
 @Injectable({
     providedIn: 'root'
@@ -38,7 +38,7 @@ export class SignInEffect{
                     ofType(signInSuccess),
                     tap(() => console.log('sign in succes déclenché')),
                     tap(({ signInResponse }) => this.localStorageService.saveToken(signInResponse.token)),
-                    map(() => getMe()),
+                    map(() => getMeAction()),
                     catchError(
                         (err) => of(signInError({error : err}))
                     )
