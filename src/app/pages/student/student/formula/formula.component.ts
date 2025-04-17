@@ -29,10 +29,14 @@ export class FormulaComponent implements OnInit{
 
 
   ngOnInit(): void {
+    this.store.select(getAllFormulas).pipe(
+      filter(Boolean)
+    ).subscribe((formulas : Formula[] | undefined) => {this.allFormulas = formulas; console.log('toutes les formules ont ete recup : ' + JSON.stringify(this.allFormulas))})
+    this.store.select(getUserFormula).pipe(
+      filter(Boolean)
+    ).subscribe((formula : Formula | undefined) => this.formula = formula)
     this.getFormulas()
-    this.store.select(getAllFormulas).subscribe((formulas : Formula[] | undefined) => this.allFormulas = formulas)
-    this.store.select(getUserFormula).subscribe((formula : Formula | undefined) => this.formula = formula)
-
+    
   }
 
   // aller chercher l'utilisateur dans le store, si y'a pas aller le cherche dans user-service
@@ -41,9 +45,11 @@ export class FormulaComponent implements OnInit{
   getFormulas(){
       this.store.select(getMe).pipe(
         filter(Boolean),
-        tap((user : UserInterface) =>  user.formula ? this.store.dispatch(getFormulaAction({formulaId : user.formula})) : this.store.dispatch(getAllFormulasAction()))
+        tap((user) => console.log('lutilisateur : ' + JSON.stringify(user))),
+        tap((user : UserInterface) =>  user.formulaId ? this.store.dispatch(getFormulaAction({formulaId : user.formulaId})) : this.store.dispatch(getAllFormulasAction()))
       ).subscribe()
    
   }
+  
 
 }

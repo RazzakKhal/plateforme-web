@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getMe } from '../../../store/users/selectors/me.selector';
-import { MeState } from '../../../store/users/reducer/users.reducer';
 import { GlobalState } from '../../../store/global-state.interface';
 
 @Component({

@@ -4,6 +4,6 @@ export interface UserInterface{
     mail: string;
     phone?: string;
     roles? : string[];
-    formula?: number;
+    formulaId?: number;
 
 }

@@ -14,6 +14,7 @@ import { SignInEffect } from './store/users/effects/sign-in.effect';
 import { tokenInterceptor } from './shared/interceptors/token.interceptor';
 import { MeEffect } from './store/users/effects/me.effect';
 import { formulaReducer } from './store/formulas/reducer/formulas.reducer';
+import { AllFormulasEffect } from './store/formulas/effects/all-formulas.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,7 +24,7 @@ export const appConfig: ApplicationConfig = {
     meState : usersReducer,
     formulaState : formulaReducer
     }), 
-    provideEffects([SignUpEffect, SignInEffect, MeEffect]), 
+    provideEffects([SignUpEffect, SignInEffect, MeEffect, AllFormulasEffect]), 
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), 
     provideRouterStore(),
     provideHttpClient(
