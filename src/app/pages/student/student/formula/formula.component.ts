@@ -10,10 +10,11 @@ import { getMeAction } from '../../../../store/users/actions/get-me.action';
 import { Formula } from '../../../../shared/interfaces/formula.interface';
 import { getAllFormulas } from '../../../../store/formulas/selectors/all-formulas.selector';
 import { getUserFormula } from '../../../../store/formulas/selectors/formula.selector';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-formula',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './formula.component.html',
   styleUrl: './formula.component.css'
 })
@@ -21,6 +22,7 @@ export class FormulaComponent implements OnInit{
 
   formula : Formula | undefined;
   allFormulas : Formula[] | undefined;
+  withCode = true;
 
   constructor(private store: Store<GlobalState>){
 
@@ -49,6 +51,14 @@ export class FormulaComponent implements OnInit{
         tap((user : UserInterface) =>  user.formulaId ? this.store.dispatch(getFormulaAction({formulaId : user.formulaId})) : this.store.dispatch(getAllFormulasAction()))
       ).subscribe()
    
+  }
+
+  splitDescription(description: string){
+    return description.split(",");
+  }
+
+  toggleCode(){
+    this.withCode = !this.withCode;
   }
   
 
