@@ -1,0 +1,103 @@
+.container {
+    background-color: var(--third-bg-color);
+}
+
+.allFormulas {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.formula-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 350px;
+    width: 500px;
+    color: var(--second-bg-color);
+    background-color: var(--main-bg-color);
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.formula-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.formula-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.formula-description {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.formula-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.filled-button:hover {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    background-color: var(--hover-color);
+}
+
+
+.withCode {
+    width: 100%;
+    color: var(--main-bg-color);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    .slideContainer {
+        position: relative;
+        width: 50px;
+        height: 15px;
+        border: 1px solid var(--main-bg-color);
+        border-radius: 40%;
+        background-color: var(--third-bg-color);
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        .round {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 15px;
+            width: 15px;
+            border-radius: 100%;
+            background-color: var(--main-bg-color);
+            transition: transform 0.3s ease;
+
+        }
+
+    }
+}
+
+.rightSlide {
+    transform: translateX(35px);
+    /* décale le rond vers la droite */
+}
+
+.fillSlide{
+    background-color: var(--second-bg-color) !important;
+    border: 0px solid transparent !important;
+}

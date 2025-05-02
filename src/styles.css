@@ -60,6 +60,8 @@ Global Variables
 :root{
     --main-bg-color: #1a237e;
     --second-bg-color: white;
+    --third-bg-color: #dadada;
+    --hover-color: #1976d2;
 }
 
 .transparent-button{
@@ -96,7 +98,7 @@ Global Variables
     border: 1px solid var(--second-bg-color);
     border-radius: 5px;
     font-size: 1.3rem;
-    width: 70vw;
+    width: 150px;
     height: 5vh;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }

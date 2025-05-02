@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -22,6 +23,8 @@ export const routes: Routes = [
         path:'sign-up', loadChildren: () => import('./pages/sign-up/sign-up.module').then(m => m.SignUpModule)
     },
     {
-        path:'student', loadChildren: () => import('./pages/student/student.module').then(m => m.StudentModule)
+        path:'student',    
+        canActivate: [authGuard],
+        loadChildren: () => import('./pages/student/student.module').then(m => m.StudentModule)
     }
 ];
