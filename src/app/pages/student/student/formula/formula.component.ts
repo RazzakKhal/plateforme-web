@@ -22,7 +22,7 @@ export class FormulaComponent implements OnInit{
 
   formula : Formula | undefined;
   allFormulas : Formula[] | undefined;
-  withCode = true;
+  withCode = false;
 
   constructor(private store: Store<GlobalState>){
 
@@ -59,6 +59,7 @@ export class FormulaComponent implements OnInit{
 
   toggleCode(){
     this.withCode = !this.withCode;
+    console.log("withcode " + this.withCode)
   }
   
 
