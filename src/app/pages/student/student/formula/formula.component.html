@@ -16,7 +16,7 @@
                 <ul class="formula-description" *ngFor="let item of splitDescription(formulaa.description)">
                     <li>{{item}}</li>
                 </ul>
-                <button class="filled-button">{{formulaa.price}} €</button>
+                <app-payment [formulaa]="formulaa"></app-payment>
             </div>
         </ng-container>
 
