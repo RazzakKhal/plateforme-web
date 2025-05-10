@@ -23,7 +23,7 @@ export class PaymentComponent {
     this.moneticoService.initierPaiement(this.formulaa.id).subscribe((data: any) => {
       const form = document.createElement('form');
       form.method = 'POST';
-      form.action = 'https://p.monetico-services.com/paiement.cgi';
+      form.action = 'https://p.monetico-services.com/test/paiement.cgi';
 
       for (const key in data) {
         if (data.hasOwnProperty(key)) {
@@ -36,7 +36,7 @@ export class PaymentComponent {
       }
 
       document.body.appendChild(form);
-      form.submit(); // redirection automatique vers Monetico
+      //form.submit(); // redirection automatique vers Monetico
     });
   }
 }
