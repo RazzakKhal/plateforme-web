@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormulaComponent } from './formula.component';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { provideStore } from '@ngrx/store';
 
 describe('FormulaComponent', () => {
   let component: FormulaComponent;
@@ -8,7 +10,8 @@ describe('FormulaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormulaComponent]
+      imports: [FormulaComponent],
+      providers: [provideHttpClient(), provideStore({})] 
     })
     .compileComponents();
 
