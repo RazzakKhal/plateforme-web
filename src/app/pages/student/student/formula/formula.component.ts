@@ -2,19 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { GlobalState } from '../../../../store/global-state.interface';
 import { getMe } from '../../../../store/users/selectors/me.selector';
-import { filter, mergeMap, tap } from 'rxjs';
+import { filter, tap } from 'rxjs';
 import { UserInterface } from '../../../../shared/interfaces/user.interface';
 import { getFormulaAction } from '../../../../store/formulas/actions/get-formula';
 import { getAllFormulasAction } from '../../../../store/formulas/actions/get-all-formulas';
-import { getMeAction } from '../../../../store/users/actions/get-me.action';
 import { Formula } from '../../../../shared/interfaces/formula.interface';
 import { getAllFormulas } from '../../../../store/formulas/selectors/all-formulas.selector';
 import { getUserFormula } from '../../../../store/formulas/selectors/formula.selector';
 import { CommonModule } from '@angular/common';
+import { PaymentComponent } from '../../../../shared/components/payment/payment.component';
 
 @Component({
   selector: 'app-formula',
-  imports: [CommonModule],
+  imports: [CommonModule, PaymentComponent],
   templateUrl: './formula.component.html',
   styleUrl: './formula.component.css'
 })

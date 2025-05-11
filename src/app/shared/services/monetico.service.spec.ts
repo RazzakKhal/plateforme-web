@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FormulaService } from './formula.service';
+import { MoneticoService } from './monetico.service';
 import { provideHttpClient } from '@angular/common/http';
 
-describe('FormulaService', () => {
-  let service: FormulaService;
+describe('MoneticoService', () => {
+  let service: MoneticoService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [provideHttpClient()] 
     });
-    service = TestBed.inject(FormulaService);
+    service = TestBed.inject(MoneticoService);
   });
 
   it('should be created', () => {
