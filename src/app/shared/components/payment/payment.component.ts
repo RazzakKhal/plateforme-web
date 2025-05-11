@@ -36,7 +36,7 @@ export class PaymentComponent {
       }
 
       document.body.appendChild(form);
-      //form.submit(); // redirection automatique vers Monetico
+      form.submit(); // redirection automatique vers Monetico
     });
   }
 }
