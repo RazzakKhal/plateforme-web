@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject, take, tap } from 'rxjs';
-import { environment } from '../../../environment/environment';
+import { environment } from '../../../environments/environment';
 import { LoginForm } from '../models/login-form.models';
 import { SignInResponse } from '../interfaces/signInResponse.interface';
 import { UserInterface } from '../interfaces/user.interface';
