@@ -11,7 +11,7 @@ export class MoneticoService {
   constructor(private http: HttpClient) { }
 
   initierPaiement(id : number): Observable<any> {
-    return this.http.post(`${environment.userBaseUri}/${environment.paymentService}/api/payment/initier`, {} ,
+    return this.http.post(`${environment.userBaseUri}/${environment.paymentService}/payment/initier`, {} ,
   {
     params: { id }
   });
