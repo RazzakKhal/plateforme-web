@@ -1,5 +1,7 @@
+import { Address } from "./address.model";
+
 export class User{
-   constructor(private firstname : string,private lastname : string,private mail : string,private password : string, private phone?: string){
+   constructor(private firstname : string,private lastname : string,private mail : string,private password : string, private phone: string, private address: Address){
 
    } 
 
@@ -18,6 +20,10 @@ export class User{
    getPassword(){
     return this.password;
    }   
+
+   getAdress(){
+      return this.address;
+   }
 
    getPhone(){
       return this.phone;
