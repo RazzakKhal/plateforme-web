@@ -1,0 +1,24 @@
+<div class="container">
+    <div *ngIf="formula">
+
+    </div>
+
+    <!-- All formulas if user hadn't choose a formula-->
+    <div class="allFormulas" *ngIf="allFormulas">
+        <div class="withCode" (click)="toggleCode()">Avec code:
+            <div class="slideContainer" [ngClass]="{'fillSlide' : withCode}">
+                <div class="round" [ngClass]="{'rightSlide' : withCode}"></div>
+            </div>
+        </div>
+        <ng-container *ngFor="let formulaa of allFormulas">
+            <div class="formula-card" *ngIf="withCode === formulaa.code">
+                <p class="formula-title">{{formulaa.title}}</p>
+                <ul class="formula-description" *ngFor="let item of (formulaa.description | splitArrayOfString)">
+                    <li>{{item}}</li>
+                </ul>
+                <app-payment [formulaa]="formulaa"></app-payment>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
