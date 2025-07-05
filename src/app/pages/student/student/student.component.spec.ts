@@ -4,6 +4,7 @@ import { StudentComponent } from './student.component';
 import { HttpClient, HttpHandler, provideHttpClient } from '@angular/common/http';
 import { AuthService } from '../../../shared/services/auth.service';
 import { ActionsSubject, provideStore, ReducerManager, StateObservable, Store } from '@ngrx/store';
+import { ProfilComponent } from './profil/profil.component';
 
 describe('StudentComponent', () => {
   let component: StudentComponent;
@@ -11,7 +12,7 @@ describe('StudentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [StudentComponent],
+      declarations: [StudentComponent, ProfilComponent],
       providers: [provideHttpClient(), AuthService, provideStore({})] 
     })
     .compileComponents();
