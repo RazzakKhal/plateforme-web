@@ -12,11 +12,11 @@ import { signInAction } from '../../../store/users/actions/sign-in.actions';
   standalone: false
 })
 export class SignInComponent {
-  myForm : FormGroup;
+  signInForm : FormGroup;
 
 
   constructor(private store: Store){
-    this.myForm = new FormGroup({
+    this.signInForm = new FormGroup({
       mail : new FormControl('', [Validators.required]),
       password : new FormControl('', [Validators.required])
     })
@@ -24,8 +24,8 @@ export class SignInComponent {
 
 
   signIn(){
-    if(this.myForm.valid){
-      const form = new LoginForm(this.myForm.get('mail')?.value, this.myForm.get('password')?.value)
+    if(this.signInForm.valid){
+      const form = new LoginForm(this.signInForm.get('mail')?.value, this.signInForm.get('password')?.value)
       this.store.dispatch(signInAction({loginForm : form}))
     }
   }

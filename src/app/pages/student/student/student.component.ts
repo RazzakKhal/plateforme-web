@@ -5,12 +5,13 @@ import { getMe } from '../../../store/users/selectors/me.selector';
 import { Observable } from 'rxjs';
 import { UserInterface } from '../../../shared/interfaces/user.interface';
 import { GlobalState } from '../../../store/global-state.interface';
+import { ProfilComponent } from './profil/profil.component';
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
-  standalone: false,
-  styleUrl: './student.component.css'
+  standalone:false,
+  styleUrl: './student.component.css',
 })
 export class StudentComponent implements OnInit{
 

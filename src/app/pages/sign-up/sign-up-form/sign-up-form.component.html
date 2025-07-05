@@ -1,0 +1,68 @@
+<form [formGroup]="myForm">
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Entre ton prénom</mat-label>
+            <input matInput formControlName="firstname">
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-hint class="bg2">Prénom</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Entre ton nom</mat-label>
+            <input matInput formControlName="lastname">
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-hint class="bg2">Nom</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Entre ton Email</mat-label>
+            <input matInput formControlName="mail">
+            <mat-icon matPrefix>mail</mat-icon>
+            <mat-hint class="bg2">Email</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Entre ton adresse</mat-label>
+            <input matInput formControlName="addressLine">
+            <mat-icon matPrefix>address</mat-icon>
+            <mat-hint class="bg2">Adresse</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Entre ta ville</mat-label>
+            <input matInput formControlName="city">
+            <mat-icon matPrefix>address</mat-icon>
+            <mat-hint class="bg2">Ville</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Entre ton code postal</mat-label>
+            <input matInput formControlName="postalCode">
+            <mat-icon matPrefix>address</mat-icon>
+            <mat-hint class="bg2">Code Postal</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Entre ton numéro de téléphone</mat-label>
+            <input matInput formControlName="phone">
+            <mat-icon matPrefix>phone</mat-icon>
+            <mat-hint class="bg2">Téléphone</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Choisis un mot de passe</mat-label>
+            <input matInput formControlName="password">
+            <mat-icon matPrefix>password</mat-icon>
+            <mat-hint class="bg2">Mot de passe</mat-hint>
+        </mat-form-field>
+    </p>
+
+    <button class="filled-button" (click)="signUp()"><span class="bg2">S'inscrire</span></button>
+</form>

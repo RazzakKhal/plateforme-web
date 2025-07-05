@@ -16,7 +16,7 @@
                 <ul class="formula-description" *ngFor="let item of (formulaa.description | splitArrayOfString)">
                     <li>{{item}}</li>
                 </ul>
-                <app-payment [formulaa]="formulaa"></app-payment>
+                <app-payment [formulaa]="formulaa" (choosenFormula)="chooseFormula($event)"></app-payment>
             </div>
         </ng-container>
 

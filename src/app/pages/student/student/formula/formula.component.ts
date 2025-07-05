@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { GlobalState } from '../../../../store/global-state.interface';
 import { getMe } from '../../../../store/users/selectors/me.selector';
@@ -10,6 +10,7 @@ import { getAllFormulas } from '../../../../store/formulas/selectors/all-formula
 import { getUserFormula } from '../../../../store/formulas/selectors/formula.selector';
 import { CommonModule } from '@angular/common';
 import { ListFormulaComponent } from './list-formula/list-formula.component';
+import { MoneticoService } from '../../../../shared/services/monetico.service';
 
 @Component({
   selector: 'app-formula',
@@ -22,6 +23,10 @@ export class FormulaComponent implements OnInit{
   formula : Formula | undefined;
   allFormulas : Formula[] | undefined;
   withCode = false;
+
+
+
+  private moneticoService = inject(MoneticoService)
 
   constructor(private store: Store<GlobalState>){
 
@@ -60,4 +65,30 @@ export class FormulaComponent implements OnInit{
   }
   
 
+    payer(formula : Formula): void {
+
+
+    if(!formula.id){
+      return;
+    }
+
+    this.moneticoService.initierPaiement(formula.id).subscribe((data: any) => {
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://p.monetico-services.com/test/paiement.cgi';
+
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = data[key];
+          form.appendChild(input);
+        }
+      }
+
+      document.body.appendChild(form);
+      form.submit(); // redirection automatique vers Monetico
+    });
+  }
 }

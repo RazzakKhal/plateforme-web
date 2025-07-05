@@ -1,0 +1,19 @@
+    <form [formGroup]="myForm">
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Entre ton Email</mat-label>
+                <input matInput formControlName="mail">
+                <mat-icon matPrefix>mail</mat-icon>
+                <mat-hint class="bg1">Email</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Choisis un mot de passe</mat-label>
+                <input matInput formControlName="password">
+                <mat-icon matPrefix>password</mat-icon>
+                <mat-hint class="bg1">Mot de passe</mat-hint>
+            </mat-form-field>
+        </p>
+        <button class="filled-button" (click)="signIn()"><span class="bg2">Se Connecter</span></button>
+    </form>

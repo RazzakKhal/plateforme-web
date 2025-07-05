@@ -1,18 +1,1 @@
-<div class="container">
-    <div class="blue-background"></div>
-    <div class="avatar">
-        <img src="avatar.webp" alt="photo de profil">
-    </div>
-    <div class="profil-container" *ngIf="user$ | async as user">
-        <p>Nom : {{user.lastname}}</p>
-        <p>Prénom : {{user.firstname}}</p>
-        <div>
-            <p>Mail : {{user.mail}}</p>
-            <button class="modify-button">Modifier</button>
-        </div>
-        <div>
-            <p>Téléphone : {{user?.phone}}</p>
-            <button class="modify-button">Modifier</button>
-        </div>
-    </div>
-</div>
+<app-profil [user]="user$ | async"></app-profil>

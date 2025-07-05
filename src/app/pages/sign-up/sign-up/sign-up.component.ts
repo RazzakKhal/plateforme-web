@@ -13,11 +13,11 @@ import { Address } from '../../../shared/models/address.model';
 })
 export class SignUpComponent {
 
-  myForm : FormGroup;
+  signUpForm : FormGroup;
 
 
   constructor(private store: Store){
-    this.myForm = new FormGroup({
+    this.signUpForm = new FormGroup({
       firstname : new FormControl('', [Validators.required]),
       lastname : new FormControl('', [Validators.required]),
       mail : new FormControl('', [Validators.required]),
@@ -31,9 +31,9 @@ export class SignUpComponent {
 
 
   signUp(){
-    if(this.myForm.valid){
-      const address = new Address(this.myForm.get('addressLine')?.value, this.myForm.get('city')?.value, this.myForm.get('postalCode')?.value)
-      const user = new User(this.myForm.get('firstname')?.value, this.myForm.get('lastname')?.value, this.myForm.get('mail')?.value, this.myForm.get('password')?.value, this.myForm.get('phone')?.value, address)
+    if(this.signUpForm.valid){
+      const address = new Address(this.signUpForm.get('addressLine')?.value, this.signUpForm.get('city')?.value, this.signUpForm.get('postalCode')?.value)
+      const user = new User(this.signUpForm.get('firstname')?.value, this.signUpForm.get('lastname')?.value, this.signUpForm.get('mail')?.value, this.signUpForm.get('password')?.value, this.signUpForm.get('phone')?.value, address)
 
     this.store.dispatch(signUpAction({user : user}))
     }
