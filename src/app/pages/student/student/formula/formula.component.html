@@ -1,24 +1,3 @@
-<div class="container">
-    <div *ngIf="formula">
+<app-list-formula [allFormulas]="allFormulas" [formula]="formula" (changeCode)="toggleCode()" (choosenFormula)="payer($event)" [withCode]="withCode">
 
-    </div>
-
-    <!-- All formulas if user hadn't choose a formula-->
-    <div class="allFormulas" *ngIf="!formula && allFormulas">
-        <div class="withCode" (click)="toggleCode()">Avec code:
-            <div class="slideContainer" [ngClass]="{'fillSlide' : withCode}">
-                <div class="round" [ngClass]="{'rightSlide' : withCode}"></div>
-            </div>
-        </div>
-        <ng-container *ngFor="let formulaa of allFormulas">
-            <div class="formula-card" *ngIf="withCode === formulaa.code">
-                <p class="formula-title">{{formulaa.title}}</p>
-                <ul class="formula-description" *ngFor="let item of splitDescription(formulaa.description)">
-                    <li>{{item}}</li>
-                </ul>
-                <app-payment [formulaa]="formulaa"></app-payment>
-            </div>
-        </ng-container>
-
-    </div>
-</div>
+</app-list-formula>

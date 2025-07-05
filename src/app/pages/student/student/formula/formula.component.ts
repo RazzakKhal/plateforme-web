@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { GlobalState } from '../../../../store/global-state.interface';
 import { getMe } from '../../../../store/users/selectors/me.selector';
 import { filter, tap } from 'rxjs';
 import { UserInterface } from '../../../../shared/interfaces/user.interface';
-import { getFormulaAction } from '../../../../store/formulas/actions/get-formula';
 import { getAllFormulasAction } from '../../../../store/formulas/actions/get-all-formulas';
 import { Formula } from '../../../../shared/interfaces/formula.interface';
 import { getAllFormulas } from '../../../../store/formulas/selectors/all-formulas.selector';
 import { getUserFormula } from '../../../../store/formulas/selectors/formula.selector';
 import { CommonModule } from '@angular/common';
-import { PaymentComponent } from '../../../../shared/components/payment/payment.component';
+import { ListFormulaComponent } from './list-formula/list-formula.component';
+import { MoneticoService } from '../../../../shared/services/monetico.service';
 
 @Component({
   selector: 'app-formula',
-  imports: [CommonModule, PaymentComponent],
+  imports: [CommonModule, ListFormulaComponent],
   templateUrl: './formula.component.html',
   styleUrl: './formula.component.css'
 })
@@ -23,6 +23,10 @@ export class FormulaComponent implements OnInit{
   formula : Formula | undefined;
   allFormulas : Formula[] | undefined;
   withCode = false;
+
+
+
+  private moneticoService = inject(MoneticoService)
 
   constructor(private store: Store<GlobalState>){
 
@@ -48,14 +52,12 @@ export class FormulaComponent implements OnInit{
       this.store.select(getMe).pipe(
         filter(Boolean),
         tap((user) => console.log('lutilisateur : ' + JSON.stringify(user))),
-        tap((user : UserInterface) =>  user.formulaId ? this.store.dispatch(getFormulaAction({formulaId : user.formulaId})) : this.store.dispatch(getAllFormulasAction()))
+        tap((user : UserInterface) =>  this.store.dispatch(getAllFormulasAction()))
       ).subscribe()
    
   }
 
-  splitDescription(description: string){
-    return description.split(",");
-  }
+
 
   toggleCode(){
     this.withCode = !this.withCode;
@@ -63,4 +65,30 @@ export class FormulaComponent implements OnInit{
   }
   
 
+    payer(formula : Formula): void {
+
+
+    if(!formula.id){
+      return;
+    }
+
+    this.moneticoService.initierPaiement(formula.id).subscribe((data: any) => {
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://p.monetico-services.com/test/paiement.cgi';
+
+      for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = data[key];
+          form.appendChild(input);
+        }
+      }
+
+      document.body.appendChild(form);
+      form.submit(); // redirection automatique vers Monetico
+    });
+  }
 }
