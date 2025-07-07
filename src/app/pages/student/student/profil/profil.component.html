@@ -3,7 +3,8 @@
     <div class="avatar">
         <img src="avatar.webp" alt="photo de profil">
     </div>
-    <div class="profil-container" *ngIf="user">
+    @if (user) {
+    <div class="profil-container">
         <p>Nom : {{user.lastname}}</p>
         <p>Prénom : {{user.firstname}}</p>
         <div>
@@ -15,4 +16,6 @@
             <button class="modify-button">Modifier</button>
         </div>
     </div>
+    }
+
 </div>
