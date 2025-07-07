@@ -1,9 +1,28 @@
-<div class="container">
-    <ul>
-        <img class="logo" src="default-logo.webp" alt="logo plateforme auto ecole" width="80">
-        <li><a [routerLink]="['/student']">profil</a></li>
-        <li><a [routerLink]="['/student/formula']">formules</a></li>
-        <li><a [routerLink]="['/student/lessons']">leçons</a></li>
-        <li><a [routerLink]="['/student/skills']">compétences</a></li>
-    </ul>
-</div>
+<header class="container-fluid pt-2">
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ASK Plateforme</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav col col-md-8 mx-auto  justify-content-center justify-content-md-between">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/student']">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/student/formula']">Formules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/student/lessons']">Leçons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/student/skills']">Compétences</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
