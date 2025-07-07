@@ -1,12 +1,10 @@
-<div class="container">
-    <img class="logo" src="default-logo.webp" alt="logo plateforme auto ecole" width="80">
-    <div class="connexion-inscription-buttons">
-        <button class="transparent-button bg2"><a [routerLink]="['/sign-in']">CONNEXION</a></button>
-        <button class="transparent-button bg1">INSCRIPTION</button>
+<div class="container-fluid">
+    <div class="d-flex flex-column ">
+        <p>Informations personnelles</p>
+        <p>Veuillez remplir tous les champs requis</p>
     </div>
     <app-sign-up-form [myForm]="signUpForm" (signUpEmitter)="signUp()">
 
     </app-sign-up-form>
+    <p>Vous avez déjà un compte ? <a [routerLink]="['/sign-in']">Se connecter</a></p>
 </div>
-<div class="background-1 left"></div>
-<div class="background-2 right"></div>
