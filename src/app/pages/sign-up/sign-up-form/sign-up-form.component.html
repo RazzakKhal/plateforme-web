@@ -1,68 +1,45 @@
-<form [formGroup]="myForm">
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Entre ton prénom</mat-label>
-            <input matInput formControlName="firstname">
-            <mat-icon matPrefix>person</mat-icon>
-            <mat-hint class="bg2">Prénom</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Entre ton nom</mat-label>
-            <input matInput formControlName="lastname">
-            <mat-icon matPrefix>person</mat-icon>
-            <mat-hint class="bg2">Nom</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Entre ton Email</mat-label>
-            <input matInput formControlName="mail">
-            <mat-icon matPrefix>mail</mat-icon>
-            <mat-hint class="bg2">Email</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Entre ton adresse</mat-label>
-            <input matInput formControlName="addressLine">
-            <mat-icon matPrefix>address</mat-icon>
-            <mat-hint class="bg2">Adresse</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Entre ta ville</mat-label>
-            <input matInput formControlName="city">
-            <mat-icon matPrefix>address</mat-icon>
-            <mat-hint class="bg2">Ville</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Entre ton code postal</mat-label>
-            <input matInput formControlName="postalCode">
-            <mat-icon matPrefix>address</mat-icon>
-            <mat-hint class="bg2">Code Postal</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Entre ton numéro de téléphone</mat-label>
-            <input matInput formControlName="phone">
-            <mat-icon matPrefix>phone</mat-icon>
-            <mat-hint class="bg2">Téléphone</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Choisis un mot de passe</mat-label>
-            <input matInput formControlName="password">
-            <mat-icon matPrefix>password</mat-icon>
-            <mat-hint class="bg2">Mot de passe</mat-hint>
-        </mat-form-field>
-    </p>
+<form [formGroup]="myForm" class="form-container">
+  <div class="form-group">
+    <label for="firstname" class="fs-6 text-secondary">Prénom</label>
+    <input type="text" id="firstname" formControlName="firstname" class="form-control" placeholder="Entre ton prénom">
+  </div>
 
-    <button class="filled-button" (click)="signUp()"><span class="bg2">S'inscrire</span></button>
+  <div class="form-group">
+    <label for="lastname" class="fs-6 text-secondary">Nom</label>
+    <input type="text" id="lastname" formControlName="lastname" class="form-control" placeholder="Entre ton nom">
+  </div>
+
+  <div class="form-group">
+    <label for="mail" class="fs-6 text-secondary">Email</label>
+    <input type="email" id="mail" formControlName="mail" class="form-control" placeholder="Entre ton email">
+  </div>
+
+  <div class="form-group">
+    <label for="addressLine" class="fs-6 text-secondary">Adresse</label>
+    <input type="text" id="addressLine" formControlName="addressLine" class="form-control" placeholder="Entre ton adresse">
+  </div>
+
+  <div class="form-row d-flex gap-3">
+    <div class="form-group flex-fill">
+      <label for="city" class="fs-6 text-secondary">Ville</label>
+      <input type="text" id="city" formControlName="city" class="form-control" placeholder="Entre ta ville">
+    </div>
+
+    <div class="form-group flex-fill">
+      <label for="postalCode" class="fs-6 text-secondary">Code postal</label>
+      <input type="text" id="postalCode" formControlName="postalCode" class="form-control" placeholder="Entre ton code postal">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone" class="fs-6 text-secondary">Téléphone</label>
+    <input type="tel" id="phone" formControlName="phone" class="form-control" placeholder="Entre ton numéro de téléphone">
+  </div>
+
+  <div class="form-group">
+    <label for="password" class="fs-6 text-secondary">Mot de passe</label>
+    <input type="password" id="password" formControlName="password" class="form-control" placeholder="Choisis un mot de passe">
+  </div>
+
+  <button class="btn btn-primary fs-3 w-75 mt-3" (click)="signUp()">S'inscrire</button>
 </form>
