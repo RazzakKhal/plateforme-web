@@ -1,7 +1,6 @@
 <form [formGroup]="myForm" class="form-container">
   <div class="form-group">
-    <label for="firstname" class="fs-6 text-secondary">Prénom</label>
-    <input type="text" id="firstname" formControlName="firstname" class="form-control" placeholder="Entre ton prénom">
+    <p-input formControlName="firstname" type='text' labelValue="prénom" [isRequired]="true" placeholder="Votre prénom" inputId="firstname"></p-input>
   </div>
 
   <div class="form-group">

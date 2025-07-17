@@ -4,13 +4,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './shared/components/header/header.component';
+import { HeaderComponent } from './shared/components/organisms/header/header.component';
 import { LocalStorageService } from './shared/services/local-storage.service';
 import { getMeAction } from './store/users/actions/get-me.action';
+import { DesignSystemModule } from './shared/components/design-system.module';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatButtonModule, CommonModule, HeaderComponent, RouterModule],
+  imports: [RouterOutlet, MatButtonModule, CommonModule, RouterModule, DesignSystemModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
