@@ -1,0 +1,9 @@
+<div>
+    <label class="text-secondary fs-7" [for]="inputId">{{labelValue}}</label>
+    <input class="form-control" [attr.type]="type" [attr.placeholder]="placeholder" [attr.id]="inputId" [attr.required]="isRequired"
+    [value]="value"
+    [disabled]="isDisabled"
+    (input)="updateValue($event)"
+    (blur)="onTouched()"
+    >
+</div>
