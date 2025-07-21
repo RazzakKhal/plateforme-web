@@ -4,7 +4,7 @@
         <h2 class="fs-3">Créez votre compte</h2>
         <p class="text-center text-secondary fs-6">Rejoignez notre auto-école pour commencer votre formation</p>
     </div>
-    <app-sign-up-form [myForm]="signUpForm" (signUpEmitter)="signUp()">
+    <app-sign-up-form class="w-100" [myForm]="signUpForm" (signUpEmitter)="signUp()">
 
     </app-sign-up-form>
     <p class="text-center">Vous avez déjà un compte ? <a class="text-primary" [routerLink]="['/sign-in']">Se connecter</a></p>

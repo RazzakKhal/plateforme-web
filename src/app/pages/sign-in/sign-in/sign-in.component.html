@@ -1,10 +1,12 @@
-<div class="container-fluid d-flex flex-column align-items-center justify-content-between gap-5">
+<div class="container-fluid d-flex flex-column align-items-center justify-content-between gap-5 mt-5">
     <div class="d-flex flex-column justify-content-between align-items-center gap-3">
         <img class="logo" src="profil.png" alt="logo plateforme auto ecole" width="100">
         <p class="h3">Connectez-vous à votre compte</p>
         <p class="text-secondary">Accédez à votre espace personnel</p>
     </div>
-    <app-sign-in-form [myForm]="signInForm" (signInEmitter)="signIn()" />
+    <app-sign-in-form class="w-100" [myForm]="signInForm" (signInEmitter)="signIn()">
+
+    </app-sign-in-form>
     <div class="d-flex flex-column align-items-center gap-2">
         <p>Vous n'avez pas de compte ?</p>
         <a class="text-primary" [routerLink]="['/sign-up']"> Créer un compte</a>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './shared/components/organisms/header/header.component';
 import { LocalStorageService } from './shared/services/local-storage.service';
@@ -15,17 +15,31 @@ import { DesignSystemModule } from './shared/components/design-system.module';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
-  state! : Observable<any>;
+  state!: Observable<any>;
+  isHeaderVisible = true;
 
-  constructor(private store: Store, private localStorageService : LocalStorageService){}
+  constructor(private store: Store, private localStorageService: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {
+    this.hideHeader()
     const token = this.localStorageService.getToken();
-  if (token) {
-    this.store.dispatch(getMeAction());
+    if (token) {
+      this.store.dispatch(getMeAction());
+    }
   }
+
+  /**
+   * check if the header need to be hidden
+   */
+  hideHeader() {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        const hiddenRoutes = ['/sign-in', '/sign-up'];
+        this.isHeaderVisible = !hiddenRoutes.includes(event.urlAfterRedirects);
+      });
   }
 
   title = 'web';
