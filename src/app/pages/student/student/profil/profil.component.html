@@ -1,21 +1,46 @@
-<div class="container">
-    <div class="blue-background"></div>
-    <div class="avatar">
-        <img src="avatar.webp" alt="photo de profil">
-    </div>
+<div>
     @if (user) {
-    <div class="profil-container">
-        <p>Nom : {{user.lastname}}</p>
-        <p>Prénom : {{user.firstname}}</p>
-        <div>
-            <p>Mail : {{user.mail}}</p>
-            <button class="modify-button">Modifier</button>
+    <div class="d-flex flex-column justify-content-between align-items-center gap-3">
+        <img src="avatar.webp" alt="photo de profil" width="75">
+        <div class="d-flex flex-column justify-content-between align-items-center">
+            <p class="h3 mb-0">{{user.firstname}} {{user.lastname}}</p>
+            <p class="gap-1 text-secondary">Étudiant(e)</p>
         </div>
-        <div>
-            <p>Téléphone : {{user.phone}}</p>
-            <button class="modify-button">Modifier</button>
-        </div>
+
     </div>
+
+    <section>
+        <h2>Informations personnelles</h2>
+        <div>
+            <i class="bi bi-person"></i>
+            <div>
+                <p>Nom Complet</p>
+                <p>{{user.firstname}} {{user.lastname}}</p>
+            </div>
+
+        </div>
+        <div>
+            <i class="bi bi-envelope"></i>
+            <div>
+                <p>Mail</p>
+                <p>{{user.mail}}</p>
+            </div>
+
+        </div>
+        <div>
+            <i class="bi bi-telephone"></i>
+            <div>
+                <p>Téléphone</p>
+                <p>{{user.phone}}</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <button>Modifier mes informations</button>
+    <button>Se déconnecter</button>
+
     }
 
 </div>
