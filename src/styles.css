@@ -149,3 +149,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .fs-7{
     font-size:smaller;
 }
+
+.icon-75 {
+  font-size: 75px;
+}
+
+.icon-100 {
+  font-size: 100px;
+}
+
+.bg-gray-100 {
+    background-color: #F8F9FA;
+}
+
+.border-gray-ultra-light{
+    border-color : #e9ecef !important
+}
