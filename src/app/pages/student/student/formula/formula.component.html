@@ -1,3 +1,12 @@
-<app-list-formula [allFormulas]="allFormulas" [formula]="formula" (changeCode)="toggleCode()" (choosenFormula)="payer($event)" [withCode]="withCode">
+<div class="d-flex flex-column justify-content-between align-items-center mt-5">
+    <div class="d-flex w-75 justify-content-center border rounded border-gray-ultra-light">
+        <button class="btn" (click)="toggleCode(true)"
+            [ngClass]="{'btn-primary' : withCode, 'btn-light' : !withCode}">Avec code</button>
+        <button class="btn" (click)="toggleCode(false)"
+            [ngClass]="{'btn-primary' : !withCode, 'btn-light' : withCode}">Sans code</button>
+    </div>
+    <app-list-formula [allFormulas]="allFormulas" [formula]="formula" (choosenFormula)="payer($event)"
+        [withCode]="withCode">
 
-</app-list-formula>
+    </app-list-formula>
+</div>

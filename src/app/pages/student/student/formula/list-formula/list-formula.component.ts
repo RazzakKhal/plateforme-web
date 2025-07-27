@@ -18,12 +18,9 @@ export class ListFormulaComponent {
     @Input() allFormulas : Formula[] | undefined;
     @Input() withCode = false;
 
-    @Output() changeCode = new EventEmitter<void>()
     @Output() choosenFormula = new EventEmitter<Formula>()
 
-    public toggleCode(){
-      this.changeCode.emit()
-    }
+  
 
     public chooseFormula(formula : Formula){
           console.log('emission 2')

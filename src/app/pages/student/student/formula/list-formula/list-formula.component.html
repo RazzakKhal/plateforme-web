@@ -1,4 +1,4 @@
-<div class="container">
+<div class="d-flex flex-column justify-content-between gap-3 align-items-center w-100">
     @if (formula) {
     <div>
 
@@ -8,25 +8,27 @@
 
     <!-- All formulas if user hadn't choose a formula-->
     @if (allFormulas) {
-    <div class="allFormulas">
-        <div class="withCode" (click)="toggleCode()">Avec code:
-            <div class="slideContainer" [ngClass]="{'fillSlide' : withCode}">
-                <div class="round" [ngClass]="{'rightSlide' : withCode}"></div>
-            </div>
-        </div>
+    <div class="d-flex flex-column justify-content-between w-100 gap-5 align-items-center mt-5 ">
         @for (formulaa of allFormulas; track formulaa.id) {
-        <ng-container>
-            @if (withCode === formulaa.code) {
-            <div class="formula-card">
-                <p class="formula-title">{{formulaa.title}}</p>
-                <ul class="formula-description" *ngFor="let item of (formulaa.description | splitArrayOfString)">
+        @if (withCode === formulaa.code) {
+        <div class="d-flex flex-column justify-content-between gap-3 align-items-center w-100 btn btn-primary p-3">
+            <div class="d-flex justify-content-between w-100">
+                <h2 class="h6">{{formulaa.title}}</h2>
+                <div class="bg-gray-ultra-light d-flex justify-content-center align-items-center">
+                    <p class="h6 px-3 py-1 mb-0 border rounded">{{formulaa.price}} €</p>
+                </div>
+            </div>
+            <div class="d-flex flex-column fs-7 justify-content-between align-items-start w-100">
+                <ul class="d-flex flex-column align-items-start w-100"
+                    *ngFor="let item of (formulaa.description | splitArrayOfString)">
                     <li>{{item}}</li>
                 </ul>
-                <app-payment [formulaa]="formulaa" (choosenFormula)="chooseFormula($event)"></app-payment>
             </div>
-            }
 
-        </ng-container>
+            <app-payment class="w-100" [formulaa]="formulaa" (choosenFormula)="chooseFormula($event)"></app-payment>
+        </div>
+        }
+
         }
 
     </div>
