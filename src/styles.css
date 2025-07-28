@@ -169,3 +169,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .border-gray-ultra-light{
     border-color : #e9ecef !important
 }
+
+.text-success-light{
+    color : #6EE7B7;
+}

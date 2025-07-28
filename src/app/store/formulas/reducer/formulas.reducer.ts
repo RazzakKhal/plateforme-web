@@ -1,6 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { Formula } from "../../../shared/interfaces/formula.interface";
 import { getAllFormulasSuccess } from "../actions/get-all-formulas";
+import { getFormulaSuccess } from "../actions/get-formula";
 
 export interface FormulaState{
     userFormula? : Formula;
@@ -18,6 +19,12 @@ export const formulaReducer = createReducer(formulaInitialState,
         return {
             ...state,
             allFormulas
+        }
+    }),
+    on(getFormulaSuccess, (state, {formula}) => {
+        return {
+            ...state,
+            userFormula : formula
         }
     }),
 

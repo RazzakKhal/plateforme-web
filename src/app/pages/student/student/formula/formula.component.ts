@@ -11,6 +11,7 @@ import { getUserFormula } from '../../../../store/formulas/selectors/formula.sel
 import { CommonModule } from '@angular/common';
 import { ListFormulaComponent } from './list-formula/list-formula.component';
 import { MoneticoService } from '../../../../shared/services/monetico.service';
+import { getFormulaAction } from '../../../../store/formulas/actions/get-formula';
 
 @Component({
   selector: 'app-formula',
@@ -52,7 +53,7 @@ export class FormulaComponent implements OnInit {
     this.store.select(getMe).pipe(
       filter(Boolean),
       tap((user) => console.log('lutilisateur : ' + JSON.stringify(user))),
-      tap((user: UserInterface) => this.store.dispatch(getAllFormulasAction()))
+      tap((user: UserInterface) => user.formulaId ? this.store.dispatch(getFormulaAction({formulaId : user.formulaId})) : this.store.dispatch(getAllFormulasAction()))
     ).subscribe()
 
   }

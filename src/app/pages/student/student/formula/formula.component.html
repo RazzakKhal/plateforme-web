@@ -5,7 +5,7 @@
         <button class="btn" (click)="toggleCode(false)"
             [ngClass]="{'btn-primary' : !withCode, 'btn-light' : withCode}">Sans code</button>
     </div>
-    <app-list-formula [allFormulas]="allFormulas" [formula]="formula" (choosenFormula)="payer($event)"
+    <app-list-formula class="w-100" [allFormulas]="allFormulas" [formula]="formula" (choosenFormula)="payer($event)"
         [withCode]="withCode">
 
     </app-list-formula>
