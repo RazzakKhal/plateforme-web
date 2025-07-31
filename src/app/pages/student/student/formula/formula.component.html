@@ -2,9 +2,9 @@
    
     @if (allFormulas) {
          <div class="d-flex w-75 justify-content-center border rounded border-gray-ultra-light mt-3">
-        <button class="btn" (click)="toggleCode(true)"
+        <button class="btn w-50" (click)="toggleCode(true)"
             [ngClass]="{'btn-primary' : withCode, 'btn-light' : !withCode}">Avec code</button>
-        <button class="btn" (click)="toggleCode(false)"
+        <button class="btn w-50" (click)="toggleCode(false)"
             [ngClass]="{'btn-primary' : !withCode, 'btn-light' : withCode}">Sans code</button>
     </div>
 
