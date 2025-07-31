@@ -8,7 +8,7 @@ describe('PInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PInputComponent]
+      declarations: [PInputComponent], 
     })
     .compileComponents();
 
