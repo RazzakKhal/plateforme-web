@@ -13,8 +13,15 @@ export class FormulaService {
 
   getAllFormulas(){
        return this.http.get<Formula[]>(`${environment.userBaseUri}/${environment.formulaService}/formulas`).pipe(
-            tap((formules) => console.log('appel des formules : ' + formules)),
+            tap((formules) => console.info('appel des formules : ' + formules)),
             take(1)
           );
+  }
+
+  getFormula(id : number){
+    return this.http.get<Formula>(`${environment.userBaseUri}/${environment.formulaService}/formulas/${id}`).pipe(
+      tap((formule) => console.info('appel de la formule du user : ' + formule)),
+      take(1)
+    )
   }
 }

@@ -6,8 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SplitArrayOfStringPipe implements PipeTransform {
 
-  transform(value: string, separator : string = ','): string[] {
-    return value.split(separator);
+  transform(value: string | undefined, separator : string = ','): string[] |undefined {
+    return value ? value.split(separator): undefined;
   }
 
 }

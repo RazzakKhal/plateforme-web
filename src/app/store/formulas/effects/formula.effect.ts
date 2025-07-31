@@ -1,34 +1,35 @@
 import { inject, Injectable } from "@angular/core";
 import { FormulaService } from "../../../shared/services/formula.service";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Router } from "@angular/router";
-import { getAllFormulasAction, getAllFormulasError, getAllFormulasSuccess } from "../actions/get-all-formulas";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, mergeMap, of, tap } from "rxjs";
+import { getFormulaAction, getFormulaError, getFormulaSuccess } from "../actions/get-formula";
 import { Formula } from "../../../shared/interfaces/formula.interface";
 
 @Injectable({
     providedIn: 'root'
 })
-export class AllFormulasEffect{
+export class FormulaEffect{
     constructor(private formulaService : FormulaService, private router: Router){}
         
         private actions$ = inject(Actions);
 
-        getFormulas = createEffect(
+        getFormula = createEffect(
             () => this.actions$.pipe(
-                ofType(getAllFormulasAction),
+                ofType(getFormulaAction),
                 mergeMap(
-                    () => this.formulaService.getAllFormulas().pipe(
-                        map((allFormulas : Formula[]) => getAllFormulasSuccess({allFormulas})),
-                        catchError((error) => of(getAllFormulasError({ error })))
+                    (userId) => this.formulaService.getFormula(userId.formulaId).pipe(
+                        map((formula : Formula) => getFormulaSuccess({formula})),
+                        catchError((error) => of(getFormulaError({ error })))
                     )
                 )
             )
         )
 
-        getFormulasSuccess = createEffect(
+        getFormulaSuccess = createEffect(
             () => this.actions$.pipe(
-                ofType(getAllFormulasSuccess),
+                ofType(getFormulaSuccess),
+                tap(({formula}) => console.info('la formule: ' + formula))
             ), 
             {dispatch: false}
         )

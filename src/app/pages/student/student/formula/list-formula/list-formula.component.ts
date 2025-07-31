@@ -14,20 +14,14 @@ import { SplitArrayOfStringPipe } from '../../../../../shared/pipes/split-array-
 export class ListFormulaComponent {
 
 
-    @Input() formula : Formula | undefined;
     @Input() allFormulas : Formula[] | undefined;
     @Input() withCode = false;
 
-    @Output() changeCode = new EventEmitter<void>()
     @Output() choosenFormula = new EventEmitter<Formula>()
 
-    public toggleCode(){
-      this.changeCode.emit()
-    }
+  
 
     public chooseFormula(formula : Formula){
-          console.log('emission 2')
-
       this.choosenFormula.emit(formula)
     }
 

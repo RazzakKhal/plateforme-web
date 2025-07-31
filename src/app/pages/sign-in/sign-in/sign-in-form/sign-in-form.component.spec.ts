@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { PInputComponent } from '../../../../shared/components/atoms/p-input/p-input.component';
 
 describe('SignInFormComponent', () => {
   let component: SignInFormComponent;
@@ -13,7 +14,7 @@ describe('SignInFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SignInFormComponent],
+      declarations: [SignInFormComponent, PInputComponent],
       imports: [ MatFormFieldModule, MatInputModule, MatIconModule, ReactiveFormsModule, BrowserAnimationsModule]
     })
     .compileComponents();
