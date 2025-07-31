@@ -15,7 +15,6 @@ export class PaymentComponent {
   @Output() choosenFormula = new EventEmitter<Formula>()
 
   chooseFormula(){
-    console.log('emission 1')
     this.choosenFormula.emit(this.formulaa)
   }
 

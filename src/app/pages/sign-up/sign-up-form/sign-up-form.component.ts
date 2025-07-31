@@ -9,10 +9,10 @@ import { FormGroup } from '@angular/forms';
 })
 export class SignUpFormComponent {
 
-  @Input() myForm! : FormGroup
+  @Input() myForm!: FormGroup
   @Output() signUpEmitter = new EventEmitter<void>()
 
-  signUp(){
+  signUp() {
     this.signUpEmitter.emit()
   }
 }
