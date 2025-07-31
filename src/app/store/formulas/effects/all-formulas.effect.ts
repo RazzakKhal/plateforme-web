@@ -17,7 +17,6 @@ export class AllFormulasEffect{
         getFormulas = createEffect(
             () => this.actions$.pipe(
                 ofType(getAllFormulasAction),
-                tap(() => console.log('hey jai ete emis')),
                 mergeMap(
                     () => this.formulaService.getAllFormulas().pipe(
                         map((allFormulas : Formula[]) => getAllFormulasSuccess({allFormulas})),
@@ -30,7 +29,6 @@ export class AllFormulasEffect{
         getFormulasSuccess = createEffect(
             () => this.actions$.pipe(
                 ofType(getAllFormulasSuccess),
-                tap(({allFormulas}) => console.log('les formules: ' + allFormulas))
             ), 
             {dispatch: false}
         )

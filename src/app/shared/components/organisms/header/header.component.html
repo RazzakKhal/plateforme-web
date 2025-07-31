@@ -4,23 +4,23 @@
             <a class="navbar-brand" href="#">ASK Plateforme</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+                aria-label="Toggle navigation" data-bs-auto-close="true">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav col col-md-8 mx-auto  justify-content-center justify-content-md-between">
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/student']">Profil</a>
+                        <a class="nav-link"  data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" [routerLink]="['/student']">Profil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/student/formula']">Formules</a>
+                        <a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" [routerLink]="['/student/formula']">Formules</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" [routerLink]="['/student/lessons']">Leçons</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" [routerLink]="['/student/skills']">Compétences</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

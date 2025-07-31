@@ -17,7 +17,6 @@ export class FormulaEffect{
         getFormula = createEffect(
             () => this.actions$.pipe(
                 ofType(getFormulaAction),
-                tap(() => console.log('hey jai ete emis')),
                 mergeMap(
                     (userId) => this.formulaService.getFormula(userId.formulaId).pipe(
                         map((formula : Formula) => getFormulaSuccess({formula})),

@@ -14,7 +14,6 @@ import { SplitArrayOfStringPipe } from '../../../../../shared/pipes/split-array-
 export class ListFormulaComponent {
 
 
-    @Input() formula : Formula | undefined;
     @Input() allFormulas : Formula[] | undefined;
     @Input() withCode = false;
 
@@ -23,8 +22,6 @@ export class ListFormulaComponent {
   
 
     public chooseFormula(formula : Formula){
-          console.log('emission 2')
-
       this.choosenFormula.emit(formula)
     }
 
