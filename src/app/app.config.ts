@@ -16,6 +16,7 @@ import { MeEffect } from './store/users/effects/me.effect';
 import { formulaReducer } from './store/formulas/reducer/formulas.reducer';
 import { AllFormulasEffect } from './store/formulas/effects/all-formulas.effect';
 import { FormulaEffect } from './store/formulas/effects/formula.effect';
+import { tokenExpirationInterceptor } from './shared/interceptors/token-expiration.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -29,7 +30,7 @@ export const appConfig: ApplicationConfig = {
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), 
     provideRouterStore(),
     provideHttpClient(
-      withInterceptors([tokenInterceptor])
+      withInterceptors([tokenExpirationInterceptor, tokenInterceptor])
     )
   ]
 };
