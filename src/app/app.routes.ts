@@ -20,8 +20,12 @@ export const routes: Routes = [
         path:'sign-up', loadChildren: () => import('./pages/sign-up/sign-up.module').then(m => m.SignUpModule)
     },
     {
+        path:'forgot-password', loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)
+    },
+    {
         path:'student',    
         canActivate: [authGuard],
         loadChildren: () => import('./pages/student/student.module').then(m => m.StudentModule)
-    }
+    },
+    
 ];

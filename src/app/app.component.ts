@@ -17,6 +17,7 @@ import { DesignSystemModule } from './shared/components/design-system.module';
 })
 export class AppComponent implements OnInit {
 
+  title = 'ASK Plateforme';
   state!: Observable<any>;
   isHeaderVisible = true;
 
@@ -37,10 +38,9 @@ export class AppComponent implements OnInit {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        const hiddenRoutes = ['/sign-in', '/sign-up'];
+        const hiddenRoutes = ['/sign-in', '/sign-up', '/forgot-password'];
         this.isHeaderVisible = !hiddenRoutes.includes(event.urlAfterRedirects);
       });
   }
 
-  title = 'web';
 }

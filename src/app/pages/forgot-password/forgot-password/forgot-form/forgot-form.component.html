@@ -1,0 +1,10 @@
+<form [formGroup]="myForm" class=" d-flex flex-column align-items-center justify-content-between">
+    <div class="form-group w-75">
+        <p-input formControlName="mail" type='email' labelValue="Email" [isRequired]="true"
+            placeholder="exemple@gmail.com" inputId="Email" #emailInput></p-input>
+    </div>
+    <button class="btn btn-primary fs-6 w-75 mt-3 d-flex gap-1" (click)="resetPassword(emailInput)">
+        <i class="bi bi-send-fill"></i>
+        <span class="bg2">Réinitialiser mon mot de passe</span>
+    </button>
+</form>

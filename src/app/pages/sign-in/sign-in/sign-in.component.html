@@ -4,9 +4,14 @@
         <p class="h3">Connectez-vous à votre compte</p>
         <p class="text-secondary">Accédez à votre espace personnel</p>
     </div>
-    <app-sign-in-form class="w-100" [myForm]="signInForm" (signInEmitter)="signIn()">
+    <div class="w-100 d-flex flex-column justify-content-center align-items-center gap-3">
+        <app-sign-in-form class="w-100" [myForm]="signInForm" (signInEmitter)="signIn()">
 
-    </app-sign-in-form>
+        </app-sign-in-form>
+        <p>
+            <a class="text-secondary fs-7 " role="button" [routerLink]="['/forgot-password']">Mot de passe oublié</a>
+        </p>
+    </div>
     <div class="d-flex flex-column align-items-center gap-2">
         <p>Vous n'avez pas de compte ?</p>
         <a class="text-primary" [routerLink]="['/sign-up']"> Créer un compte</a>
