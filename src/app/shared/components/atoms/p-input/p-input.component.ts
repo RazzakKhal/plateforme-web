@@ -1,8 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
+
 
 @Component({
   selector: 'p-input',
@@ -24,6 +22,9 @@ export class PInputComponent implements ControlValueAccessor {
   @Input() placeholder!: string;
   @Input() inputId!: string;
   @Input() isRequired: boolean = false;
+  @Input() isFormSubmitted : boolean = false;
+
+  clear = false;
 
 
   /**
@@ -56,6 +57,16 @@ export class PInputComponent implements ControlValueAccessor {
     this.value = val;
     this.onChange(val);
     this.onTouched();
+  }
+
+  passwordOnText(input: HTMLInputElement) {
+    input.type = 'text'
+    this.clear = true;
+  }
+
+  passwordOnCensored(input: HTMLInputElement) {
+    input.type = 'password'
+    this.clear = false;
   }
 
 
