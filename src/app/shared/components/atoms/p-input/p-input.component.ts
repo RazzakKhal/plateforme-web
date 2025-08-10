@@ -23,6 +23,7 @@ export class PInputComponent implements ControlValueAccessor {
   @Input() inputId!: string;
   @Input() isRequired: boolean = false;
   @Input() isFormSubmitted : boolean = false;
+  @Input() isValid = false;
 
   clear = false;
 

@@ -13,7 +13,11 @@ export class ForgotFormComponent {
    @Input() myForm! : FormGroup
    @Output() reset = new EventEmitter<string>()
 
+   isFormSubmitted=false;
+
+
    resetPassword(inputComponent : PInputComponent){
+    this.isFormSubmitted = true;
     if(this.myForm.controls['mail'].valid){
       this.reset.emit(inputComponent.value)
           console.log(inputComponent)
