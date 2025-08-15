@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -12,7 +13,7 @@ export class ForgotPasswordComponent {
   resetPasswordForm : FormGroup;
 
 
-  constructor(){
+  constructor(private readonly authService : AuthService){
     this.resetPasswordForm = new FormGroup({
       mail : new FormControl('', [Validators.required, Validators.email]),
     })
@@ -20,7 +21,7 @@ export class ForgotPasswordComponent {
 
   resetPassword(mail : string){
     if(this.resetPasswordForm.valid){
-      //envoyé l'email
+      this.authService.sendForgotPasswordMail(mail).subscribe()
       console.log('mail')
     }
   }

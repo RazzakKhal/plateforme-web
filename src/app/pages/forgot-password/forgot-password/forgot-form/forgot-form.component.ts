@@ -20,7 +20,6 @@ export class ForgotFormComponent {
     this.isFormSubmitted = true;
     if(this.myForm.controls['mail'].valid){
       this.reset.emit(inputComponent.value)
-          console.log(inputComponent)
 
     }
    }
