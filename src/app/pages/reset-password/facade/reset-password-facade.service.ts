@@ -14,6 +14,7 @@ export class ResetPasswordFacadeService {
 
 
   updatePassword(resetPasswordDto : ResetPasswordDto){
+    console.log('reset ',resetPasswordDto)
     this.store.dispatch(ResetPasswordActions.resetPassword({resetPasswordDto}))
   }
 }

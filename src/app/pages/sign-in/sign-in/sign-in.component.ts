@@ -17,7 +17,7 @@ export class SignInComponent {
 
   constructor(private store: Store){
     this.signInForm = new FormGroup({
-      mail : new FormControl('', [Validators.required]),
+      mail : new FormControl('', [Validators.required, Validators.email]),
       password : new FormControl('', [Validators.required])
     })
   }

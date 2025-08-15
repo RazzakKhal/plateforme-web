@@ -1,3 +1,5 @@
 export interface TokenDto{
-    token : string;
+    token: string;
+    username: string;
+    roles: string[]
 }

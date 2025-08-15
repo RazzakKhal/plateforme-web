@@ -1,7 +1,15 @@
 <form [formGroup]="myForm" class="form-container" >
     <div class="form-group w-75">
-        <p-input formControlName="mail" type='email' labelValue="Email" [isRequired]="true"
-            placeholder="exemple@gmail.com" inputId="Email" [isFormSubmitted]="isFormSubmitted"></p-input>
+        <p-input 
+        formControlName="mail" 
+        type='email' 
+        labelValue="Email" 
+        [isRequired]="true"
+        placeholder="exemple@gmail.com" 
+        inputId="Email" 
+        [isFormSubmitted]="isFormSubmitted"
+        [isValid]="myForm.controls['mail'].valid"
+        ></p-input>
     </div>
     <div class="form-group w-75">
         <p-input formControlName="password" type='password' labelValue="Mot de passe" [isRequired]="true"

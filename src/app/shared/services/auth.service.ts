@@ -21,13 +21,13 @@ export class AuthService {
   }
 
   signUp(user: User) {
-    return this.http.post<SignInResponse>(`${environment.userBaseUri}/${environment.userService}/users/signup`, user).pipe(
+    return this.http.post<SignInResponse>(`${environment.userBaseUri}/${environment.userService}/auth/signup`, user).pipe(
       take(1)
     );
   }
 
   signIn(user: LoginForm) {
-    return this.http.post<SignInResponse>(`${environment.userBaseUri}/${environment.userService}/users/signin`, user).pipe
+    return this.http.post<SignInResponse>(`${environment.userBaseUri}/${environment.userService}/auth/signin`, user).pipe
       (
         take(1)
       );

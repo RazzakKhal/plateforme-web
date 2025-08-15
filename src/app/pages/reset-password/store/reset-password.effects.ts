@@ -2,11 +2,10 @@ import { inject, Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import * as ResetPasswordActions from './reset-password.actions';
 import { ResetPasswordApiService } from "../services/reset-password-api.service";
-import { ResetPasswordDto } from "../models/reset-password.dto";
-import { catchError, map, mergeMap, of, switchMap, tap } from "rxjs";
-import { Store } from "@ngrx/store";
+import { catchError, map, of, switchMap, tap } from "rxjs";
 import { getMeAction } from "../../../store/users/actions/get-me.action";
 import { LocalStorageService } from "../../../shared/services/local-storage.service";
+import { TokenDto } from "../models/token.dto";
 
 @Injectable({
     providedIn: 'root'
@@ -20,11 +19,10 @@ export class ResetPasswordEffect {
     resetPassword = createEffect(
         () => this.actions$.pipe(
             ofType(ResetPasswordActions.resetPassword),
-            tap(({ resetPasswordDto }) => this.localStorageService.saveToken(resetPasswordDto.token)),
             switchMap(
                 ({ resetPasswordDto }) => this.apiService.resetPassword(resetPasswordDto).pipe(
-                    map(({ token }) => ResetPasswordActions.resetPasswordSuccess({ token: token })),
-                    catchError((error) => of(ResetPasswordActions.resetPasswordError({ error })))
+                    map((tokenDto : TokenDto) => ResetPasswordActions.resetPasswordSuccess(tokenDto)),
+                    catchError((error) => {console.log('lerreur ',error); return of(ResetPasswordActions.resetPasswordError({ error }))})
                 )
             )
         )
@@ -33,7 +31,7 @@ export class ResetPasswordEffect {
     resetPasswordSuccess = createEffect(
         () => this.actions$.pipe(
             ofType(ResetPasswordActions.resetPasswordSuccess),
-            tap(({ token }) => this.localStorageService.saveToken(token)),
+            tap((tokenDto) => this.localStorageService.saveToken(tokenDto.token)),
             map(
                 () => getMeAction()
             )

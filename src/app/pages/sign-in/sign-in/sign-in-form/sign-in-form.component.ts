@@ -14,7 +14,6 @@ export class SignInFormComponent {
   isFormSubmitted = false;
 
 
-
   signIn() {
     this.isFormSubmitted = true;
     this.signInEmitter.emit();

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ResetPasswordFacadeService } from '../facade/reset-password-facade.service';
 import { ResetPasswordDto } from '../models/reset-password.dto';
+import { passwordMatch } from '../../../shared/validators/password-match.validator';
 
 @Component({
   selector: 'app-reset-password',
@@ -20,15 +21,17 @@ export class ResetPasswordComponent implements OnInit {
   resetForm = new FormGroup({
     password: new FormControl('', [Validators.required]),
     validatePassword: new FormControl('', [Validators.required]) // ajouter validator ou il est egal à l'autre password
-  })
+  }, { validators: passwordMatch })
 
   ngOnInit(): void {
     this.token = this.route.snapshot.params['token'];
+    console.log('le token : ',this.token)
   }
 
   onSubmitResetForm() {
     this.isFormSubmitted = true;
     if (this.resetForm.valid) {
+      console.log('cest emis')
       this.facade.updatePassword({
         password: this.resetForm.controls.password.value,
         token: this.token,
