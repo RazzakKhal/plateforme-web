@@ -17,6 +17,7 @@ import { formulaReducer } from './store/formulas/reducer/formulas.reducer';
 import { AllFormulasEffect } from './store/formulas/effects/all-formulas.effect';
 import { FormulaEffect } from './store/formulas/effects/formula.effect';
 import { tokenExpirationInterceptor } from './shared/interceptors/token-expiration.interceptor';
+import { ResetPasswordEffect } from './pages/reset-password/store/reset-password.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,7 +27,7 @@ export const appConfig: ApplicationConfig = {
     meState : usersReducer,
     formulaState : formulaReducer
     }), 
-    provideEffects([SignUpEffect, SignInEffect, MeEffect, AllFormulasEffect,FormulaEffect]), 
+    provideEffects([SignUpEffect, SignInEffect, MeEffect, AllFormulasEffect,FormulaEffect, ResetPasswordEffect]), 
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }), 
     provideRouterStore(),
     provideHttpClient(

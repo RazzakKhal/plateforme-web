@@ -13,6 +13,7 @@
 
             }
     </div>
+    <span class="text-danger fs-7" *ngIf="type === 'email' && isFormSubmitted && !isValid">l'email ne semble pas valide</span>
 
     <span class="text-danger fs-7" *ngIf="isRequired && value.length < 1 && isFormSubmitted">* champ obligatoire</span>
 
