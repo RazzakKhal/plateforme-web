@@ -20,6 +20,8 @@
         placeholder="Répétez le mot de passe"
         inputId="Validation mot de passe" 
         [isFormSubmitted]="isFormSubmitted"
+        customMessage="le mot de passe doit être identique au premier"
+        [isValid]="myForm.controls['validatePassword'].valid && !myForm.hasError('passwordsMismatch')"
 
         ></p-input>
     </div>

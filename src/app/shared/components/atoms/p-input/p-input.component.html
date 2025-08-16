@@ -4,17 +4,19 @@
         <input class="form-control" [attr.type]="type" [attr.placeholder]="placeholder" [attr.id]="inputId" #theInput
             [attr.required]="isRequired" [value]="value" [disabled]="isDisabled" (input)="updateValue($event)"
             (blur)="onTouched()">
-            @if (type === 'password' && !clear) {
-        <i (click)="passwordOnText(theInput)" class="bi bi-eye fs-5 position-absolute me-2 end-0 top-50 translate-middle-y"></i>
+        @if (type === 'password' && !clear) {
+        <i (click)="passwordOnText(theInput)"
+            class="bi bi-eye fs-5 position-absolute me-2 end-0 top-50 translate-middle-y"></i>
 
-            }
-            @if (type === 'password' && clear) {
-        <i (click)="passwordOnCensored(theInput)" class="bi bi-eye-slash fs-5 position-absolute me-2 end-0 top-50 translate-middle-y"></i>
+        }
+        @if (type === 'password' && clear) {
+        <i (click)="passwordOnCensored(theInput)"
+            class="bi bi-eye-slash fs-5 position-absolute me-2 end-0 top-50 translate-middle-y"></i>
 
-            }
+        }
     </div>
     <span class="text-danger fs-7" *ngIf="type === 'email' && isFormSubmitted && !isValid">l'email ne semble pas valide</span>
-
+    <span class="text-danger fs-7" *ngIf="isFormSubmitted && !isValid && customMessage">{{customMessage}}</span>
     <span class="text-danger fs-7" *ngIf="isRequired && value.length < 1 && isFormSubmitted">* champ obligatoire</span>
 
 </div>

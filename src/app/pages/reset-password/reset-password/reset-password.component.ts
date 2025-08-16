@@ -31,7 +31,7 @@ export class ResetPasswordComponent implements OnInit {
   onSubmitResetForm() {
     this.isFormSubmitted = true;
     if (this.resetForm.valid) {
-      console.log('cest emis')
+      console.log('cest emis ', this.resetForm)
       this.facade.updatePassword({
         password: this.resetForm.controls.password.value,
         token: this.token,
