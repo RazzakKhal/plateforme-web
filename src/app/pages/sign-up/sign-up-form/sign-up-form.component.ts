@@ -12,7 +12,10 @@ export class SignUpFormComponent {
   @Input() myForm!: FormGroup
   @Output() signUpEmitter = new EventEmitter<void>()
 
+  isFormSubmitted = false;
+
   signUp() {
+    this.isFormSubmitted = true
     this.signUpEmitter.emit()
   }
 }

@@ -1,37 +1,45 @@
 <form [formGroup]="myForm" class="form-container">
   <div class="form-group w-75">
-    <p-input formControlName="firstname" type='text' labelValue="Prénom" [isRequired]="true" placeholder="Votre prénom" inputId="Prénom"></p-input>
+    <p-input formControlName="firstname" type='text' labelValue="Prénom" [isRequired]="true" placeholder="Votre prénom"
+      inputId="Prénom" [isFormSubmitted]="isFormSubmitted"></p-input>
   </div>
 
   <div class="form-group w-75">
-    <p-input formControlName="lastname" type='text' labelValue="Nom" [isRequired]="true" placeholder="Votre nom" inputId="Nom"></p-input>
+    <p-input formControlName="lastname" type='text' labelValue="Nom" [isRequired]="true" placeholder="Votre nom"
+      inputId="Nom" [isFormSubmitted]="isFormSubmitted"></p-input>
 
   </div>
 
   <div class="form-group w-75">
-    <p-input formControlName="mail" type='email' labelValue="Email" [isRequired]="true" placeholder="exemple@gmail.com" inputId="Email"></p-input>
+    <p-input formControlName="mail" type='email' labelValue="Email" [isRequired]="true" placeholder="exemple@gmail.com"
+      inputId="Email" [isFormSubmitted]="isFormSubmitted" [isValid]="myForm.controls['mail'].valid"></p-input>
   </div>
 
   <div class="form-group w-75">
-    <p-input formControlName="addressLine" type='text' labelValue="Adresse" [isRequired]="true" placeholder="1 rue des platanes" inputId="Adresse"></p-input>
+    <p-input formControlName="addressLine" type='text' labelValue="Adresse" [isRequired]="true"
+      placeholder="1 rue des platanes" inputId="Adresse" [isFormSubmitted]="isFormSubmitted"></p-input>
   </div>
 
   <div class="form-row d-flex gap-3 w-75">
     <div class="form-group flex-fill">
-    <p-input formControlName="city" type='text' labelValue="Ville" [isRequired]="true" placeholder="Paris" inputId="Ville"></p-input>
+      <p-input formControlName="city" type='text' labelValue="Ville" [isRequired]="true" placeholder="Paris"
+        inputId="Ville" [isFormSubmitted]="isFormSubmitted"></p-input>
     </div>
 
     <div class="form-group flex-fill">
-    <p-input formControlName="postalCode" type='text' labelValue="Code postal" [isRequired]="true" placeholder="75000" inputId="Code postal"></p-input>
+      <p-input formControlName="postalCode" type='text' labelValue="Code postal" [isRequired]="true" placeholder="75000"
+        inputId="Code postal" [isFormSubmitted]="isFormSubmitted"></p-input>
     </div>
   </div>
 
   <div class="form-group w-75">
-    <p-input formControlName="phone" type='tel' labelValue="Téléphone" [isRequired]="true" placeholder="06 01 01 01 01" inputId="Téléphone"></p-input>
+    <p-input formControlName="phone" type='tel' labelValue="Téléphone" [isRequired]="true" placeholder="06 01 01 01 01"
+      inputId="Téléphone" [isFormSubmitted]="isFormSubmitted"></p-input>
   </div>
 
   <div class="form-group w-75">
-    <p-input formControlName="password" type='password' labelValue="Mot de passe" [isRequired]="true" placeholder="Choisissez un mot de passe" inputId="Mot de passe"></p-input>
+    <p-input formControlName="password" type='password' labelValue="Mot de passe" [isRequired]="true"
+      placeholder="Choisissez un mot de passe" inputId="Mot de passe" [isFormSubmitted]="isFormSubmitted"></p-input>
   </div>
 
   <button class="btn btn-primary fs-3 w-75 mt-3" (click)="signUp()">S'inscrire</button>

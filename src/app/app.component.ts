@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngrx/store';
-import { filter, Observable } from 'rxjs';
+import { filter, Observable, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './shared/components/organisms/header/header.component';
 import { LocalStorageService } from './shared/services/local-storage.service';
@@ -17,6 +17,7 @@ import { DesignSystemModule } from './shared/components/design-system.module';
 })
 export class AppComponent implements OnInit {
 
+  title = 'ASK Plateforme';
   state!: Observable<any>;
   isHeaderVisible = true;
 
@@ -35,12 +36,13 @@ export class AppComponent implements OnInit {
    */
   hideHeader() {
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+      )
       .subscribe((event: NavigationEnd) => {
-        const hiddenRoutes = ['/sign-in', '/sign-up'];
-        this.isHeaderVisible = !hiddenRoutes.includes(event.urlAfterRedirects);
+        const hiddenRoutes = ['/sign-in', '/sign-up', '/forgot-password', '/reset-password'];
+        this.isHeaderVisible = !hiddenRoutes.some(route => event.urlAfterRedirects.startsWith(route));
       });
   }
 
-  title = 'web';
 }
