@@ -30,5 +30,10 @@ export const routes: Routes = [
         canActivate: [authGuard],
         loadChildren: () => import('./pages/student/student.module').then(m => m.StudentModule)
     },
+    {
+        path:'payment',    
+        // canActivate: [authGuard],
+        loadChildren: () => import('./pages/payment/payment.module').then(m => m.PaymentModule)
+    },
     
 ];
