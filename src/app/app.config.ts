@@ -13,7 +13,6 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideRouterStore } from '@ngrx/router-store';
 import { usersReducer } from './store/users/reducer/users.reducer';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { SignUpEffect } from './store/users/effects/sign-up-effect';
 import { tokenInterceptor } from './shared/interceptors/token.interceptor';
 import { MeEffect } from './store/users/effects/me.effect';
 import { formulaReducer } from './store/formulas/reducer/formulas.reducer';
@@ -23,6 +22,8 @@ import { tokenExpirationInterceptor } from './shared/interceptors/token-expirati
 import { ResetPasswordEffect } from './pages/reset-password/store/reset-password.effects';
 import { SignInEffect } from './pages/sign-in/store/sign-in.effects';
 import { signInReducer } from './pages/sign-in/store/sign-in.reducer';
+import { SignUpEffect } from './pages/sign-up/store/sign-up.effects';
+import { signUpReducer } from './pages/sign-up/store/sign-up.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,6 +34,7 @@ export const appConfig: ApplicationConfig = {
       meState: usersReducer,
       formulaState: formulaReducer,
       signInState: signInReducer,
+      signUpState: signUpReducer,
     }),
     provideEffects([
       SignUpEffect,

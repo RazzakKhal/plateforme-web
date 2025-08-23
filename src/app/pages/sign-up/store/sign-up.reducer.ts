@@ -1,34 +1,34 @@
 import { createReducer, on } from '@ngrx/store';
 import { ErrorApi } from '../../../shared/models/error-api.model';
-import * as SignInActions from './sign-in.actions';
+import * as SignUpActions from '../store/sign-up.actions';
 
-export interface SignInState {
+export interface SignUpState {
   success: boolean | undefined;
   loading: boolean | undefined;
   error: ErrorApi | null;
 }
 
-export const initialState: SignInState = {
+export const initialState: SignUpState = {
   success: false,
   loading: false,
   error: null,
 };
 
-export const signInReducer = createReducer(
+export const signUpReducer = createReducer(
   initialState,
-  on(SignInActions.signInSuccess, (state) => ({
+  on(SignUpActions.signUpSuccess, (state) => ({
     ...state,
     success: true,
     loading: false,
     error: null,
   })),
-  on(SignInActions.signInError, (state, { error }) => ({
+  on(SignUpActions.signUpError, (state, { error }) => ({
     ...state,
     success: false,
     loading: false,
     error,
   })),
-  on(SignInActions.signInClearError, (state) => ({
+  on(SignUpActions.signUpClearError, (state) => ({
     ...state,
     success: false,
     loading: false,

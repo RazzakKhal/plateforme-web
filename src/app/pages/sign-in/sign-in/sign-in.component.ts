@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginForm } from '../../../shared/models/login-form.models';
-import { signInAction } from '../../../store/users/actions/sign-in.actions';
 import { SignInFacadeService } from '../facade/sign-in-facade.service';
 
 @Component({
