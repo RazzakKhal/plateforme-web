@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -14,6 +14,10 @@ export class MoneticoService {
     return this.http.post(`${environment.userBaseUri}/${environment.paymentService}/payment/initier`, {} ,
   {
     params: { formulaId }
-  });
+  }).pipe(
+    tap(   
+      (res) =>localStorage.setItem("lastResponse", JSON.stringify(res))
+
+  ))
   }
 }
