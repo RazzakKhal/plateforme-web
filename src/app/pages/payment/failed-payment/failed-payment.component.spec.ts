@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FailedPaymentComponent } from './failed-payment.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('FailedPaymentComponent', () => {
   let component: FailedPaymentComponent;
@@ -8,7 +9,8 @@ describe('FailedPaymentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FailedPaymentComponent]
+      declarations: [FailedPaymentComponent],
+      imports: [RouterTestingModule]
     })
     .compileComponents();
 
