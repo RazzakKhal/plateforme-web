@@ -9,37 +9,34 @@ import { passwordMatch } from '../../../shared/validators/password-match.validat
   selector: 'app-reset-password',
   standalone: false,
   templateUrl: './reset-password.component.html',
-  styleUrl: './reset-password.component.css'
+  styleUrl: './reset-password.component.css',
 })
 export class ResetPasswordComponent implements OnInit {
-
   private route = inject(ActivatedRoute);
   private facade = inject(ResetPasswordFacadeService);
   private token!: string;
 
   isFormSubmitted = false;
-  resetForm = new FormGroup({
-    password: new FormControl('', [Validators.required]),
-    validatePassword: new FormControl('', [Validators.required]) // ajouter validator ou il est egal à l'autre password
-  }, { validators: passwordMatch })
+  resetForm = new FormGroup(
+    {
+      password: new FormControl('', [Validators.required]),
+      validatePassword: new FormControl('', [Validators.required]), // ajouter validator ou il est egal à l'autre password
+    },
+    { validators: passwordMatch }
+  );
 
   ngOnInit(): void {
     this.token = this.route.snapshot.params['token'];
-    console.log('le token : ',this.token)
   }
 
   onSubmitResetForm() {
     this.isFormSubmitted = true;
     if (this.resetForm.valid) {
-      console.log('cest emis ', this.resetForm)
+      console.log('cest emis ', this.resetForm);
       this.facade.updatePassword({
         password: this.resetForm.controls.password.value,
         token: this.token,
-      } as ResetPasswordDto)
+      } as ResetPasswordDto);
     }
   }
-
-
-
-
 }

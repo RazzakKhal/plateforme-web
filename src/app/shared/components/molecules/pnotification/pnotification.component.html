@@ -1,0 +1,14 @@
+<div
+  class="position-fixed w-100 h-100 top-0 start-0 bg-secondary opacity-50 z-1"
+></div>
+
+<div
+  class="alert position-fixed top-50 start-50 translate-middle w-75 z-2 d-flex flex-column align-items-center justify-content-between gap-5"
+  [class.alert-warning]="status === 'warning'"
+  [class.alert-success]="status === 'success'"
+  [class.alert-danger]="status === 'error'"
+  role="alert"
+>
+  <ng-content notification-content></ng-content>
+  <p class="fs-7">Cliquez sur la notification pour la fermer</p>
+</div>
