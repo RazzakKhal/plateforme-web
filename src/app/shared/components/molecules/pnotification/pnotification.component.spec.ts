@@ -8,9 +8,8 @@ describe('PNotificationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PNotificationComponent]
-    })
-    .compileComponents();
+      declarations: [PNotificationComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PNotificationComponent);
     component = fixture.componentInstance;
