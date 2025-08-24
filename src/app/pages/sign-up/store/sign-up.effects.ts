@@ -26,7 +26,7 @@ export class SignUpEffect {
           catchError((err) =>
             of(
               SignUpActions.signUpError({
-                error: { message: err.message, status: err.status },
+                error: { message: err.error.message, status: err.error.status },
               })
             )
           )

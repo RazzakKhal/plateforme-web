@@ -24,16 +24,17 @@ export class SignInEffect {
           map((response: SignInResponse) =>
             SignInActions.signInSuccess({ signInResponse: response })
           ),
-          catchError((err) =>
-            of(
+          catchError((err) => {
+            console.log('error ', err);
+            return of(
               SignInActions.signInError({
                 error: {
-                  message: err.message,
-                  status: err.status,
+                  message: err.error.message,
+                  status: err.error.status,
                 },
               })
-            )
-          )
+            );
+          })
         )
       )
     )

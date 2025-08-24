@@ -20,10 +20,16 @@ export class ForgotPasswordEffect {
       switchMap(({ mail }) =>
         this.apiService.sendMail(mail).pipe(
           map(() => ForgotPasswordActions.forgotPasswordSuccess()),
-          catchError(() =>
+          catchError((err) =>
             of(
               ForgotPasswordActions.forgotPasswordError({
-                error: { message: this.errorMessage, status: 500 },
+                error: {
+                  message:
+                    err.error.status === 404
+                      ? err.error.message
+                      : this.errorMessage,
+                  status: err.error.status,
+                },
               })
             )
           )
