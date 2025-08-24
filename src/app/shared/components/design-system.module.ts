@@ -7,12 +7,13 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterModule } from "@angular/router";
+import { PNotificationComponent } from "./molecules/pnotification/pnotification.component";
 
 @NgModule({
-    declarations : [HeaderComponent, PInputComponent],
+    declarations : [HeaderComponent, PInputComponent, PNotificationComponent],
     imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule,RouterModule],
     providers:[],
-    exports:[HeaderComponent, PInputComponent]
+    exports:[HeaderComponent, PInputComponent, PNotificationComponent]
 
 })
 export class DesignSystemModule{

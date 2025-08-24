@@ -1,20 +1,29 @@
 import { inject, Injectable } from '@angular/core';
-import { ResetPasswordApiService } from '../services/reset-password-api.service';
-import { ResetPasswordDomainService } from '../services/reset-password-domain.service';
 import { ResetPasswordDto } from '../models/reset-password.dto';
 import { Store } from '@ngrx/store';
 import * as ResetPasswordActions from '../store/reset-password.actions';
+import * as ResetPasswordSelectors from '../store/reset-password.selectors';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ResetPasswordFacadeService {
-
   private readonly store = inject(Store);
 
+  readonly error$ = this.store.select(ResetPasswordSelectors.getError);
+  readonly success$ = this.store.select(ResetPasswordSelectors.getSuccess);
 
-  updatePassword(resetPasswordDto : ResetPasswordDto){
-    console.log('reset ',resetPasswordDto)
-    this.store.dispatch(ResetPasswordActions.resetPassword({resetPasswordDto}))
+  updatePassword(resetPasswordDto: ResetPasswordDto) {
+    this.store.dispatch(
+      ResetPasswordActions.resetPassword({ resetPasswordDto })
+    );
+  }
+
+  clearError() {
+    this.store.dispatch(ResetPasswordActions.resetPasswordClearError());
+  }
+
+  clearSuccess() {
+    this.store.dispatch(ResetPasswordActions.resetPasswordClearSuccess());
   }
 }

@@ -1,34 +1,34 @@
 import { createReducer, on } from '@ngrx/store';
 import { ErrorApi } from '../../../shared/models/error-api.model';
-import * as ResetPasswordActions from '../store/reset-password.actions';
+import * as SignInActions from './sign-in.actions';
 
-export interface ResetPasswordState {
+export interface SignInState {
   success: boolean | undefined;
   loading: boolean | undefined;
   error: ErrorApi | null;
 }
 
-export const initialState: ResetPasswordState = {
+export const initialState: SignInState = {
   success: false,
   loading: false,
   error: null,
 };
 
-export const resetPasswordReducer = createReducer(
+export const signInReducer = createReducer(
   initialState,
-  on(ResetPasswordActions.resetPasswordSuccess, (state) => ({
+  on(SignInActions.signInSuccess, (state) => ({
     ...state,
     success: true,
     loading: false,
     error: null,
   })),
-  on(ResetPasswordActions.resetPasswordError, (state, { error }) => ({
+  on(SignInActions.signInError, (state, { error }) => ({
     ...state,
     success: false,
     loading: false,
     error,
   })),
-  on(ResetPasswordActions.resetPasswordClearError, (state) => ({
+  on(SignInActions.signInClearError, (state) => ({
     ...state,
     success: false,
     loading: false,
