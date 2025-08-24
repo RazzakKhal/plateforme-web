@@ -14,15 +14,13 @@ describe('ResetPasswordComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ResetPasswordComponent, ResetFormComponent],
-      imports: [RouterTestingModule, DesignSystemModule,ReactiveFormsModule],
+      imports: [RouterTestingModule, DesignSystemModule, ReactiveFormsModule],
       providers: [
         provideMockStore({
-          initialState: {} // tu peux mettre un faux état ici si besoin
-        })
-
-      ]
-    })
-      .compileComponents();
+          initialState: {},
+        }),
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ResetPasswordComponent);
     component = fixture.componentInstance;
