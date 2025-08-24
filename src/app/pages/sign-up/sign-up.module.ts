@@ -7,9 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
-import { PInputComponent } from '../../shared/components/atoms/p-input/p-input.component';
 import { DesignSystemModule } from '../../shared/components/design-system.module';
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [SignUpComponent, SignUpFormComponent],

@@ -18,13 +18,4 @@ export class AuthService {
       )
       .pipe(take(1));
   }
-
-  sendForgotPasswordMail(mail: string) {
-    return this.http
-      .post<UserInterface>(
-        `${environment.userBaseUri}/${environment.userService}/auth/forgot-password`,
-        { mail }
-      )
-      .pipe(take(1));
-  }
 }

@@ -24,6 +24,9 @@ import { SignInEffect } from './pages/sign-in/store/sign-in.effects';
 import { signInReducer } from './pages/sign-in/store/sign-in.reducer';
 import { SignUpEffect } from './pages/sign-up/store/sign-up.effects';
 import { signUpReducer } from './pages/sign-up/store/sign-up.reducer';
+import { resetPasswordReducer } from './pages/reset-password/store/reset-password.reducer';
+import { forgotPasswordReducer } from './pages/forgot-password/store/forgot-password.reducer';
+import { ForgotPasswordEffect } from './pages/forgot-password/store/forgot-password.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -35,6 +38,8 @@ export const appConfig: ApplicationConfig = {
       formulaState: formulaReducer,
       signInState: signInReducer,
       signUpState: signUpReducer,
+      resetPasswordState: resetPasswordReducer,
+      forgotPasswordState: forgotPasswordReducer,
     }),
     provideEffects([
       SignUpEffect,
@@ -43,6 +48,7 @@ export const appConfig: ApplicationConfig = {
       AllFormulasEffect,
       FormulaEffect,
       ResetPasswordEffect,
+      ForgotPasswordEffect,
     ]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideRouterStore(),

@@ -1,30 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
+import { ForgotPasswordFacadeService } from '../facade/forgot-password-facade.service';
 
 @Component({
   selector: 'app-forgot-password',
   standalone: false,
   templateUrl: './forgot-password.component.html',
-  styleUrl: './forgot-password.component.css'
+  styleUrl: './forgot-password.component.css',
 })
 export class ForgotPasswordComponent {
+  private readonly facade = inject(ForgotPasswordFacadeService);
 
-  resetPasswordForm : FormGroup;
+  readonly error$ = this.facade.error$;
+  readonly success$ = this.facade.success$;
 
+  resetPasswordForm: FormGroup;
 
-  constructor(private readonly authService : AuthService){
+  constructor() {
     this.resetPasswordForm = new FormGroup({
-      mail : new FormControl('', [Validators.required, Validators.email]),
-    })
+      mail: new FormControl('', [Validators.required, Validators.email]),
+    });
   }
 
-  resetPassword(mail : string){
-    if(this.resetPasswordForm.valid){
-      this.authService.sendForgotPasswordMail(mail).subscribe()
-      console.log('mail')
+  resetPassword(mail: string) {
+    if (this.resetPasswordForm.valid) {
+      this.facade.sendMail(mail);
     }
   }
 
+  clearError() {
+    this.facade.clearError();
+  }
 
+  clearSuccess() {
+    this.facade.clearSuccess();
+  }
 }

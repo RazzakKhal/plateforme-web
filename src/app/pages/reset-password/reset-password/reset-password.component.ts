@@ -16,6 +16,9 @@ export class ResetPasswordComponent implements OnInit {
   private facade = inject(ResetPasswordFacadeService);
   private token!: string;
 
+  readonly error$ = this.facade.error$;
+  readonly success$ = this.facade.success$;
+
   isFormSubmitted = false;
   resetForm = new FormGroup(
     {
@@ -32,11 +35,14 @@ export class ResetPasswordComponent implements OnInit {
   onSubmitResetForm() {
     this.isFormSubmitted = true;
     if (this.resetForm.valid) {
-      console.log('cest emis ', this.resetForm);
       this.facade.updatePassword({
         password: this.resetForm.controls.password.value,
         token: this.token,
       } as ResetPasswordDto);
     }
+  }
+
+  clearError() {
+    this.facade.clearError();
   }
 }

@@ -15,6 +15,9 @@ export class ResetPasswordEffect {
   private readonly apiService = inject(ResetPasswordApiService);
   private readonly localStorageService = inject(LocalStorageService);
 
+  readonly errorMessage =
+    'La réinitialisation a échoué. Veuillez réessayer ou contacter le secrétariat';
+
   resetPassword = createEffect(() =>
     this.actions$.pipe(
       ofType(ResetPasswordActions.resetPassword),
@@ -23,8 +26,12 @@ export class ResetPasswordEffect {
           map((tokenDto: TokenDto) =>
             ResetPasswordActions.resetPasswordSuccess(tokenDto)
           ),
-          catchError((error) =>
-            of(ResetPasswordActions.resetPasswordError({ error }))
+          catchError(() =>
+            of(
+              ResetPasswordActions.resetPasswordError({
+                error: { message: this.errorMessage, status: 500 },
+              })
+            )
           )
         )
       )
