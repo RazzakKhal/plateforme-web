@@ -1,7 +1,8 @@
 export const environment = {
-      production: true,
-      userBaseUri: 'https://ask-plateforme.fr/api', // IP publique ou nom de domaine du backend
-      userService: 'user-service',
-      formulaService: 'formula-service',
-      paymentService: 'payment-service'
-}
+  production: true,
+  moneticoUri: 'https://p.monetico-services.com/test/paiement.cgi',
+  userBaseUri: 'https://ask-plateforme.fr/api',
+  userService: 'user-service',
+  formulaService: 'formula-service',
+  paymentService: 'payment-service',
+};

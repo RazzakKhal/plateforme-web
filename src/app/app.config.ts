@@ -15,9 +15,6 @@ import { usersReducer } from './store/users/reducer/users.reducer';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { tokenInterceptor } from './shared/interceptors/token.interceptor';
 import { MeEffect } from './store/users/effects/me.effect';
-import { formulaReducer } from './store/formulas/reducer/formulas.reducer';
-import { AllFormulasEffect } from './store/formulas/effects/all-formulas.effect';
-import { FormulaEffect } from './store/formulas/effects/formula.effect';
 import { tokenExpirationInterceptor } from './shared/interceptors/token-expiration.interceptor';
 import { ResetPasswordEffect } from './pages/reset-password/store/reset-password.effects';
 import { SignInEffect } from './pages/sign-in/store/sign-in.effects';
@@ -27,6 +24,8 @@ import { signUpReducer } from './pages/sign-up/store/sign-up.reducer';
 import { resetPasswordReducer } from './pages/reset-password/store/reset-password.reducer';
 import { forgotPasswordReducer } from './pages/forgot-password/store/forgot-password.reducer';
 import { ForgotPasswordEffect } from './pages/forgot-password/store/forgot-password.effects';
+import { formulaReducer } from './pages/student/student/formula/store/formula.reducer';
+import { FormulaEffect } from './pages/student/student/formula/store/formula.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -45,7 +44,6 @@ export const appConfig: ApplicationConfig = {
       SignUpEffect,
       SignInEffect,
       MeEffect,
-      AllFormulasEffect,
       FormulaEffect,
       ResetPasswordEffect,
       ForgotPasswordEffect,
