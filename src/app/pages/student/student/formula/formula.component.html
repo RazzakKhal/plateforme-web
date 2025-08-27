@@ -1,22 +1,31 @@
 <div class="d-flex flex-column justify-content-between align-items-center">
-   
-    @if (allFormulas) {
-         <div class="d-flex w-75 justify-content-center border rounded border-gray-ultra-light mt-3">
-        <button class="btn w-50" (click)="toggleCode(true)"
-            [ngClass]="{'btn-primary' : withCode, 'btn-light' : !withCode}">Avec code</button>
-        <button class="btn w-50" (click)="toggleCode(false)"
-            [ngClass]="{'btn-primary' : !withCode, 'btn-light' : withCode}">Sans code</button>
-    </div>
+  @let allFormulas = allFormulas$ | async; @if (allFormulas) {
+  <div
+    class="d-flex w-75 justify-content-center border rounded border-gray-ultra-light mt-3"
+  >
+    <button
+      class="btn w-50"
+      (click)="toggleCode(true)"
+      [ngClass]="{ 'btn-primary': withCode, 'btn-light': !withCode }"
+    >
+      Avec code
+    </button>
+    <button
+      class="btn w-50"
+      (click)="toggleCode(false)"
+      [ngClass]="{ 'btn-primary': !withCode, 'btn-light': withCode }"
+    >
+      Sans code
+    </button>
+  </div>
 
-    <app-list-formula  [allFormulas]="allFormulas" (choosenFormula)="payer($event)" [withCode]="withCode">
-
-    </app-list-formula>
-    }
-
-    @if (formula) {
-    <app-chosen-formula [formula]="formula" class="w-100">
-
-    </app-chosen-formula>
-    }
-
+  <app-list-formula
+    [allFormulas]="allFormulas"
+    (choosenFormula)="payer($event)"
+    [withCode]="withCode"
+  >
+  </app-list-formula>
+  } @let formula = formula$ | async; @if (formula) {
+  <app-chosen-formula [formula]="formula" class="w-100"> </app-chosen-formula>
+  }
 </div>
