@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.css',
 })
-export class PanelComponent {}
+export class PanelComponent {
+  displayChoice: 'FORMULA' | 'USER' = 'FORMULA';
+  formulas = [1, 2, 3];
+}
