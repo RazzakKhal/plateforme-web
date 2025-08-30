@@ -8,48 +8,129 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-    font: inherit;
-	font-size: 100%;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /*  
@@ -57,97 +138,99 @@ Global Variables
 
 */
 
-:root{
-    --main-bg-color: #1a237e;
-    --second-bg-color: white;
-    --third-bg-color: #dadada;
-    --hover-color: #1976d2;
+:root {
+  --main-bg-color: #1a237e;
+  --second-bg-color: white;
+  --third-bg-color: #dadada;
+  --hover-color: #1976d2;
 }
 
-.transparent-button{
-    background-color: transparent;
-    color: var(--main-bg-color);
-    border: 0 solid var(--main-bg-color);
-    border-width: 0 0 0.2px 0;
-    font-size: 1.2rem;
-    padding: 5px;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-
+.transparent-button {
+  background-color: transparent;
+  color: var(--main-bg-color);
+  border: 0 solid var(--main-bg-color);
+  border-width: 0 0 0.2px 0;
+  font-size: 1.2rem;
+  padding: 5px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.modify-button{
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-    border-radius: 5px;
-    font-size: 1rem;
-    padding: 5px;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+.modify-button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 5px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .modify-button:hover {
-    background-color: #2D44B2;
-    color: white;
-    cursor: pointer;
-  }
-  
-
-.filled-button{
-    background-color: var(--main-bg-color);
-    color: var(--second-bg-color);
-    border: 1px solid var(--second-bg-color);
-    border-radius: 5px;
-    font-size: 1.3rem;
-    width: 150px;
-    height: 5vh;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #2d44b2;
+  color: white;
+  cursor: pointer;
 }
 
-
-.background-1, .background-2{
-    position: fixed;
-    width: 50vw;
-    height: 100vh;
-    top: 0;
-    z-index: 1;
+.filled-button {
+  background-color: var(--main-bg-color);
+  color: var(--second-bg-color);
+  border: 1px solid var(--second-bg-color);
+  border-radius: 5px;
+  font-size: 1.3rem;
+  width: 150px;
+  height: 5vh;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.left{
-    left: 0;
+.background-1,
+.background-2 {
+  position: fixed;
+  width: 50vw;
+  height: 100vh;
+  top: 0;
+  z-index: 1;
 }
 
-.right{
-    right: 0;
+.left {
+  left: 0;
 }
 
-.background-1{
-    background-color: var(--main-bg-color);
+.right {
+  right: 0;
 }
 
-.background-2{
-    background-color: var(--second-bg-color);
+.background-1 {
+  background-color: var(--main-bg-color);
 }
 
-.bg1{
-    color: var(--main-bg-color);
+.background-2 {
+  background-color: var(--second-bg-color);
 }
 
-.bg2{
-    color: var(--second-bg-color);
+.bg1 {
+  color: var(--main-bg-color);
 }
 
-
-a{
-    text-decoration: none;
-    color: inherit;
+.bg2 {
+  color: var(--second-bg-color);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-.fs-7{
-    font-size:smaller;
+.fs-7 {
+  font-size: smaller;
 }
 
 .icon-75 {
@@ -159,17 +242,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .bg-gray-100 {
-    background-color: #F8F9FA;
+  background-color: #f8f9fa;
 }
 
 .bg-gray-ultra-light {
-    background-color: rgba(233, 236, 239, 0.25);
+  background-color: rgba(233, 236, 239, 0.25);
 }
 
-.border-gray-ultra-light{
-    border-color : #e9ecef !important
+.border-gray-ultra-light {
+  border-color: #e9ecef !important;
 }
 
-.text-success-light{
-    color : #6EE7B7;
+.text-success-light {
+  color: #6ee7b7;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-gray-ultra-mega-light {
+  background-color: #fcfcfd !important;
 }
