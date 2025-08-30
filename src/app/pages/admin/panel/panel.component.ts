@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { AdminFacadeService } from '../facade/admin-facade.service';
 
 @Component({
   selector: 'app-panel',
@@ -6,7 +7,13 @@ import { Component } from '@angular/core';
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.css',
 })
-export class PanelComponent {
+export class PanelComponent implements OnInit {
+  private readonly facade = inject(AdminFacadeService);
+
   displayChoice: 'FORMULA' | 'USER' = 'FORMULA';
-  formulas = [1, 2, 3];
+  allFormulas$ = this.facade.formulas$;
+
+  ngOnInit(): void {
+    this.facade.getAllFormulas();
+  }
 }

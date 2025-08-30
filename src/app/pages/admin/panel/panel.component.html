@@ -1,13 +1,14 @@
 <div
   class="d-flex flex-column align-items-center justify-content-between gap-3 p-4"
 >
+  @let allFormulas = allFormulas$ | async;
   <div class="d-flex justify-content-between align-items-center gap-3">
     <div
       class="d-flex justify-content-between align-items-center bg-white gap-3 p-3 border border-gray-ultra-light rounded"
     >
       <div class="d-flex flex-column gap-2">
         <p class="text-secondary fs-7">Formules</p>
-        <p class="fs-3 fw-medium">6</p>
+        <p class="fs-3 fw-medium">{{ allFormulas?.length }}</p>
       </div>
       <i class="bi bi-wallet-fill text-primary fs-1"></i>
     </div>
@@ -34,15 +35,38 @@
       Utilisateurs
     </button>
   </div>
-
+  @if (displayChoice === 'FORMULA') {
   <div class="d-flex align-items-center justify-content-between gap-5">
     <p class="fs-6 fw-medium">Gestion des Formules</p>
     <button class="btn btn-primary">+ Ajouter</button>
   </div>
 
   <div class="d-flex flex-column gap-3 w-100">
-    @for (item of formulas; track $index) {
-    <app-card></app-card>
+    @for (formula of allFormulas; track formula.id) {
+    <app-card
+      [title]="formula.title"
+      [description]="formula.description | splitArrayOfString"
+      [item1]="formula.code ? 'Avec Code' : 'Sans Code'"
+      [item2]="formula.price.toString() + '€'"
+    ></app-card>
     }
   </div>
+  } @if (displayChoice === 'USER') {
+  <div class="d-flex align-items-center justify-content-between gap-5">
+    <p class="fs-6 fw-medium">Gestion des Utilisateurs</p>
+    <button class="btn btn-primary">+ Ajouter</button>
+  </div>
+
+  <div class="d-flex flex-column gap-3 w-100">
+    @let allFormulas = allFormulas$ | async; @for (formula of allFormulas; track
+    formula.id) {
+    <app-card
+      [title]="formula.title"
+      [description]="formula.description | splitArrayOfString"
+      [item1]="formula.code ? 'Avec Code' : 'Sans Code'"
+      [item2]="formula.price.toString() + '€'"
+    ></app-card>
+    }
+  </div>
+  }
 </div>
