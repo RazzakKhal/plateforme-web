@@ -24,5 +24,9 @@ export const formulaReducer = createReducer(
       ...state,
       userFormula: formula,
     };
-  })
+  }),
+  on(FormulaActions.deleteFormulaSuccess, (state, { formulaId }) => ({
+    ...state,
+    allFormulas: state.allFormulas?.filter((f) => f.id !== formulaId),
+  }))
 );

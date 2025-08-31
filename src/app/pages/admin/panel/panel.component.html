@@ -49,6 +49,7 @@
       [item1]="formula.code ? 'Avec Code' : 'Sans Code'"
       [item2]="formula.price.toString() + '€'"
       (edit)="selectEditFormula(formula)"
+      (delete)="deleteFormula(formula.id)"
     ></app-card>
     }
   </div>

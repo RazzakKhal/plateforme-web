@@ -33,4 +33,12 @@ export class FormulaApiService {
         take(1)
       );
   }
+
+  deleteFormula(id: number) {
+    return this.http
+      .delete(
+        `${environment.userBaseUri}/${environment.formulaService}/formulas/${id}`
+      )
+      .pipe(take(1));
+  }
 }

@@ -55,4 +55,31 @@ export class FormulaEffect {
       ),
     { dispatch: false }
   );
+
+  /**
+   * handle deleting
+   */
+
+  deleteFormula = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FormulaActions.deleteFormula),
+      mergeMap(({ formulaId }) =>
+        this.formulaService.deleteFormula(formulaId).pipe(
+          map(() => FormulaActions.deleteFormulaSuccess({ formulaId })),
+          catchError((error) =>
+            of(FormulaActions.deleteFormulaError({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  deleteFormulaSuccess = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(FormulaActions.deleteFormulaSuccess),
+        tap(() => console.info('suppression formule ok'))
+      ),
+    { dispatch: false }
+  );
 }

@@ -13,8 +13,13 @@ export class CardComponent {
   @Input() item2: string | undefined;
 
   @Output() edit = new EventEmitter();
+  @Output() delete = new EventEmitter();
 
   onEdit() {
     this.edit.emit();
+  }
+
+  onDelete() {
+    this.delete.emit();
   }
 }

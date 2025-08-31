@@ -29,6 +29,10 @@ export class PanelComponent implements OnInit {
     this.facade.selectUserToEdit(user);
   }
 
+  deleteFormula(id: number) {
+    this.facade.deleteFormula(id);
+  }
+
   onCloseFormulaPopup() {
     this.facade.selectFormulaToEdit(null);
   }

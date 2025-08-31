@@ -32,4 +32,8 @@ export class AdminFacadeService {
   getAllFormulas() {
     this.store.dispatch(FormulaActions.getAllFormulas());
   }
+
+  deleteFormula(id: number) {
+    this.store.dispatch(FormulaActions.deleteFormula({ formulaId: id }));
+  }
 }
