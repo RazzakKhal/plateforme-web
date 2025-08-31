@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { PNotificationComponent } from './molecules/pnotification/pnotification.component';
 import { CardComponent } from './molecules/card/card.component';
+import { PopupComponent } from './molecules/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CardComponent } from './molecules/card/card.component';
     PInputComponent,
     PNotificationComponent,
     CardComponent,
+    PopupComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,7 @@ import { CardComponent } from './molecules/card/card.component';
     PInputComponent,
     PNotificationComponent,
     CardComponent,
+    PopupComponent,
   ],
 })
 export class DesignSystemModule {}

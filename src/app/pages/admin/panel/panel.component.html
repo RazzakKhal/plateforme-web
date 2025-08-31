@@ -1,5 +1,5 @@
 <div
-  class="d-flex flex-column align-items-center justify-content-between gap-3 p-4"
+  class="d-flex flex-column align-items-center justify-content-between gap-4 p-4"
 >
   @let allFormulas = allFormulas$ | async;
   <div class="d-flex justify-content-between align-items-center gap-3">
@@ -48,6 +48,7 @@
       [description]="formula.description | splitArrayOfString"
       [item1]="formula.code ? 'Avec Code' : 'Sans Code'"
       [item2]="formula.price.toString() + '€'"
+      (edit)="selectEditFormula(formula)"
     ></app-card>
     }
   </div>
@@ -70,3 +71,14 @@
   </div>
   }
 </div>
+
+@let selectedUser = selectedUser$ | async; @let selectedFormula =
+selectedFormula$ | async; @if (selectedUser) {
+<app-popup (close)="onCloseUserPopup()">
+  <div body-content>test</div>
+</app-popup>
+} @if (selectedFormula) {
+<app-popup (close)="onCloseFormulaPopup()" title="Créer / Modifier ma formule">
+  <div body-content>test</div>
+</app-popup>
+}

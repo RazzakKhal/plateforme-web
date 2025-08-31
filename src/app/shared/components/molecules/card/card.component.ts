@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -11,4 +11,10 @@ export class CardComponent {
   @Input() title: string | undefined;
   @Input() item1: string | undefined;
   @Input() item2: string | undefined;
+
+  @Output() edit = new EventEmitter();
+
+  onEdit() {
+    this.edit.emit();
+  }
 }
