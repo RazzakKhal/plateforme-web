@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { PNotificationComponent } from './molecules/pnotification/pnotification.component';
 import { CardComponent } from './molecules/card/card.component';
 import { PopupComponent } from './molecules/popup/popup.component';
+import { PToggleInputComponent } from './atoms/ptoggle-input/p-toggle-input.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PopupComponent } from './molecules/popup/popup.component';
     PNotificationComponent,
     CardComponent,
     PopupComponent,
+    PToggleInputComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,7 @@ import { PopupComponent } from './molecules/popup/popup.component';
     PNotificationComponent,
     CardComponent,
     PopupComponent,
+    PToggleInputComponent,
   ],
 })
 export class DesignSystemModule {}

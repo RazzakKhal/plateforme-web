@@ -79,7 +79,16 @@ selectedFormula$ | async; @if (selectedUser) {
   <div body-content>test</div>
 </app-popup>
 } @if (selectedFormula) {
-<app-popup (close)="onCloseFormulaPopup()" title="Créer / Modifier ma formule">
-  <div body-content>test</div>
+<app-popup
+  (save)="onSaveFormulaPopup(selectedFormula)"
+  (close)="onCloseFormulaPopup()"
+  title="Créer / Modifier ma formule"
+>
+  <div body-content class="w-100">
+    <app-edit-formula-form
+      [formula]="selectedFormula"
+      [formulaForm]="formulaForm"
+    ></app-edit-formula-form>
+  </div>
 </app-popup>
 }

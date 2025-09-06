@@ -36,4 +36,10 @@ export class AdminFacadeService {
   deleteFormula(id: number) {
     this.store.dispatch(FormulaActions.deleteFormula({ formulaId: id }));
   }
+
+  createFormula(formula: Formula) {}
+
+  updateFormula(formula: Formula) {
+    console.log('la formule modifiée : ', formula);
+  }
 }

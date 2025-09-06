@@ -1,0 +1,58 @@
+<form
+  [formGroup]="formulaForm"
+  class="d-flex flex-column align-items-center justify-content-between gap-4 w-100"
+>
+  <div class="form-group w-100">
+    <p-input
+      formControlName="title"
+      type="text"
+      labelValue="Titre"
+      [isRequired]="true"
+      [placeholder]="formula.title"
+      inputId="Titre"
+      [isFormSubmitted]="isFormSubmitted"
+      [isValid]="formulaForm.controls['title'].valid"
+      [value]="formula.title"
+      #titreInput
+    ></p-input>
+  </div>
+  <div class="form-group w-100">
+    <p-toggle-input
+      formControlName="code"
+      labelValue="Avec code"
+      [isRequired]="true"
+      inputId="Avec code"
+      [isFormSubmitted]="isFormSubmitted"
+      [isValid]="formulaForm.controls['code'].valid"
+      #codeInput
+    ></p-toggle-input>
+  </div>
+  <div class="form-group w-100">
+    <p-input
+      formControlName="price"
+      type="number"
+      labelValue="Prix"
+      [isRequired]="true"
+      [placeholder]="formula.price.toString()"
+      inputId="Prix"
+      [isFormSubmitted]="isFormSubmitted"
+      [isValid]="formulaForm.controls['price'].valid"
+      [value]="formula.price.toString()"
+      #priceInput
+    ></p-input>
+  </div>
+  <div class="form-group w-100">
+    <p-input
+      formControlName="promotionnalPrice"
+      type="number"
+      labelValue="Prix promotionnel"
+      [isRequired]="true"
+      [placeholder]="formula.promotionnalPrice?.toString() ?? ''"
+      inputId="Prix promotionnel"
+      [isFormSubmitted]="isFormSubmitted"
+      [isValid]="formulaForm.controls['promotionnalPrice'].valid"
+      [value]="formula.promotionnalPrice?.toString() ?? ''"
+      #promotionnalPriceInput
+    ></p-input>
+  </div>
+</form>

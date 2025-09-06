@@ -1,15 +1,13 @@
 export interface Formula {
+  id: number;
 
-    id : number;
+  title: string;
 
-    title : string;
+  description: string;
 
-    description: string;
+  price: number;
 
-    price: number;
+  code: boolean;
 
-    code : boolean;
-
-    promotionnalPrice? : number;
-
+  promotionnalPrice?: number;
 }
