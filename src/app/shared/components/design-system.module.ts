@@ -11,6 +11,7 @@ import { PNotificationComponent } from './molecules/pnotification/pnotification.
 import { CardComponent } from './molecules/card/card.component';
 import { PopupComponent } from './molecules/popup/popup.component';
 import { PToggleInputComponent } from './atoms/ptoggle-input/p-toggle-input.component';
+import { PInputListComponent } from './atoms/pinput-list/pinput-list.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PToggleInputComponent } from './atoms/ptoggle-input/p-toggle-input.comp
     CardComponent,
     PopupComponent,
     PToggleInputComponent,
+    PInputListComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +39,7 @@ import { PToggleInputComponent } from './atoms/ptoggle-input/p-toggle-input.comp
     CardComponent,
     PopupComponent,
     PToggleInputComponent,
+    PInputListComponent,
   ],
 })
 export class DesignSystemModule {}

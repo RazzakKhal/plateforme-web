@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { AdminFacadeService } from '../facade/admin-facade.service';
 import { Formula } from '../../student/student/formula/models/formula.model';
 import { User } from '../../../shared/models/user.models';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-panel',
@@ -23,6 +23,7 @@ export class PanelComponent implements OnInit {
   constructor() {
     this.formulaForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
+      description: new FormControl([]),
       price: new FormControl('', [Validators.required]),
       promotionnalPrice: new FormControl(''),
       code: new FormControl(true, [Validators.required]),
@@ -61,6 +62,7 @@ export class PanelComponent implements OnInit {
       const formula: Formula = {
         title: this.formulaForm.get('title')?.value,
         price: this.formulaForm.get('price')?.value,
+        description: this.formulaForm.get('description')?.value,
         promotionnalPrice: this.formulaForm.get('promotionnalPrice')?.value,
         code: this.formulaForm.get('code')?.value,
         id: seletedFormula?.id,

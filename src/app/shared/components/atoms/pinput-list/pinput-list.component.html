@@ -1,0 +1,16 @@
+<div class="input-group" *ngFor="let ctrl of formArray.controls; let i = index">
+  <input
+    type="text"
+    [formControl]="ctrl"
+    (blur)="onTouched()"
+    class="form-control"
+    placeholder="Entrez une valeur"
+  />
+  <button type="button" (click)="removeInput(i)" class="btn btn-danger">
+    Supprimer
+  </button>
+</div>
+
+<button type="button" (click)="addInput()" class="btn btn-primary mt-2">
+  Ajouter un champ
+</button>
