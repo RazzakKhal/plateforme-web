@@ -264,3 +264,7 @@ body {
 .bg-gray-ultra-mega-light {
   background-color: #fcfcfd !important;
 }
+
+.mh-90 {
+  max-height: 90%;
+}

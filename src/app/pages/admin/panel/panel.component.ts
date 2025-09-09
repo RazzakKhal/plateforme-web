@@ -41,7 +41,9 @@ export class PanelComponent implements OnInit {
       .get('promotionnalPrice')
       ?.setValue(formula.promotionnalPrice);
     this.formulaForm.get('code')?.setValue(formula.code);
-
+    this.formulaForm
+      .get('description')
+      ?.setValue(formula.description?.split(',') ?? []);
     this.facade.selectFormulaToEdit(formula);
   }
 
@@ -62,7 +64,10 @@ export class PanelComponent implements OnInit {
       const formula: Formula = {
         title: this.formulaForm.get('title')?.value,
         price: this.formulaForm.get('price')?.value,
-        description: this.formulaForm.get('description')?.value,
+        description: this.formulaForm
+          .get('description')
+          ?.value?.join(',')
+          .trim(),
         promotionnalPrice: this.formulaForm.get('promotionnalPrice')?.value,
         code: this.formulaForm.get('code')?.value,
         id: seletedFormula?.id,
