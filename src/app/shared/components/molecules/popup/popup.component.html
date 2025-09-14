@@ -1,5 +1,8 @@
 <div
-  class="mh-90 overflow-y-auto position-fixed z-2 top-50 start-50 translate-middle w-75 d-flex flex-column align-items-center justify-content-between gap-3 bg-gray-ultra-mega-light p-3 border rounded"
+  class="position-fixed w-100 h-100 top-0 start-0 bg-secondary opacity-50 z-1"
+></div>
+<div
+  class="mh-90 overflow-y-auto position-fixed z-2 top-50 start-50 translate-middle w-75 d-flex flex-column align-items-center justify-content-between gap-3 bg-gray-ultra-mega-light p-3 border rounded rounded-4"
 >
   <!-- HEADER -->
   <div class="d-flex align-items-center justify-content-between w-100">
@@ -15,10 +18,16 @@
 
   <div class="d-flex gap-2">
     <button (click)="onClose()" type="button" class="btn btn-secondary">
-      Fermer
+      {{ cancelButtonText }}
     </button>
-    <button (click)="onSave()" type="button" class="btn btn-primary">
-      Enregistrer
+    <button
+      (click)="onSave()"
+      type="button"
+      class="btn"
+      [class.btn-primary]="!deleteAction"
+      [class.btn-danger]="deleteAction"
+    >
+      {{ saveButtonText }}
     </button>
   </div>
 </div>

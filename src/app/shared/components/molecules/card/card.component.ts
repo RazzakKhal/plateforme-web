@@ -11,6 +11,8 @@ export class CardComponent {
   @Input() title: string | undefined;
   @Input() item1: string | undefined;
   @Input() item2: string | undefined;
+  @Input() isEditable = true;
+  @Input() isDeletable = true;
 
   @Output() edit = new EventEmitter();
   @Output() delete = new EventEmitter();

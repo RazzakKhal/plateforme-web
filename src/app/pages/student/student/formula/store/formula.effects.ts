@@ -82,4 +82,24 @@ export class FormulaEffect {
       ),
     { dispatch: false }
   );
+
+  /**
+   * handle updating
+   */
+  updateFormula = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FormulaActions.editFormula),
+      mergeMap(({ formula }) =>
+        this.formulaService.updateFormula(formula).pipe(
+          map(() => FormulaActions.editFormulaSuccess({ formula })),
+          catchError((error) => of(FormulaActions.editFormulaError({ error })))
+        )
+      )
+    )
+  );
+
+  updateFormulaSuccess = createEffect(
+    () => this.actions$.pipe(ofType(FormulaActions.editFormula)),
+    { dispatch: false }
+  );
 }

@@ -19,6 +19,7 @@ export class PanelComponent implements OnInit {
   selectedFormula$ = this.facade.selectedFormula$;
 
   formulaForm: FormGroup;
+  formulaDeleting: Formula | undefined;
 
   constructor() {
     this.formulaForm = new FormGroup({
@@ -53,10 +54,12 @@ export class PanelComponent implements OnInit {
 
   deleteFormula(id: number) {
     this.facade.deleteFormula(id);
+    this.formulaDeleting = undefined;
   }
 
   onCloseFormulaPopup() {
     this.facade.selectFormulaToEdit(null);
+    this.formulaDeleting = undefined;
   }
 
   onSaveFormulaPopup(seletedFormula: Formula) {
@@ -81,5 +84,9 @@ export class PanelComponent implements OnInit {
 
   onCloseUserPopup() {
     this.facade.selectUserToEdit(null);
+  }
+
+  openDeletingPopup(formula: Formula) {
+    this.formulaDeleting = formula;
   }
 }

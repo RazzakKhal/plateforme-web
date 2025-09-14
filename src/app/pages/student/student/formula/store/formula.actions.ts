@@ -48,3 +48,19 @@ export const deleteFormulaError = createAction(
   'deleteFormulaError',
   props<{ error: any }>()
 );
+
+/**
+ * gestion pour modifier une formule
+ */
+export const editFormula = createAction(
+  'editFormula',
+  props<{ formula: Formula }>()
+);
+export const editFormulaSuccess = createAction(
+  'editFormulaSuccess',
+  props<{ formula: Formula }>()
+);
+export const editFormulaError = createAction(
+  'editFormulaError',
+  props<{ error: any }>()
+);

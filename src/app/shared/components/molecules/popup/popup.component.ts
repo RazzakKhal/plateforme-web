@@ -8,6 +8,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class PopupComponent {
   @Input() title!: string;
+  @Input() saveButtonText = 'Enregistrer';
+  @Input() cancelButtonText = 'Fermer';
+  @Input() deleteAction = false;
 
   @Output() close = new EventEmitter();
   @Output() save = new EventEmitter();

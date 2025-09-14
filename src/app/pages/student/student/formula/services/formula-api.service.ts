@@ -41,4 +41,13 @@ export class FormulaApiService {
       )
       .pipe(take(1));
   }
+
+  updateFormula(formula: Formula) {
+    return this.http
+      .put(
+        `${environment.userBaseUri}/${environment.formulaService}/formulas/${formula.id}`,
+        formula
+      )
+      .pipe(take(1));
+  }
 }

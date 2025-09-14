@@ -49,7 +49,7 @@
       [item1]="formula.code ? 'Avec Code' : 'Sans Code'"
       [item2]="formula.price.toString() + '€'"
       (edit)="selectEditFormula(formula)"
-      (delete)="deleteFormula(formula.id)"
+      (delete)="openDeletingPopup(formula)"
     ></app-card>
     }
   </div>
@@ -90,5 +90,23 @@ selectedFormula$ | async; @if (selectedUser) {
       [formulaForm]="formulaForm"
     ></app-edit-formula-form>
   </div>
+</app-popup>
+} @if(formulaDeleting){
+<app-popup
+  (save)="deleteFormula(formulaDeleting.id)"
+  (close)="onCloseFormulaPopup()"
+  title="êtes vous sur de vouloir supprimer cette formule ?"
+  saveButtonText="Supprimer"
+  cancelButtonText="Annuler"
+  [deleteAction]="true"
+>
+  <app-card
+    [title]="formulaDeleting.title"
+    [description]="formulaDeleting.description | splitArrayOfString"
+    [item1]="formulaDeleting.code ? 'Avec Code' : 'Sans Code'"
+    [item2]="formulaDeleting.price.toString() + '€'"
+    [isDeletable]="false"
+    [isEditable]="false"
+  ></app-card>
 </app-popup>
 }

@@ -41,5 +41,6 @@ export class AdminFacadeService {
 
   updateFormula(formula: Formula) {
     console.log('la formule modifiée : ', formula);
+    this.store.dispatch(FormulaActions.editFormula({ formula: formula }));
   }
 }
