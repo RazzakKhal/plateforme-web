@@ -8,7 +8,7 @@ describe('PToggleInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PToggleInputComponent],
+      declarations: [PToggleInputComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PToggleInputComponent);

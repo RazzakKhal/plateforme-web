@@ -8,9 +8,8 @@ describe('PInputListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PInputListComponent]
-    })
-    .compileComponents();
+      declarations: [PInputListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PInputListComponent);
     component = fixture.componentInstance;
