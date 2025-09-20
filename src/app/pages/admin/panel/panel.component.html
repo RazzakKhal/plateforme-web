@@ -1,0 +1,126 @@
+<div
+  class="d-flex flex-column align-items-center justify-content-between gap-4 p-4"
+>
+  @let allFormulas = allFormulas$ | async;
+  <div class="d-flex justify-content-between align-items-center gap-3">
+    <div
+      class="d-flex justify-content-between align-items-center bg-white gap-3 p-3 border border-gray-ultra-light rounded"
+    >
+      <div class="d-flex flex-column gap-2">
+        <p class="text-secondary fs-7">Formules</p>
+        <p class="fs-3 fw-medium">{{ allFormulas?.length }}</p>
+      </div>
+      <i class="bi bi-wallet-fill text-primary fs-1"></i>
+    </div>
+    <div
+      class="d-flex justify-content-between align-items-center bg-white gap-3 p-3 border border-gray-ultra-light rounded"
+    >
+      <div class="d-flex flex-column gap-2">
+        <p class="text-secondary fs-7">Utilisateurs</p>
+        <p class="fs-3 fw-medium">127</p>
+      </div>
+      <i class="bi bi-person-vcard-fill text-success fs-1"></i>
+    </div>
+  </div>
+
+  <div class="d-flex gap-1">
+    <button class="btn btn-primary px-4">
+      <i class="bi bi-wallet-fill fs-4"></i>
+
+      Formules
+    </button>
+    <button class="btn btn-secondary px-4">
+      <i class="bi bi-person-vcard-fill fs-4"></i>
+
+      Utilisateurs
+    </button>
+  </div>
+  @if (displayChoice === 'FORMULA') {
+  <div class="d-flex align-items-center justify-content-between gap-5">
+    <p class="fs-6 fw-medium">Gestion des Formules</p>
+    <button class="btn btn-primary" (click)="addFormula()">+ Ajouter</button>
+  </div>
+
+  <div class="d-flex flex-column gap-3 w-100">
+    @for (formula of allFormulas; track formula.id) {
+    <app-card
+      [title]="formula.title"
+      [description]="formula.description | splitArrayOfString"
+      [item1]="formula.code ? 'Avec Code' : 'Sans Code'"
+      [item2]="formula.price.toString() + '€'"
+      (edit)="selectEditFormula(formula)"
+      (delete)="openDeletingPopup(formula)"
+    ></app-card>
+    }
+  </div>
+  } @if (displayChoice === 'USER') {
+  <div class="d-flex align-items-center justify-content-between gap-5">
+    <p class="fs-6 fw-medium">Gestion des Utilisateurs</p>
+    <button class="btn btn-primary">+ Ajouter</button>
+  </div>
+
+  <div class="d-flex flex-column gap-3 w-100">
+    @let allFormulas = allFormulas$ | async; @for (formula of allFormulas; track
+    formula.id) {
+    <app-card
+      [title]="formula.title"
+      [description]="formula.description | splitArrayOfString"
+      [item1]="formula.code ? 'Avec Code' : 'Sans Code'"
+      [item2]="formula.price.toString() + '€'"
+    ></app-card>
+    }
+  </div>
+  }
+</div>
+
+@let selectedUser = selectedUser$ | async; @let selectedFormula =
+selectedFormula$ | async; @if (selectedUser) {
+<app-popup (close)="onCloseUserPopup()">
+  <div body-content>test</div>
+</app-popup>
+} @if (selectedFormula) {
+<app-popup
+  (save)="onSaveFormulaPopup(selectedFormula)"
+  (close)="onCloseFormulaPopup()"
+  title="Créer / Modifier ma formule"
+>
+  <div body-content class="w-100">
+    <app-edit-formula-form
+      [formula]="selectedFormula"
+      [formulaForm]="formulaForm"
+      [isFormSubmitted]="isFormSubmitted"
+    ></app-edit-formula-form>
+  </div>
+</app-popup>
+} @if(formulaDeleting){
+<app-popup
+  (save)="deleteFormula(formulaDeleting.id)"
+  (close)="onCloseFormulaPopup()"
+  title="êtes vous sur de vouloir supprimer cette formule ?"
+  saveButtonText="Supprimer"
+  cancelButtonText="Annuler"
+  [deleteAction]="true"
+>
+  <app-card
+    [title]="formulaDeleting.title"
+    [description]="formulaDeleting.description | splitArrayOfString"
+    [item1]="formulaDeleting.code ? 'Avec Code' : 'Sans Code'"
+    [item2]="formulaDeleting.price.toString() + '€'"
+    [isDeletable]="false"
+    [isEditable]="false"
+  ></app-card>
+</app-popup>
+} @if(formulaAdding){
+<app-popup
+  (save)="onSaveFormulaPopup()"
+  (close)="onCloseFormulaPopup()"
+  title="Créer / Modifier ma formule"
+>
+  <div body-content class="w-100">
+    <app-edit-formula-form
+      [isFormSubmitted]="isFormSubmitted"
+      [formulaForm]="formulaForm"
+    ></app-edit-formula-form>
+  </div>
+</app-popup>
+}

@@ -55,4 +55,75 @@ export class FormulaEffect {
       ),
     { dispatch: false }
   );
+
+  /**
+   * handle deleting
+   */
+
+  deleteFormula = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FormulaActions.deleteFormula),
+      mergeMap(({ formulaId }) =>
+        this.formulaService.deleteFormula(formulaId).pipe(
+          map(() => FormulaActions.deleteFormulaSuccess({ formulaId })),
+          catchError((error) =>
+            of(FormulaActions.deleteFormulaError({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  deleteFormulaSuccess = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(FormulaActions.deleteFormulaSuccess),
+        tap(() => console.info('suppression formule ok'))
+      ),
+    { dispatch: false }
+  );
+
+  /**
+   * handle updating
+   */
+  updateFormula = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FormulaActions.editFormula),
+      mergeMap(({ formula }) =>
+        this.formulaService.updateFormula(formula).pipe(
+          map((response) =>
+            FormulaActions.editFormulaSuccess({ formula: response })
+          ),
+          catchError((error) => of(FormulaActions.editFormulaError({ error })))
+        )
+      )
+    )
+  );
+
+  updateFormulaSuccess = createEffect(
+    () => this.actions$.pipe(ofType(FormulaActions.editFormula)),
+    { dispatch: false }
+  );
+
+  /**
+   * handle adding
+   */
+  addFormula = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FormulaActions.addFormula),
+      mergeMap(({ formula }) =>
+        this.formulaService.addFormula(formula).pipe(
+          map((response) =>
+            FormulaActions.addFormulaSuccess({ formula: response })
+          ),
+          catchError((error) => of(FormulaActions.addFormulaError({ error })))
+        )
+      )
+    )
+  );
+
+  addFormulaSuccess = createEffect(
+    () => this.actions$.pipe(ofType(FormulaActions.addFormulaSuccess)),
+    { dispatch: false }
+  );
 }
