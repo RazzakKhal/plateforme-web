@@ -35,5 +35,11 @@ export const formulaReducer = createReducer(
       ...(state.allFormulas?.filter((f) => f.id !== formula.id) ?? []),
       formula,
     ],
-  }))
+  })),
+  on(FormulaActions.addFormulaSuccess, (state, { formula }) => {
+    return {
+      ...state,
+      allFormulas: [...(state.allFormulas ?? []), formula],
+    };
+  })
 );

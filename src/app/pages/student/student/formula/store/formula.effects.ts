@@ -91,7 +91,9 @@ export class FormulaEffect {
       ofType(FormulaActions.editFormula),
       mergeMap(({ formula }) =>
         this.formulaService.updateFormula(formula).pipe(
-          map(() => FormulaActions.editFormulaSuccess({ formula })),
+          map((response) =>
+            FormulaActions.editFormulaSuccess({ formula: response })
+          ),
           catchError((error) => of(FormulaActions.editFormulaError({ error })))
         )
       )
@@ -100,6 +102,28 @@ export class FormulaEffect {
 
   updateFormulaSuccess = createEffect(
     () => this.actions$.pipe(ofType(FormulaActions.editFormula)),
+    { dispatch: false }
+  );
+
+  /**
+   * handle adding
+   */
+  addFormula = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FormulaActions.addFormula),
+      mergeMap(({ formula }) =>
+        this.formulaService.addFormula(formula).pipe(
+          map((response) =>
+            FormulaActions.addFormulaSuccess({ formula: response })
+          ),
+          catchError((error) => of(FormulaActions.addFormulaError({ error })))
+        )
+      )
+    )
+  );
+
+  addFormulaSuccess = createEffect(
+    () => this.actions$.pipe(ofType(FormulaActions.addFormulaSuccess)),
     { dispatch: false }
   );
 }

@@ -37,10 +37,11 @@ export class AdminFacadeService {
     this.store.dispatch(FormulaActions.deleteFormula({ formulaId: id }));
   }
 
-  createFormula(formula: Formula) {}
+  createFormula(formula: Formula) {
+    this.store.dispatch(FormulaActions.addFormula({ formula }));
+  }
 
   updateFormula(formula: Formula) {
-    console.log('la formule modifiée : ', formula);
     this.store.dispatch(FormulaActions.editFormula({ formula: formula }));
   }
 }

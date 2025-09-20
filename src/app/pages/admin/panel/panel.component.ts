@@ -20,6 +20,9 @@ export class PanelComponent implements OnInit {
 
   formulaForm: FormGroup;
   formulaDeleting: Formula | undefined;
+  formulaAdding: boolean = false;
+
+  isFormSubmitted = false;
 
   constructor() {
     this.formulaForm = new FormGroup({
@@ -33,6 +36,15 @@ export class PanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.facade.getAllFormulas();
+  }
+
+  addFormula() {
+    this.formulaAdding = true;
+    this.formulaForm.get('title')?.setValue('');
+    this.formulaForm.get('price')?.setValue('');
+    this.formulaForm.get('promotionnalPrice')?.setValue('');
+    this.formulaForm.get('code')?.setValue(true);
+    this.formulaForm.get('description')?.setValue([]);
   }
 
   selectEditFormula(formula: Formula) {
@@ -60,9 +72,12 @@ export class PanelComponent implements OnInit {
   onCloseFormulaPopup() {
     this.facade.selectFormulaToEdit(null);
     this.formulaDeleting = undefined;
+    this.formulaAdding = false;
+    this.isFormSubmitted = false;
   }
 
-  onSaveFormulaPopup(seletedFormula: Formula) {
+  onSaveFormulaPopup(seletedFormula?: Formula) {
+    this.isFormSubmitted = true;
     if (this.formulaForm.valid) {
       const formula: Formula = {
         title: this.formulaForm.get('title')?.value,
@@ -75,10 +90,11 @@ export class PanelComponent implements OnInit {
         code: this.formulaForm.get('code')?.value,
         id: seletedFormula?.id,
       } as Formula;
-
-      seletedFormula.id
+      seletedFormula
         ? this.facade.updateFormula(formula)
         : this.facade.createFormula(formula);
+
+      this.onCloseFormulaPopup();
     }
   }
 

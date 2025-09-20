@@ -64,3 +64,20 @@ export const editFormulaError = createAction(
   'editFormulaError',
   props<{ error: any }>()
 );
+
+/**
+ * gestion pour ajouter une formule
+ */
+
+export const addFormula = createAction(
+  'addFormula',
+  props<{ formula: Formula }>()
+);
+export const addFormulaSuccess = createAction(
+  'addFormulaSuccess',
+  props<{ formula: Formula }>()
+);
+export const addFormulaError = createAction(
+  'addFormulaError',
+  props<{ error: any }>()
+);

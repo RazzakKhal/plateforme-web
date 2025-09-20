@@ -34,7 +34,6 @@ export class PInputListComponent implements ControlValueAccessor {
   onTouched: any = () => {};
 
   writeValue(values: string[]): void {
-    console.log('on est dans write value');
     this.formArray.clear();
     if (values) {
       values.forEach((value) => this.formArray.push(new FormControl(value)));

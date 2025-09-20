@@ -38,7 +38,7 @@
   @if (displayChoice === 'FORMULA') {
   <div class="d-flex align-items-center justify-content-between gap-5">
     <p class="fs-6 fw-medium">Gestion des Formules</p>
-    <button class="btn btn-primary">+ Ajouter</button>
+    <button class="btn btn-primary" (click)="addFormula()">+ Ajouter</button>
   </div>
 
   <div class="d-flex flex-column gap-3 w-100">
@@ -88,6 +88,7 @@ selectedFormula$ | async; @if (selectedUser) {
     <app-edit-formula-form
       [formula]="selectedFormula"
       [formulaForm]="formulaForm"
+      [isFormSubmitted]="isFormSubmitted"
     ></app-edit-formula-form>
   </div>
 </app-popup>
@@ -108,5 +109,18 @@ selectedFormula$ | async; @if (selectedUser) {
     [isDeletable]="false"
     [isEditable]="false"
   ></app-card>
+</app-popup>
+} @if(formulaAdding){
+<app-popup
+  (save)="onSaveFormulaPopup()"
+  (close)="onCloseFormulaPopup()"
+  title="Créer / Modifier ma formule"
+>
+  <div body-content class="w-100">
+    <app-edit-formula-form
+      [isFormSubmitted]="isFormSubmitted"
+      [formulaForm]="formulaForm"
+    ></app-edit-formula-form>
+  </div>
 </app-popup>
 }

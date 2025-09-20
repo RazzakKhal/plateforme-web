@@ -44,4 +44,10 @@
     "
     >* champ obligatoire</span
   >
+
+  <span
+    class="text-danger fs-7"
+    *ngIf="type == 'number' && isRequired && value === '' && isFormSubmitted"
+    >* champ obligatoire</span
+  >
 </div>

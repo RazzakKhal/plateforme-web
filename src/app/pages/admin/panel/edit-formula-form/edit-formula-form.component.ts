@@ -9,8 +9,7 @@ import { Formula } from '../../../student/student/formula/models/formula.model';
   styleUrl: './edit-formula-form.component.css',
 })
 export class EditFormulaFormComponent {
-  @Input() formula!: Formula;
+  @Input() formula: Formula | undefined;
   @Input() formulaForm!: FormGroup;
-
-  isFormSubmitted = false;
+  @Input() isFormSubmitted = false;
 }

@@ -8,11 +8,11 @@
       type="text"
       labelValue="Titre"
       [isRequired]="true"
-      [placeholder]="formula.title"
+      [placeholder]="formula?.title ?? ''"
       inputId="Titre"
       [isFormSubmitted]="isFormSubmitted"
       [isValid]="formulaForm.controls['title'].valid"
-      [value]="formula.title"
+      [value]="formula?.title ?? ''"
       #titreInput
     ></p-input>
   </div>
@@ -37,11 +37,11 @@
       type="number"
       labelValue="Prix"
       [isRequired]="true"
-      [placeholder]="formula.price.toString()"
+      [placeholder]="formula?.price?.toString() ?? ''"
       inputId="Prix"
       [isFormSubmitted]="isFormSubmitted"
       [isValid]="formulaForm.controls['price'].valid"
-      [value]="formula.price.toString()"
+      [value]="formula?.price?.toString() ?? ''"
       #priceInput
     ></p-input>
   </div>
@@ -50,12 +50,12 @@
       formControlName="promotionnalPrice"
       type="number"
       labelValue="Prix promotionnel"
-      [isRequired]="true"
-      [placeholder]="formula.promotionnalPrice?.toString() ?? ''"
+      [isRequired]="false"
+      [placeholder]="formula?.promotionnalPrice?.toString() ?? ''"
       inputId="Prix promotionnel"
       [isFormSubmitted]="isFormSubmitted"
       [isValid]="formulaForm.controls['promotionnalPrice'].valid"
-      [value]="formula.promotionnalPrice?.toString() ?? ''"
+      [value]="formula?.promotionnalPrice?.toString() ?? ''"
       #promotionnalPriceInput
     ></p-input>
   </div>
