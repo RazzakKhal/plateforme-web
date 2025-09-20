@@ -15,10 +15,7 @@ export class FormulaApiService {
       .get<Formula[]>(
         `${environment.userBaseUri}/${environment.formulaService}/formulas`
       )
-      .pipe(
-        tap((formules) => console.info('appel des formules : ' + formules)),
-        take(1)
-      );
+      .pipe(take(1));
   }
 
   getFormula(id: number) {
@@ -32,5 +29,31 @@ export class FormulaApiService {
         ),
         take(1)
       );
+  }
+
+  deleteFormula(id: number) {
+    return this.http
+      .delete(
+        `${environment.userBaseUri}/${environment.formulaService}/formulas/${id}`
+      )
+      .pipe(take(1));
+  }
+
+  updateFormula(formula: Formula) {
+    return this.http
+      .put<Formula>(
+        `${environment.userBaseUri}/${environment.formulaService}/formulas/${formula.id}`,
+        formula
+      )
+      .pipe(take(1));
+  }
+
+  addFormula(formula: Formula) {
+    return this.http
+      .post<Formula>(
+        `${environment.userBaseUri}/${environment.formulaService}/formulas`,
+        formula
+      )
+      .pipe(take(1));
   }
 }

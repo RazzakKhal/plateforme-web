@@ -1,7 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-
 @Component({
   selector: 'p-input',
   standalone: false,
@@ -11,32 +10,30 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => PInputComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class PInputComponent implements ControlValueAccessor {
-
   @Input() type!: string;
   @Input() labelValue!: string;
   @Input() placeholder!: string;
   @Input() inputId!: string;
   @Input() isRequired: boolean = false;
-  @Input() isFormSubmitted : boolean = false;
+  @Input() isFormSubmitted: boolean = false;
   @Input() isValid = false;
-  @Input() customMessage : string | undefined;
+  @Input() customMessage: string | undefined;
 
   clear = false;
-
 
   /**
    * tout ce qui suit est lié au fonctionnement de l'input à travers le système d eformulaire d'angular
    */
 
-  value: string = '';
+  @Input() value: string = '';
   isDisabled: boolean = false;
-  onChange = (value: any) => { };
-  onTouched = () => { };
+  onChange = (value: any) => {};
+  onTouched = () => {};
 
   writeValue(value: any): void {
     this.value = value;
@@ -53,7 +50,6 @@ export class PInputComponent implements ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
-
   updateValue(event: any) {
     const val = event.target.value;
     this.value = val;
@@ -62,14 +58,12 @@ export class PInputComponent implements ControlValueAccessor {
   }
 
   passwordOnText(input: HTMLInputElement) {
-    input.type = 'text'
+    input.type = 'text';
     this.clear = true;
   }
 
   passwordOnCensored(input: HTMLInputElement) {
-    input.type = 'password'
+    input.type = 'password';
     this.clear = false;
   }
-
-
 }
