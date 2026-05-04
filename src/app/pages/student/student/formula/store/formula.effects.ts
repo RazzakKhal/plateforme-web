@@ -4,6 +4,7 @@ import * as FormulaActions from '../store/formula.actions';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { Formula } from '../models/formula.model';
 import { FormulaApiService } from '../services/formula-api.service';
+import { PageResponse } from '../../../../../shared/interfaces/page.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -17,20 +18,20 @@ export class FormulaEffect {
       ofType(FormulaActions.getAllFormulas),
       mergeMap(() =>
         this.formulaService.getAllFormulas().pipe(
-          map((allFormulas: Formula[]) =>
-            FormulaActions.getAllFormulasSuccess({ allFormulas })
+          map((page: PageResponse<Formula>) =>
+            FormulaActions.getAllFormulasSuccess({ allFormulas: page.content }),
           ),
           catchError((error) =>
-            of(FormulaActions.getAllFormulasError({ error }))
-          )
-        )
-      )
-    )
+            of(FormulaActions.getAllFormulasError({ error })),
+          ),
+        ),
+      ),
+    ),
   );
 
   getAllFormulasSuccess = createEffect(
     () => this.actions$.pipe(ofType(FormulaActions.getAllFormulasSuccess)),
-    { dispatch: false }
+    { dispatch: false },
   );
 
   getFormula = createEffect(() =>
@@ -39,21 +40,21 @@ export class FormulaEffect {
       mergeMap((userId) =>
         this.formulaService.getFormula(userId.formulaId).pipe(
           map((formula: Formula) =>
-            FormulaActions.getFormulaSuccess({ formula })
+            FormulaActions.getFormulaSuccess({ formula }),
           ),
-          catchError((error) => of(FormulaActions.getFormulaError({ error })))
-        )
-      )
-    )
+          catchError((error) => of(FormulaActions.getFormulaError({ error }))),
+        ),
+      ),
+    ),
   );
 
   getFormulaSuccess = createEffect(
     () =>
       this.actions$.pipe(
         ofType(FormulaActions.getFormulaSuccess),
-        tap(({ formula }) => console.info('la formule: ' + formula))
+        tap(({ formula }) => console.info('la formule: ' + formula)),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 
   /**
@@ -67,20 +68,20 @@ export class FormulaEffect {
         this.formulaService.deleteFormula(formulaId).pipe(
           map(() => FormulaActions.deleteFormulaSuccess({ formulaId })),
           catchError((error) =>
-            of(FormulaActions.deleteFormulaError({ error }))
-          )
-        )
-      )
-    )
+            of(FormulaActions.deleteFormulaError({ error })),
+          ),
+        ),
+      ),
+    ),
   );
 
   deleteFormulaSuccess = createEffect(
     () =>
       this.actions$.pipe(
         ofType(FormulaActions.deleteFormulaSuccess),
-        tap(() => console.info('suppression formule ok'))
+        tap(() => console.info('suppression formule ok')),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 
   /**
@@ -92,17 +93,17 @@ export class FormulaEffect {
       mergeMap(({ formula }) =>
         this.formulaService.updateFormula(formula).pipe(
           map((response) =>
-            FormulaActions.editFormulaSuccess({ formula: response })
+            FormulaActions.editFormulaSuccess({ formula: response }),
           ),
-          catchError((error) => of(FormulaActions.editFormulaError({ error })))
-        )
-      )
-    )
+          catchError((error) => of(FormulaActions.editFormulaError({ error }))),
+        ),
+      ),
+    ),
   );
 
   updateFormulaSuccess = createEffect(
     () => this.actions$.pipe(ofType(FormulaActions.editFormula)),
-    { dispatch: false }
+    { dispatch: false },
   );
 
   /**
@@ -114,16 +115,16 @@ export class FormulaEffect {
       mergeMap(({ formula }) =>
         this.formulaService.addFormula(formula).pipe(
           map((response) =>
-            FormulaActions.addFormulaSuccess({ formula: response })
+            FormulaActions.addFormulaSuccess({ formula: response }),
           ),
-          catchError((error) => of(FormulaActions.addFormulaError({ error })))
-        )
-      )
-    )
+          catchError((error) => of(FormulaActions.addFormulaError({ error }))),
+        ),
+      ),
+    ),
   );
 
   addFormulaSuccess = createEffect(
     () => this.actions$.pipe(ofType(FormulaActions.addFormulaSuccess)),
-    { dispatch: false }
+    { dispatch: false },
   );
 }
