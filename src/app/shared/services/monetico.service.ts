@@ -1,20 +1,21 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MoneticoService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   initierPaiement(formulaId: number): Observable<any> {
     return this.http.post(
-      `${environment.userBaseUri}/${environment.paymentService}/payment/initier`,
+      `${environment.userBaseUri}/${environment.paymentService}/payments`,
       {},
       {
-        params: { formulaId },
+        params: {formulaId},
       }
     );
   }
