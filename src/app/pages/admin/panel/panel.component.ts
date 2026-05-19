@@ -1,8 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AdminFacadeService } from '../facade/admin-facade.service';
 import { Formula } from '../../student/student/formula/models/formula.model';
-import { User } from '../../../shared/models/user.models';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserInterface } from '../../../shared/interfaces/user.interface';
+import { Uuid } from '../../../shared/types/uuid.type';
 
 @Component({
   selector: 'app-panel',
@@ -60,11 +61,15 @@ export class PanelComponent implements OnInit {
     this.facade.selectFormulaToEdit(formula);
   }
 
-  selectEditUser(user: User) {
+  selectEditUser(user: UserInterface) {
     this.facade.selectUserToEdit(user);
   }
 
-  deleteFormula(id: number) {
+  deleteFormula(id?: Uuid) {
+    if (!id) {
+      return;
+    }
+
     this.facade.deleteFormula(id);
     this.formulaDeleting = undefined;
   }

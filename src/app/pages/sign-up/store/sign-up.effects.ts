@@ -2,10 +2,10 @@ import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { LocalStorageService } from '../../../shared/services/local-storage.service';
-import { SignInResponse } from '../../../pages/sign-in/models/signInResponse.interface';
 import * as SignUpActions from './sign-up.actions';
 import { getMeAction } from '../../../store/users/actions/get-me.action';
 import { SignUpApiService } from '../services/sign-up-api.service';
+import { SignUpResponse } from '../models/sign-up-response.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +20,7 @@ export class SignUpEffect {
       ofType(SignUpActions.signUp),
       mergeMap(({ user }) =>
         this.signUpApiService.signUp(user).pipe(
-          map((response: SignInResponse) =>
+          map((response: SignUpResponse) =>
             SignUpActions.signUpSuccess({ signUpResponse: response })
           ),
           catchError((err) =>

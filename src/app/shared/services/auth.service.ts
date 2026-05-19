@@ -1,8 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { take } from 'rxjs';
 import { environment } from '../../../environments/environment';
-
 import { UserInterface } from '../interfaces/user.interface';
 
 @Injectable({

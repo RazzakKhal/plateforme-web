@@ -4,6 +4,7 @@ import { Formula } from '../models/formula.model';
 import { environment } from '../../../../../../environments/environment';
 import { take, tap } from 'rxjs';
 import { PageResponse } from '../../../../../shared/interfaces/page.interface';
+import { Uuid } from '../../../../../shared/types/uuid.type';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,7 @@ export class FormulaApiService {
       .pipe(take(1));
   }
 
-  getFormula(id: number) {
+  getFormula(id: Uuid) {
     return this.http
       .get<Formula>(
         `${environment.userBaseUri}/${environment.formulaService}/formulas/${id}`,
@@ -32,7 +33,7 @@ export class FormulaApiService {
       );
   }
 
-  deleteFormula(id: number) {
+  deleteFormula(id: Uuid) {
     return this.http
       .delete(
         `${environment.userBaseUri}/${environment.formulaService}/formulas/${id}`,

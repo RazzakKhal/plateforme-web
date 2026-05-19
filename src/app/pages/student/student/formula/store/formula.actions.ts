@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Formula } from '../models/formula.model';
+import { Uuid } from '../../../../../shared/types/uuid.type';
 
 /**
  * gestion pour récupérer l'ensemble des formules
@@ -21,7 +22,7 @@ export const getAllFormulasError = createAction(
 
 export const getFormula = createAction(
   'getFormula',
-  props<{ formulaId: number }>()
+  props<{ formulaId: Uuid }>()
 );
 export const getFormulaSuccess = createAction(
   'getFormulaSuccess',
@@ -38,11 +39,11 @@ export const getFormulaError = createAction(
 
 export const deleteFormula = createAction(
   'deleteFormula',
-  props<{ formulaId: number }>()
+  props<{ formulaId: Uuid }>()
 );
 export const deleteFormulaSuccess = createAction(
   'deleteFormulaSuccess',
-  props<{ formulaId: number }>()
+  props<{ formulaId: Uuid }>()
 );
 export const deleteFormulaError = createAction(
   'deleteFormulaError',

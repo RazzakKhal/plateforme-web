@@ -1,6 +1,3 @@
+import { AuthTokenResponse } from '../../../shared/interfaces/auth-token-response.interface';
 
-export interface SignInResponse{
-    token: string;
-    username: string;
-    roles: string[]
-}
+export type SignInResponse = AuthTokenResponse;
