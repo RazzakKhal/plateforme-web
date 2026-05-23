@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { UserInterface } from '../../../shared/interfaces/user.interface';
 import { environment } from '../../../../environments/environment';
 import { take } from 'rxjs';
 
@@ -12,7 +11,7 @@ export class ForgotPasswordApiService {
 
   sendMail(mail: string) {
     return this.http
-      .post<UserInterface>(
+      .post<void>(
         `${environment.userBaseUri}/${environment.userService}/auth/forgot-password`,
         { mail }
       )

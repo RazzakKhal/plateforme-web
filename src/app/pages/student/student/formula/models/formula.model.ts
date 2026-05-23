@@ -1,5 +1,7 @@
+import { Uuid } from '../../../../../shared/types/uuid.type';
+
 export interface Formula {
-  id: number;
+  id?: Uuid;
 
   title: string;
 

@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { MoneticoService } from '../../../../../shared/services/monetico.service';
 import { Formula } from '../models/formula.model';
 import { environment } from '../../../../../../environments/environment';
+import { PaymentFormDto } from '../../../../../shared/interfaces/payment-form.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -14,23 +15,23 @@ export class FormulaDomainService {
       return;
     }
 
-    this.moneticoService.initierPaiement(formula.id).subscribe((data: any) => {
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = environment.moneticoUri;
+    this.moneticoService
+      .initierPaiement(formula.id)
+      .subscribe((data: PaymentFormDto) => {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = environment.moneticoUri;
 
-      for (const key in data) {
-        if (data.hasOwnProperty(key)) {
+        for (const [key, value] of Object.entries(data)) {
           const input = document.createElement('input');
           input.type = 'hidden';
           input.name = key;
-          input.value = data[key];
+          input.value = value;
           form.appendChild(input);
         }
-      }
 
-      document.body.appendChild(form);
-      form.submit(); // redirection automatique vers Monetico
-    });
+        document.body.appendChild(form);
+        form.submit(); // redirection automatique vers Monetico
+      });
   }
 }
