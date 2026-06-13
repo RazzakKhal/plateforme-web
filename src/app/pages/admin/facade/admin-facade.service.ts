@@ -4,7 +4,8 @@ import { Formula } from '../../student/student/formula/models/formula.model';
 import * as FormulaSelectors from '../../student/student/formula/store/formula.selectors';
 import * as FormulaActions from '../../student/student/formula/store/formula.actions';
 import { filter, Observable, Subject } from 'rxjs';
-import { User } from '../../../shared/models/user.models';
+import { UserInterface } from '../../../shared/interfaces/user.interface';
+import { Uuid } from '../../../shared/types/uuid.type';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ import { User } from '../../../shared/models/user.models';
 export class AdminFacadeService {
   private readonly store = inject(Store);
   private editFormulaSubject = new Subject<Formula | null>();
-  private editUserSubject = new Subject<User | null>();
+  private editUserSubject = new Subject<UserInterface | null>();
 
   readonly selectedFormula$ = this.editFormulaSubject.asObservable();
   readonly selectedUser$ = this.editUserSubject.asObservable();
@@ -25,7 +26,7 @@ export class AdminFacadeService {
     this.editFormulaSubject.next(formula);
   }
 
-  selectUserToEdit(user: User | null) {
+  selectUserToEdit(user: UserInterface | null) {
     this.editUserSubject.next(user);
   }
 
@@ -33,7 +34,11 @@ export class AdminFacadeService {
     this.store.dispatch(FormulaActions.getAllFormulas());
   }
 
-  deleteFormula(id: number) {
+  deleteFormula(id?: Uuid) {
+    if (!id) {
+      return;
+    }
+
     this.store.dispatch(FormulaActions.deleteFormula({ formulaId: id }));
   }
 

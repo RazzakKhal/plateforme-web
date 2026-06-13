@@ -1,5 +1,3 @@
-export interface TokenDto{
-    token: string;
-    username: string;
-    roles: string[]
-}
+import { AuthTokenResponse } from '../../../shared/interfaces/auth-token-response.interface';
+
+export type TokenDto = AuthTokenResponse;

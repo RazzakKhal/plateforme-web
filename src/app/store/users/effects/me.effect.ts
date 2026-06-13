@@ -1,10 +1,18 @@
 import { inject, Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "../../../shared/services/auth.service";
-import { getMeAction, getMeError, getMeSuccess } from "../actions/get-me.action";
+import {
+  getMeAction,
+  getMeError,
+  getMeSuccess,
+  updateMe,
+  updateMeError,
+  updateMeSuccess,
+} from "../actions/get-me.action";
 import { catchError, map, mergeMap, of, tap } from "rxjs";
 import { UserInterface } from "../../../shared/interfaces/user.interface";
 import { Router } from "@angular/router";
+import { UserRequestInterface } from "../../../shared/interfaces/user-request.interface";
 
 
 @Injectable({
@@ -33,6 +41,18 @@ export class MeEffect{
                 tap(({user}) => !user.roles?.includes('ROLE_ADMIN') ? this.router.navigate(['/student']) : this.router.navigate(['/admin']))
             ), 
             {dispatch: false}
+        )
+
+        updateMe = createEffect(
+            () => this.actions$.pipe(
+                ofType(updateMe),
+                mergeMap(
+                    ({ user }) => this.authService.updateMe(user as UserRequestInterface).pipe(
+                        map((response : UserInterface) => updateMeSuccess({user: response})),
+                        catchError((error) => of(updateMeError({ error })))
+                    )
+                )
+            )
         )
 
 }

@@ -1,7 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { User } from '../../../shared/models/user.models';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
 import { Address } from '../../../shared/models/address.model';
 import { SignUpFacadeService } from '../facade/sign-up-facade.service';
 
@@ -18,7 +17,7 @@ export class SignUpComponent {
 
   signUpForm: FormGroup;
 
-  constructor(private store: Store) {
+  constructor() {
     this.signUpForm = new FormGroup({
       firstname: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
@@ -33,19 +32,20 @@ export class SignUpComponent {
 
   signUp() {
     if (this.signUpForm.valid) {
-      const address = new Address(
-        this.signUpForm.get('addressLine')?.value,
-        this.signUpForm.get('city')?.value,
-        this.signUpForm.get('postalCode')?.value
-      );
-      const user = new User(
-        this.signUpForm.get('firstname')?.value,
-        this.signUpForm.get('lastname')?.value,
-        this.signUpForm.get('mail')?.value,
-        this.signUpForm.get('password')?.value,
-        this.signUpForm.get('phone')?.value,
-        address
-      );
+      const address: Address = {
+        addressLine1: this.signUpForm.get('addressLine')?.value,
+        city: this.signUpForm.get('city')?.value,
+        postalCode: this.signUpForm.get('postalCode')?.value,
+        country: 'FR',
+      };
+      const user: User = {
+        firstname: this.signUpForm.get('firstname')?.value,
+        lastname: this.signUpForm.get('lastname')?.value,
+        mail: this.signUpForm.get('mail')?.value,
+        password: this.signUpForm.get('password')?.value,
+        phone: this.signUpForm.get('phone')?.value,
+        address,
+      };
 
       this.facade.signUp(user);
     }
