@@ -1,49 +1,169 @@
 <div class="d-flex flex-column justify-content-between align-items-center gap-3 mt-5">
-    @if (user) {
-    <div class="d-flex flex-column justify-content-between align-items-center gap-3">
-        <div class="position-relative">
-            <i class="bi bi-camera-fill text-primary fs-4 position-absolute bottom-0 end-0"></i>
-            <img class="rounded-circle" src="avatar.webp" alt="photo de profil" width="75">
-        </div>
-        <div class="d-flex flex-column justify-content-between align-items-center">
-            <p class="h3 mb-0">{{user.firstname}} {{user.lastname}}</p>
-            <p class="gap-1 text-secondary">Étudiant(e)</p>
-        </div>
-
+  @if (user) {
+  <div class="d-flex flex-column justify-content-between align-items-center gap-3">
+    <div class="position-relative">
+      <i
+        class="bi bi-camera-fill text-primary fs-4 position-absolute bottom-0 end-0"
+      ></i>
+      <img
+        class="rounded-circle"
+        src="avatar.webp"
+        alt="photo de profil"
+        width="75"
+      />
     </div>
+    <div class="d-flex flex-column justify-content-between align-items-center">
+      <p class="h3 mb-0">{{ user.firstname }} {{ user.lastname }}</p>
+      <p class="gap-1 text-secondary">Etudiant(e)</p>
+    </div>
+  </div>
 
-    <section class="d-flex flex-column justify-content-between gap-3 mt-3 mb-3 w-75 ">
-        <h2 class="h4">Informations personnelles</h2>
-        <div class="d-flex align-items-center gap-3 pt-3 pb-3 px-2 border rounded border-gray-ultra-light">
-            <i class="bi bi-person"></i>
-            <div class="d-flex flex-column gap-1">
-                <p class="text-secondary text-uppercase fs-7">Nom Complet</p>
-                <p>{{user.firstname}} {{user.lastname}}</p>
-            </div>
+  <section class="d-flex flex-column justify-content-between gap-3 mt-3 mb-3 w-75">
+    <h2 class="h4">Informations personnelles</h2>
+    <div
+      class="d-flex align-items-center gap-3 pt-3 pb-3 px-2 border rounded border-gray-ultra-light"
+    >
+      <i class="bi bi-person"></i>
+      <div class="d-flex flex-column gap-1">
+        <p class="text-secondary text-uppercase fs-7">Nom complet</p>
+        <p>{{ user.firstname }} {{ user.lastname }}</p>
+      </div>
+    </div>
+    <div
+      class="d-flex align-items-center gap-3 pt-3 pb-3 px-2 border rounded border-gray-ultra-light"
+    >
+      <i class="bi bi-envelope"></i>
+      <div class="d-flex flex-column gap-1">
+        <p class="text-secondary text-uppercase fs-7">Mail</p>
+        <p>{{ user.mail }}</p>
+      </div>
+    </div>
+    <div
+      class="d-flex align-items-center gap-3 pt-3 pb-3 px-2 border rounded border-gray-ultra-light"
+    >
+      <i class="bi bi-telephone"></i>
+      <div class="d-flex flex-column gap-1">
+        <p class="text-secondary text-uppercase fs-7">Telephone</p>
+        <p>{{ user.phone }}</p>
+      </div>
+    </div>
+    <div
+      class="d-flex align-items-center gap-3 pt-3 pb-3 px-2 border rounded border-gray-ultra-light"
+    >
+      <i class="bi bi-geo-alt"></i>
+      <div class="d-flex flex-column gap-1">
+        <p class="text-secondary text-uppercase fs-7">Adresse</p>
+        @if (user.address) {
+        <p>{{ user.address.addressLine1 }}</p>
+        <p>
+          {{ user.address.postalCode }} {{ user.address.city }}
+          <span class="text-uppercase">{{ user.address.country }}</span>
+        </p>
+        } @else {
+        <p class="text-secondary">Adresse non renseignee</p>
+        }
+      </div>
+    </div>
+  </section>
 
-        </div>
-        <div class="d-flex align-items-center gap-3 pt-3 pb-3 px-2 border rounded border-gray-ultra-light">
-            <i class="bi bi-envelope"></i>
-            <div class="d-flex flex-column gap-1">
-                <p class="text-secondary text-uppercase fs-7">Mail</p>
-                <p>{{user.mail}}</p>
-            </div>
-
-        </div>
-        <div class="d-flex align-items-center gap-3 pt-3 pb-3 px-2 border rounded border-gray-ultra-light">
-            <i class="bi bi-telephone"></i>
-            <div class="d-flex flex-column gap-1">
-                <p class="text-secondary text-uppercase fs-7">Téléphone</p>
-                <p>{{user.phone}}</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <button class="btn btn-primary fs-5 w-75 mt-3">Modifier mes informations</button>
-    <button (click)="onDisconnect()" class="btn d-flex justify-content-between align-items-center w-75 fs-5 text-danger border-gray-ultra-light"> <span class="d-flex justify-content-between align-items-center gap-3"><i class="bi bi-box-arrow-right"></i> <span>Se déconnecter</span></span><i class="bi bi-chevron-right d-flex justify-content-between align-items-center gap-3 fs-6"></i></button>
-
-    }
-
+  <button
+    (click)="openEditModal()"
+    class="btn btn-primary fs-5 w-75 mt-3"
+  >
+    Modifier mes informations
+  </button>
+  <button
+    (click)="onDisconnect()"
+    class="btn d-flex justify-content-between align-items-center w-75 fs-5 text-danger border-gray-ultra-light"
+  >
+    <span class="d-flex justify-content-between align-items-center gap-3">
+      <i class="bi bi-box-arrow-right"></i>
+      <span>Se deconnecter</span>
+    </span>
+    <i
+      class="bi bi-chevron-right d-flex justify-content-between align-items-center gap-3 fs-6"
+    ></i>
+  </button>
+  }
 </div>
+
+@if (isEditModalOpen) {
+<app-popup
+  title="Modifier mes informations"
+  saveButtonText="Enregistrer"
+  cancelButtonText="Annuler"
+  (close)="closeEditModal()"
+  (save)="saveProfile()"
+>
+  <div body-content class="w-100">
+    <form [formGroup]="profileForm" class="d-flex flex-column gap-3 w-100">
+      <p-input
+        formControlName="firstname"
+        type="text"
+        labelValue="Prenom"
+        [isRequired]="true"
+        placeholder="Votre prenom"
+        inputId="profile-firstname"
+        [isFormSubmitted]="isFormSubmitted"
+      ></p-input>
+      <p-input
+        formControlName="lastname"
+        type="text"
+        labelValue="Nom"
+        [isRequired]="true"
+        placeholder="Votre nom"
+        inputId="profile-lastname"
+        [isFormSubmitted]="isFormSubmitted"
+      ></p-input>
+      <p-input
+        formControlName="phone"
+        type="tel"
+        labelValue="Telephone"
+        [isRequired]="true"
+        placeholder="06 01 01 01 01"
+        inputId="profile-phone"
+        [isFormSubmitted]="isFormSubmitted"
+      ></p-input>
+      <p-input
+        formControlName="addressLine1"
+        type="text"
+        labelValue="Adresse"
+        [isRequired]="true"
+        placeholder="1 rue des platanes"
+        inputId="profile-address"
+        [isFormSubmitted]="isFormSubmitted"
+      ></p-input>
+      <div class="d-flex gap-3 edit-profile-row">
+        <div class="flex-fill">
+          <p-input
+            formControlName="city"
+            type="text"
+            labelValue="Ville"
+            [isRequired]="true"
+            placeholder="Paris"
+            inputId="profile-city"
+            [isFormSubmitted]="isFormSubmitted"
+          ></p-input>
+        </div>
+        <div class="flex-fill">
+          <p-input
+            formControlName="postalCode"
+            type="text"
+            labelValue="Code postal"
+            [isRequired]="true"
+            placeholder="75000"
+            inputId="profile-postal-code"
+            [isFormSubmitted]="isFormSubmitted"
+          ></p-input>
+        </div>
+      </div>
+      <input formControlName="country" type="hidden" />
+    </form>
+    @if (saveError) {
+    <p class="text-danger fs-7 mt-3 mb-0">{{ saveError }}</p>
+    } @if (isSaving) {
+    <p class="text-secondary fs-7 mt-3 mb-0">Enregistrement en cours...</p>
+    }
+  </div>
+</app-popup>
+}

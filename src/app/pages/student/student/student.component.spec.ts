@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StudentComponent } from './student.component';
-import { HttpClient, HttpHandler, provideHttpClient } from '@angular/common/http';
-import { AuthService } from '../../../shared/services/auth.service';
-import { ActionsSubject, provideStore, ReducerManager, StateObservable, Store } from '@ngrx/store';
-import { ProfilComponent } from './profil/profil.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { of } from 'rxjs';
 
 describe('StudentComponent', () => {
   let component: StudentComponent;
@@ -12,10 +11,17 @@ describe('StudentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [StudentComponent, ProfilComponent],
-      providers: [provideHttpClient(), AuthService, provideStore({})] 
-    })
-    .compileComponents();
+      declarations: [StudentComponent],
+      providers: [
+        {
+          provide: Store,
+          useValue: {
+            select: () => of(undefined),
+          },
+        },
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(StudentComponent);
     component = fixture.componentInstance;
