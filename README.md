@@ -12,6 +12,12 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
+To start the recette configuration, run:
+
+```bash
+ng serve --configuration rct
+```
+
 ## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
@@ -35,6 +41,37 @@ ng build
 ```
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+Environment-specific builds:
+
+```bash
+ng build --configuration development
+ng build --configuration rct
+ng build --configuration production
+```
+
+Environment URL mapping:
+
+- `development`: API `http://localhost:8072`, Monetico `https://p.monetico-services.com/test/paiement.cgi`
+- `rct`: API `https://rct.ask-plateforme.fr/api`, Monetico `https://p.monetico-services.com/test/paiement.cgi`
+- `production`: API `https://ask-plateforme.fr/api`, Monetico `https://p.monetico-services.com/paiement.cgi`
+
+Docker image builds:
+
+```bash
+docker build -f Dockerfile -t frontend:rct .
+docker build -f Dockerfile.prod -t frontend:1.0.0 .
+```
+
+- `Dockerfile`: builds the `rct` Angular configuration
+- `Dockerfile.prod`: builds the `production` Angular configuration
+
+GitHub Actions behavior:
+
+- pushes on `main` run tests and publish the `rct` image as `latest`
+- manual runs can set `production=true` to build from `Dockerfile.prod`
+- manual runs without `production` enabled keep the default `rct` build
+- the production image is tagged with the version declared in `package.json`
 
 ## Running unit tests
 
