@@ -1,4 +1,4 @@
-# Etape 1: Construire l'application Angular pour la recette
+# Etape 1: Construire l'application Angular pour la production
 FROM node:18 AS build-stage
 WORKDIR /app
 
@@ -6,7 +6,7 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
-RUN npx ng build --configuration=rct
+RUN npx ng build --configuration=production
 
 # Etape 2: Servir l'application avec Nginx
 FROM nginx:alpine
