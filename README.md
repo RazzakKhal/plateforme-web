@@ -68,7 +68,7 @@ docker build -f Dockerfile.prod -t frontend:1.0.0 .
 
 GitHub Actions behavior:
 
-- pushes on `main` run tests and publish the `rct` image as `latest`
+- pushes on `main` and `develop` run tests and publish the `rct` image as `latest`
 - manual runs can set `production=true` to build from `Dockerfile.prod`
 - manual runs without `production` enabled keep the default `rct` build
 - the production image is tagged with the version declared in `package.json`
