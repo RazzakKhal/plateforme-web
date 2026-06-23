@@ -51,7 +51,7 @@ export class PaymentReferenceComponent implements OnInit {
     reference: string,
     attemptIndex = 0
   ): Observable<PaymentDetails> {
-    return this.paymentApiService.getPaymentByReference(reference).pipe(
+    return this.paymentApiService.getPaymentByReference(reference, true).pipe(
       switchMap((payment) => {
         const normalizedStatus = this.normalizeStatus(payment.status);
         this.currentStatus = normalizedStatus;

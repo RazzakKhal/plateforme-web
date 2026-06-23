@@ -4,7 +4,10 @@
 >
   <i
     class="icon-100 bi"
-    [ngClass]="status === 'SUCCESS' ? 'bi-exclamation-triangle-fill text-warning' : 'bi-x-circle-fill text-danger'"
+    [class.bi-exclamation-triangle-fill]="status === 'SUCCESS'"
+    [class.text-warning]="status === 'SUCCESS'"
+    [class.bi-x-circle-fill]="status !== 'SUCCESS'"
+    [class.text-danger]="status !== 'SUCCESS'"
   ></i>
 
   <h2 class="h2">
@@ -21,13 +24,15 @@
 
   <div
     class="w-100 alert d-flex flex-column gap-3 align-items-center text-center"
-    [ngClass]="status === 'SUCCESS' ? 'alert-warning' : 'alert-danger'"
+    [class.alert-warning]="status === 'SUCCESS'"
+    [class.alert-danger]="status !== 'SUCCESS'"
     role="alert"
   >
     <p class="mb-0">
       <i
         class="bi fs-2"
-        [ngClass]="status === 'SUCCESS' ? 'bi-exclamation-triangle-fill' : 'bi-exclamation-octagon-fill'"
+        [class.bi-exclamation-triangle-fill]="status === 'SUCCESS'"
+        [class.bi-exclamation-octagon-fill]="status !== 'SUCCESS'"
       ></i>
     </p>
 
