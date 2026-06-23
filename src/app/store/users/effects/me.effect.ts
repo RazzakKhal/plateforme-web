@@ -11,7 +11,6 @@ import {
 } from "../actions/get-me.action";
 import { catchError, map, mergeMap, of, tap } from "rxjs";
 import { UserInterface } from "../../../shared/interfaces/user.interface";
-import { Router } from "@angular/router";
 import { UserRequestInterface } from "../../../shared/interfaces/user-request.interface";
 
 
@@ -19,7 +18,7 @@ import { UserRequestInterface } from "../../../shared/interfaces/user-request.in
     providedIn: 'root'
 })
 export class MeEffect{
-    constructor(private authService : AuthService, private router: Router){}
+    constructor(private authService : AuthService){}
         
         private actions$ = inject(Actions);
 
@@ -33,14 +32,6 @@ export class MeEffect{
                     )
                 )
             )
-        )
-
-        getMeSuccess = createEffect(
-            () => this.actions$.pipe(
-                ofType(getMeSuccess),
-                tap(({user}) => !user.roles?.includes('ROLE_ADMIN') ? this.router.navigate(['/student']) : this.router.navigate(['/admin']))
-            ), 
-            {dispatch: false}
         )
 
         updateMe = createEffect(

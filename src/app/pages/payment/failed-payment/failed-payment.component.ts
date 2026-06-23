@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-failed-payment',
@@ -7,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './failed-payment.component.css'
 })
 export class FailedPaymentComponent {
+  private readonly activatedRoute = inject(ActivatedRoute);
 
+  readonly status$ = this.activatedRoute.queryParamMap.pipe(
+    map((params) => (params.get('status') ?? 'FAILED').toUpperCase())
+  );
 }

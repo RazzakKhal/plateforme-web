@@ -39,7 +39,7 @@ export class PaymentReferenceComponent implements OnInit {
           return this.pollPaymentUntilResolved(reference);
         }),
         catchError(() => {
-          this.navigateToError();
+          this.navigateToError(this.currentStatus);
           return EMPTY;
         }),
         takeUntilDestroyed(this.destroyRef)
@@ -89,11 +89,14 @@ export class PaymentReferenceComponent implements OnInit {
       return;
     }
 
-    this.navigateToError();
+    this.navigateToError(status);
   }
 
-  private navigateToError(): void {
-    void this.router.navigate(['../error'], { relativeTo: this.activatedRoute });
+  private navigateToError(status?: PaymentStatus | string): void {
+    void this.router.navigate(['../error'], {
+      relativeTo: this.activatedRoute,
+      queryParams: status ? { status } : undefined,
+    });
   }
 
   private normalizeStatus(status?: string): PaymentStatus | string {
