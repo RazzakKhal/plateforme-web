@@ -1,0 +1,18 @@
+<div class="payment-reference-page d-flex align-items-center justify-content-center px-3 py-5">
+  <div class="payment-reference-card card border-0 shadow-sm text-center p-4 p-md-5">
+    <div class="spinner-border text-primary mx-auto mb-4" role="status" aria-hidden="true"></div>
+
+    <h2 class="h3 mb-3">Verification du paiement</h2>
+    <p class="text-secondary mb-3">
+      Nous confirmons votre transaction. Vous serez redirige automatiquement des que
+      le paiement sera finalise.
+    </p>
+
+    <div class="alert alert-light mb-0">
+      <p class="mb-2"><strong>Reference :</strong> {{ reference }}</p>
+      <p class="mb-0" *ngIf="currentStatus">
+        <strong>Statut courant :</strong> {{ currentStatus }}
+      </p>
+    </div>
+  </div>
+</div>
