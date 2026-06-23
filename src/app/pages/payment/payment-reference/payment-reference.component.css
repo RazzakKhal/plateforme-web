@@ -1,0 +1,20 @@
+.payment-reference-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(13, 110, 253, 0.08), transparent 40%),
+    linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+}
+
+.payment-reference-card {
+  max-width: 640px;
+  width: 100%;
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 1rem 3rem rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+.payment-reference-card .spinner-border {
+  width: 3rem;
+  height: 3rem;
+}

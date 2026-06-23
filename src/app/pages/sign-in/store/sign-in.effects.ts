@@ -1,20 +1,27 @@
 import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as SignInActions from './sign-in.actions';
-import { catchError, map, mergeMap, of, tap } from 'rxjs';
+import { catchError, map, mergeMap, of, switchMap, tap } from 'rxjs';
 import { LocalStorageService } from '../../../shared/services/local-storage.service';
 import { SignInResponse } from '../models/signInResponse.interface';
-import { getMeAction } from '../../../store/users/actions/get-me.action';
+import {
+  getMeError,
+  getMeSuccess,
+} from '../../../store/users/actions/get-me.action';
 import { SignInApiService } from '../services/sign-in-api.service';
+import { UserInterface } from '../../../shared/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SignInEffect {
+  private readonly authService = inject(AuthService);
   private readonly signInApiService = inject(SignInApiService);
   private readonly localStorageService = inject(LocalStorageService);
   private readonly actions$ = inject(Actions);
+  private readonly router = inject(Router);
 
   signIn = createEffect(() =>
     this.actions$.pipe(
@@ -46,7 +53,17 @@ export class SignInEffect {
       tap(({ signInResponse }) =>
         this.localStorageService.saveToken(signInResponse.token)
       ),
-      map(() => getMeAction())
+      switchMap(() =>
+        this.authService.getMe().pipe(
+          tap((user: UserInterface) => {
+            void (!user.roles?.includes('ROLE_ADMIN')
+              ? this.router.navigate(['/student'])
+              : this.router.navigate(['/admin']));
+          }),
+          map((user: UserInterface) => getMeSuccess({ user })),
+          catchError((error) => of(getMeError({ error })))
+        )
+      )
     )
   );
 }

@@ -1,0 +1,67 @@
+<div class="payment-reference-page d-flex align-items-center justify-content-center px-3 py-5">
+  <div class="payment-reference-card d-flex flex-column align-items-center w-100 p-4 gap-3 text-center">
+    <div class="spinner-border text-primary" role="status" aria-hidden="true"></div>
+
+    <h2 class="h2 mb-0">Vérification du paiement</h2>
+
+    <p class="text-secondary lh-base text-center mb-0">
+      Nous contrôlons la confirmation finale de votre transaction. Cette page se met à jour automatiquement dès que le
+      paiement atteint son état final.
+    </p>
+
+    <div class="w-100 alert alert-light d-flex flex-column gap-3 align-items-center text-center mb-0" role="alert">
+      <p class="mb-0 fw-semibold">Référence</p>
+      <p class="mb-0">{{ reference }}</p>
+
+      <ng-container *ngIf="currentStatus">
+        <p class="mb-0 fw-semibold">Statut courant</p>
+        <p class="mb-0">{{ currentStatus }}</p>
+      </ng-container>
+    </div>
+
+    <div
+      class="w-100 alert d-flex flex-column gap-3 align-items-center text-center"
+      [ngClass]="
+        currentStatus === 'SUCCESS'
+          ? 'alert-warning'
+          : currentStatus === 'FAILED' || currentStatus === 'INVALID_SIGNATURE'
+            ? 'alert-danger'
+            : 'alert-info'
+      "
+      role="alert"
+    >
+      <p class="mb-0">
+        <i
+          class="bi fs-2"
+          [ngClass]="
+            currentStatus === 'SUCCESS'
+              ? 'bi-exclamation-triangle-fill'
+              : currentStatus === 'FAILED' || currentStatus === 'INVALID_SIGNATURE'
+                ? 'bi-x-circle-fill'
+                : 'bi-hourglass-split'
+          "
+        ></i>
+      </p>
+
+      <p class="mb-0 fw-semibold">
+        {{
+          currentStatus === 'SUCCESS'
+            ? 'Paiement validé, attribution à vérifier'
+            : currentStatus === 'FAILED' || currentStatus === 'INVALID_SIGNATURE'
+              ? 'Paiement non confirmé'
+              : 'Paiement en cours de validation'
+        }}
+      </p>
+
+      <p class="mb-0">
+        {{
+          currentStatus === 'SUCCESS'
+            ? 'Le paiement a bien été validé, mais la formule ou les heures de conduite ne semblent pas encore attribuées.'
+            : currentStatus === 'FAILED' || currentStatus === 'INVALID_SIGNATURE'
+              ? "Le paiement a rencontré un problème de validation et vous allez être redirigé vers la page d'erreur."
+              : 'Merci de patienter, nous vérifions encore la finalisation du paiement avant la redirection.'
+        }}
+      </p>
+    </div>
+  </div>
+</div>

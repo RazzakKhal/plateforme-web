@@ -1,14 +1,28 @@
 <div class="d-flex flex-column align-items-center justify-content-space-between w-100 p-4 gap-3">
-    <i class="bi bi-check-circle-fill icon-100 text-success"></i>
-    <h2 class="h2">Paiement Réussi !</h2>
-    <p class="text-secondary lh-base">Votre paiement a été traité avec succès. Vous allez recevoir un email de confirmation</p>
+  <i class="bi bi-check-circle-fill icon-100 text-success"></i>
 
-    <!-- <div class="w-100 alert alert-light d-flex flex-column gap-3" role="alert">
-        <p class="d-flex justify-content-between w-100"><span>Montant</span><span> xxx €</span></p>
-        <p class="d-flex justify-content-between w-100"><span>Transaction</span><span>id de la trasaction</span></p>
-    </div> -->
+  <h2 class="h2">Paiement confirmé</h2>
 
-    <button [routerLink]="['/student/formula']" class="btn btn-primary fs-3 w-75 mt-3">Voir ma formule</button>
-    <button [routerLink]="['/student']" class="btn bg-gray-ultra-light text-secondary fs-3 w-75 mt-3">Retour à l'accueil</button>
+  <p class="text-secondary lh-base text-center">
+    Votre paiement a bien été validé. Si votre formule ou vos heures de conduite n’apparaissent pas immédiatement dans
+    votre espace, la mise à jour peut encore être en cours.
+  </p>
 
+  <div class="w-100 alert alert-success d-flex flex-column gap-3 align-items-center text-center" role="alert">
+    <p class="mb-0">
+      <i class="bi bi-shield-check fs-2"></i>
+    </p>
+    <p class="mb-0 fw-semibold">Paiement enregistré</p>
+    <p class="mb-0">
+      Vous pouvez consulter votre formule pour vérifier l'attribution, ou revenir à l'accueil pour continuer votre
+      navigation.
+    </p>
+  </div>
+
+  <button [routerLink]="['/student/formula']" class="btn btn-primary fs-3 w-75 mt-3">
+    Voir ma formule
+  </button>
+  <button [routerLink]="['/student']" class="btn bg-gray-ultra-light text-secondary fs-3 w-75 mt-3">
+    Retour à l'accueil
+  </button>
 </div>
