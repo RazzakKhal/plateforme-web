@@ -16,6 +16,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { tokenInterceptor } from './shared/interceptors/token.interceptor';
 import { MeEffect } from './store/users/effects/me.effect';
 import { tokenExpirationInterceptor } from './shared/interceptors/token-expiration.interceptor';
+import { httpLoaderInterceptor } from './shared/interceptors/http-loader.interceptor';
 import { ResetPasswordEffect } from './pages/reset-password/store/reset-password.effects';
 import { SignInEffect } from './pages/sign-in/store/sign-in.effects';
 import { signInReducer } from './pages/sign-in/store/sign-in.reducer';
@@ -51,7 +52,11 @@ export const appConfig: ApplicationConfig = {
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideRouterStore(),
     provideHttpClient(
-      withInterceptors([tokenExpirationInterceptor, tokenInterceptor])
+      withInterceptors([
+        httpLoaderInterceptor,
+        tokenExpirationInterceptor,
+        tokenInterceptor,
+      ])
     ),
   ],
 };

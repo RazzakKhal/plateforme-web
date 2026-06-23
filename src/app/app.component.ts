@@ -5,13 +5,14 @@ import { Store } from '@ngrx/store';
 import { filter, Observable, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './shared/components/organisms/header/header.component';
+import { HttpLoaderComponent } from './shared/components/organisms/http-loader/http-loader.component';
 import { LocalStorageService } from './shared/services/local-storage.service';
 import { getMeAction } from './store/users/actions/get-me.action';
 import { DesignSystemModule } from './shared/components/design-system.module';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatButtonModule, CommonModule, RouterModule, DesignSystemModule],
+  imports: [RouterOutlet, MatButtonModule, CommonModule, RouterModule, DesignSystemModule, HttpLoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -21,7 +22,11 @@ export class AppComponent implements OnInit {
   state!: Observable<any>;
   isHeaderVisible = true;
 
-  constructor(private store: Store, private localStorageService: LocalStorageService, private router: Router) { }
+  constructor(
+    private store: Store,
+    private localStorageService: LocalStorageService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.hideHeader()
